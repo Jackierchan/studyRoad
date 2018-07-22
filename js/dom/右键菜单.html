@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0px;
+        }
+        li{
+        list-style: none;
+        }
+
+        #menu{
+            border: 1px solid black;
+            width: 50px;
+            height: 125px;
+            list-style: none;
+            display: none;
+            text-align: center;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+
+
+        }
+        #menu li{
+            height: 24px;
+            line-height: 24px;
+            border-bottom: 1px solid #cccccc;
+        }
+        #menu li:last-child{
+            border-bottom: 0px solid #cccccc;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="menu">
+    <li>打开</li>
+    <li>下载</li>
+    <li>删除</li>
+    <li>复制</li>
+    <li>删除</li>
+</ul>
+<script>
+var xx=document.getElementById('menu');
+var yy=document.getElementsByTagName('li')
+    document.oncontextmenu=function (e){
+    xx.style.display='block';
+    xx.style.left=e.clientX+'px';
+    xx.style.top=e.clientY+'px';
+    console.log(111111111111)
+        return false;
+
+}
+document.onclick=function () {
+    xx.style.display='none';
+}
+    for (var i=0;i<yy.length;i++){
+        yy[i].onmouseover=function (){
+this.style.background='gray';
+        }
+        yy[i].onclick=function () {
+            alert(this.innerHTML);
+        }
+        yy[i].onmouseout=function () {
+            this.style.background='';
+        }
+    }
+</script>
+</body>
+</html>
