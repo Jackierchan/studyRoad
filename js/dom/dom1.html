@@ -5,6 +5,40 @@
     <title>Title</title>
 </head>
 <body>
-
+<p name="qqq" id="pp" xx="xxx1" >pppppppppppppppp</p>
+<script>
+    var p1=document.documentElement.getElementsByTagName('p');
+    p1[0].onclick=function () {
+        console.log(111111111111);
+    }
+    // var p2=document.documentElement.getElementsByName('qqq');
+    // p2[0].onclick=function () {
+    //     console.log(222222222222)
+    // }
+    var p3=document.getElementById('pp');
+    // console.log(p3.getAttribute('xx'));
+    p3.xx='xx1';
+    p3.id='ppp';
+    // p3.setAttribute('xx','x1')
+    // console.log(p3.getAttribute('xx'));
+    console.log(p3.tagName=='p');
+    p3.onclick=function (e) {
+        console.log(e.target);
+        console.log(e.currentTarget);
+        console.log(this);
+        if (e.target.tagName=='p'){
+console.log(1111111111)
+        }
+        else{
+            console.log(222222)
+        }
+        
+    }
+    function  f() {
+        alert(this);
+        
+    }
+    f();
+</script>
 </body>
 </html>

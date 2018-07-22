@@ -32,6 +32,9 @@
         #menu li:last-child{
             border-bottom: 0px solid #cccccc;
         }
+        body{
+            height: 700px;
+        }
 
     </style>
 </head>
@@ -48,9 +51,28 @@ var xx=document.getElementById('menu');
 var yy=document.getElementsByTagName('li')
     document.oncontextmenu=function (e){
     xx.style.display='block';
-    xx.style.left=e.clientX+'px';
-    xx.style.top=e.clientY+'px';
-    console.log(111111111111)
+    var dw=document.documentElement.offsetWidth;
+    var mw=xx.offsetWidth;
+    var dh=document.documentElement.offsetHeight;
+    var wh=xx.offsetHeight;
+    if (e.clientX > (dw-mw)) {
+    xx.style.left=e.clientX-mw+'px';}
+
+    else {
+        xx.style.left=e.clientX+'px';
+
+
+    }
+        if (e.clientY > (dh-wh)) {
+            xx.style.top=e.clientY-wh+'px';
+    }
+        else {
+            xx.style.top=e.clientY+'px';
+
+        }
+    // console.log(111111111111)
+        e.returnValue = false;//取消浏览器默认行为（IE）
+//            e.preventDefault();(标准)
         return false;
 
 }
