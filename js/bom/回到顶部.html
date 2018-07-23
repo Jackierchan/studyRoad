@@ -3,8 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            height: 3000px;
+        }
+    #div1{
+    position: fixed;
+        top: 450px;
+        left: 1000px;
+        width: 35px;
+        height: 74px;
+        background: url("go-top.jpeg") -22px;
+
+    }
+        #div1:hover{
+            background: url("go-top.jpeg") -112px;
+        }
+    </style>
 </head>
 <body>
+<div id="div1">
 
+</div>
+<script>
+var odiv=document.getElementById('div1');
+odiv.onclick=function () {
+
+    odiv.style.backgroundPosition = '-200px';
+    var top = document.documentElement.scrollTop;
+
+    var timer=setInterval(function () {
+        scrollTo(0,top*=0.6);
+        console.log(top);
+        if (top < 1){
+            clearInterval(timer);
+            scrollTo(0,top*0);
+            console.log(top);
+odiv.style.background='-22px';
+        }
+    },100)
+
+    }
+
+</script>
 </body>
 </html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #menu{
+            display: none;
+            margin: 100px auto;
+            width: 150px;
+            border: 1px solid black;
+
+        }
+        #menu li{
+            list-style: none;
+        }
+#menu > li{
+    text-align: center;
+}
+#menu li ul{
+    display: none;
+}
+#menu li .aaa li{
+            height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-bottom: 1px solid black;
+           }
+        #menu li a{
+            display: block;
+            width: 150px;
+            background: black;
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<ul id="menu">
+    <li>
+        <a href="">组织区</a>
+        <ul class="aaa">
+            <li>001</li>
+            <li>002</li>
+            <li>003</li>
+        </ul>
+    </li>
+    <li>
+        <a href="">交流区</a>
+        <ul class="aaa">
+            <li>004</li>
+            <li>005</li>
+            <li>006</li>
+        </ul>
+    </li>
+</ul>
+<script>
+    var omenu=document.getElementById('menu');
+    var oa=document.getElementsByTagName('a');
+    var osubul=document.getElementsByClassName('aaa');
+    console.log(osubul);
+    document.oncontextmenu=function () {
+        omenu.style.display='block';
+        return false;
+    }
+
+
+
+
+
+
+
+oa[0].onclick=function () {
+    if (osubul[0].style.display=='block') {
+        osubul[0].style.display='none';
+    }
+    else{
+        osubul[0].style.display='block';
+    }
+    return false;
+}
+
+
+
+
+
+    oa[1].onclick=function () {
+        if (osubul[1].style.display=='block') {
+            osubul[1].style.display='none';
+        }
+        else{
+            osubul[1].style.display='block';
+        }
+        return false;
+    }
+
+
+
+</script>
+</body>
+</html>
