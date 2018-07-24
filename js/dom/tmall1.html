@@ -9,91 +9,154 @@
             padding: 0;
         }
         #menu{
-            height: 300px;
-            width: 400px;
+            margin: 100px auto;
+            width: 484px;
+            height: 316px;
             position: relative;
-            /*margin: 100px auto;*/
+        }
+        #menu #top{
+            list-style: none;
+margin: 0px auto;
+
+        }
+        #menu #top li{
+           float: left;
+            height: 57px;
+            width: 231px;
+            line-height: 57px;
             text-align: center;
-        }
-        #menu .top{
-
-            float: left;
-            height: 40px;
-            width: 200px;
-            line-height: 40px;
             background: #f1f1f1;
-            font-size: 20px;
 
         }
-        #menu #div1{
-            background: green;
+        #menu #top #green{
+            background: #00b262;
             color: white;
-        }
-        /*#menu .top:hover{*/
-/*z-index: 1;*/
-        /*}*/
-        #menu .bottom{
-            /*position: absolute;*/
-            /*top: 40px;*/
-            height: 260px;
-            width: 400px;
-        }
-        /*#menu #div3{*/
-            /*position: absolute;*/
-            /*top: 40px;*/
-        /*}*/
-        /*#menu #div4{*/
-            /*position: absolute;*/
-            /*top: 20px;*/
-        /*}*/
-        #menu .bottom img{
-            position: absolute;
-            left: 200px;
-            top: 30px;
-            width: 50%;
-        }
-        #menu-sub div{
-            position: absolute;
-            top: 40px;
-            display: none;
-        }
-        #menu-sub #div3{
+                 }
+        #menu a{
+              display: none;
+          }
+        #menu #a1{
             display: block;
         }
+        #menu a > img{
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+            height: 200px;
+        }
+        #menu a .wrap{
+            position: absolute;
+top: 127px;
+            left: 10px;
+            width: 291px;
+            height: 81px;
+        }
+        #menu a .wrap div{
+
+            width: 180px;
+            text-align: center;
+        }
+        #menu a .wrap div img{
+            line-height: 31px;
+            float: left;
+        }
+        #menu a .wrap div span{
+            color: green;
+            display: block;
+            float: left;
+            width: 150px;
+            height: 31px;
+            line-height: 31px;
+            font-size: 25px;
+        }
+        #menu a .wrap > span{
+            font-size: 25px;
+            color: black;
+            float: left;
+        }
+        #menu a .wrap{
+            background-image: url("8.png");
+            background-color: rgba(0,0,0,0);
+            background-repeat: no-repeat;
+            z-index: 99;
+        }
+
     </style>
 </head>
 <body>
-
 <div id="menu">
-    <div id="div1" class="top">
-今日疯抢
-    </div>
-    <div id="div2" class="top">
-量贩装
-    </div>
-    <div id="menu-sub">
-    <div id="div3" class="bottom">
-        <a href=""><img src="1.jpg" alt=""></a>
-    </div>
-    <div id="div4" class="bottom">
-        <a href=""><img src="3.jpg" alt=""></a>
-    </div>
+    <ul id="top">
+        <li id="green" class="li1"><p>今日疯抢</p></li>
+        <li class="li1"><p>量贩装</p></li>
+    </ul>
+    <a id="a1" href="">
+        <div class="wrap">
+        <div>
+            <img src="7.png" alt="">
+            <span>限时限量疯抢</span>
+        </div>
+        <span>一元超值疯抢中</span>
+        </div>
+        <img src="5.jpg" alt="">
+    </a>
+    <a href="">
+        <div class="wrap">
+        <div>
+            <img src="7.png" alt="">
+            <span>蓝月亮洗洁精</span>
+        </div>
+        <span>下单立减五元</span>
+        </div>
+        <img src="6.jpg" alt="">
+    </a>
 </div>
-</div>
-<script>
-    var otop=document.getElementsByClassName('top');
-    var obottom=document.getElementsByClassName('bottom');
-    for (var i=0;i<otop.length;i++) {
-        otop[i].onmouseover = function () {
-otop[i].xx=i;
-            for (var j=0;j<otop.length;j++) {
-obottom[j].id="";
-otop[i].id='';
+    <script>
+        var oli=document.getElementsByTagName('li');
+        var  oa=document.getElementsByTagName('a');
+        var onindex=0;
+var i;
+            // for ( i=0;i<oli.length;i++){
+            //     oli[i].index=i;
+            //     oli[i].onmouseover=function (){
+            //     for (var j=0;j<oli.length;j++){
+            //         oli[j].id='';
+            //         oa[j].id='';
+            //     }
+            //     this.id='green';
+            //     oa[this.index].id='a1';
+            //
+            // }
+        // }
+        function change() {
+            for ( i=0;i<oli.length;i++){
+                oli[i].index=i;
+                oli[i].onmouseover=function (){
+                    for (var j=0;j<oli.length;j++){
+                        oli[j].id='';
+                        oa[j].id='';
+                    }
+                    this.id='green';
+                    oa[this.index].id='a1';
+
+                }
             }
-            obotttom[this.xx].id='div3';
-            this.id='div1';
         }
-    }
-</script>
+        change();
+        var timer=setInterval(
+            function () {
+                onindex=onindex+1;
+                if (onindex >= oli.length){
+                    onindex=0;
+                }
+        for (var j=0;j<oli.length;j++){
+            oli[j].id='';
+            oa[j].id='';
+        }
+        oli[onindex].id='green';
+        oa[onindex].id='a1';
+        }
+
+        ,2000)
+    </script>
 </body>
 </html>
