@@ -32,9 +32,6 @@
         #menu li:last-child{
             border-bottom: 0px solid #cccccc;
         }
-        body{
-            height: 700px;
-        }
 
     </style>
 </head>
@@ -53,7 +50,7 @@ var yy=document.getElementsByTagName('li')
     xx.style.display='block';
     var dw=document.documentElement.offsetWidth;
     var mw=xx.offsetWidth;
-    var dh=document.documentElement.offsetHeight;
+    var dh=window.innerHeight;
     var wh=xx.offsetHeight;
     if (e.clientX > (dw-mw)) {
     xx.style.left=e.clientX-mw+'px';}
@@ -63,13 +60,14 @@ var yy=document.getElementsByTagName('li')
 
 
     }
-        if (e.clientY > (dh-wh)) {
+    console.log(wh,dh);
+    if (e.clientY > (dh-wh)) {
+
             xx.style.top=e.clientY-wh+'px';
-    }
-        else {
+    }else {
             xx.style.top=e.clientY+'px';
 
-        }
+    }
     // console.log(111111111111)
         e.returnValue = false;//取消浏览器默认行为（IE）
 //            e.preventDefault();(标准)

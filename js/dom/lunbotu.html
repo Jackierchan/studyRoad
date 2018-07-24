@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #contain{
+position: relative;
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+        }
+        #contain #img4{
+
+width: 520px;
+            height: 280px;
+
+
+        }
+        #contain #img4 img{
+            position: absolute;
+            display: none;
+
+        }
+        #contain #img4 .img1{
+            display: block;
+
+
+        }
+        #contain .ul3{
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+           text-align: center;
+
+        }
+        #contain .ul3 li{
+            list-style: none;
+                     float: left;
+                     background: black;
+                     color: white;
+                     margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+                 }
+        #contain .ul3 .li1{
+            background: yellow;
+            color: white;
+            cursor: help;
+        }
+        #contain #arrow{
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+text-align: center;
+        }
+        #contain #arrow span{
+            background: black;
+            color: white;
+            margin-left: 10px;
+            float: left;
+            display: block;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="contain">
+    <div id="img4">
+        <img class="img1" src="1.jpg" alt="">
+        <img src="2.jpg" alt="">
+        <img src="3.jpg" alt="">
+        <img src="4.jpg" alt="">
+    </div>
+    <ul class="ul3">
+        <li class="li1">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div id="arrow">
+        <span id="prew">&lt;</span>
+        <span id="forward">&gt;</span>
+    </div>
+
+</div>
+<script>
+    var oimg=document.getElementsByTagName('img');
+    var oli=document.getElementsByTagName('li');
+    var oprew=document.getElementById('prew');
+    var oforward=document.getElementById('forward');
+    var ocontain=document.getElementById('contain');
+    var onindex = 0;
+    oforward.onclick=function(){
+        onindex++;
+        if (onindex == oli.length)
+        {
+            onindex = 0;
+        }
+        // for (var i=0;i<oli.length;i++)
+        // {
+        //     oimg[i].className='';
+        //     oli[i].className='';
+        // }
+        // oimg[onindex].className='img1';
+        // oli[onindex].className='li1';
+        change(onindex);
+    }
+    oprew.onclick=function () {
+        onindex--;
+        if (onindex==-1)
+        {
+            onindex=oli.length - 1;
+        }
+        // for (var i=0;i<oli.length;i++)
+        // {
+        //     oimg[i].className='';
+        //     oli[i].className='';
+        // }
+        // oimg[onindex].className='img1';
+        // oli[onindex].className='li1';
+           change(onindex);
+    }
+    for (var i=0;i<oli.length;i++) {
+        oli[i].index = i;
+        oli[i].onmouseover = function () {
+            onindex = this.index;
+            change(onindex);
+        }
+    }
+    function change(e){
+        for (var j=0;j<oli.length;j++)
+        {
+            oimg[j].className='';
+            oli[j].className='';
+
+        }
+        oimg[e].className='img1';
+        oli[e].className='li1';
+
+    }
+
+    function play(){
+        timer=setInterval(function () {
+            oforward.onclick(onindex);
+        },500)
+    }
+    play();
+    ocontain.onmouseover=function () {
+        clearInterval(timer);
+    }
+    ocontain.onmouseout=function () {
+          play();
+    }
+</script>
+</body>
+</html>

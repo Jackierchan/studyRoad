@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        #menu{
+            margin: 100px auto;
+            width: 200px;
+            position: relative;
+        }
+        #menu #ul1 li{
+            margin-left: 10px;
+            height: 20px;
+            background: #cccccc;
+            width: 50px;
+            text-align: center;
+            float: left;
+        }
+        #menu ul{
+            height: 20px;
+        }
+        /*#menu #ul1 li:hover{*/
+            /*background: black;*/
+            /*color: white;*/
+        /*}*/
+        #menu #ul1 #li1{
+            background: black;
+            color: white;
+        }
+        /*#menu #ul1 #li2{*/
+/*float: left;*/
+        /*}*/
+        /*#menu #ul1 #li3{*/
+/*margin-left: 150px;*/
+            /*width: 50px;*/
+
+        /*}*/
+        #menu div{
+            width: 200px;
+            background: #cccccc;
+            height: 150px;
+            border-top: 1px solid black;
+            position: absolute;
+            display: none;
+        }
+        #menu .div1{
+            display: block;
+        }
+        /*#menu #div1{*/
+            /*background: black;*/
+            /*color: white;*/
+           /*}*/
+        /*#menu #div2{*/
+/*position: ;*/
+        /*}*/
+        /*#menu #div3{*/
+            /*float: left;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div id="menu">
+    <ul id="ul1">
+        <li id="li1">111</li>
+        <li>222</li>
+        <li>333</li>
+        
+    </ul>
+    <div class="div1">aaa</div>
+    <div>bbb</div>
+    <div>ccc</div>
+
+</div>
+<script>
+var oli=document.getElementsByTagName('li');
+var omenu=document.getElementById('menu');
+var arr=['111','222','333']
+var odiv1=omenu.getElementsByTagName('div');
+// var odiv2=document.getElementById('div2');
+// var odiv3=document.getElementById('div3');
+// oli[0].onclick=function () {
+// if ( odiv1.style.display=='none') {
+//     odiv1.style.display = 'block';
+// }else{
+//     odiv1.style.display='none';
+// }
+//
+// }
+// oli[1].onclick=function () {
+//     if ( odiv2.style.display=='none') {
+//         odiv2.style.display = 'block';
+//     }else{
+//         odiv2.style.display='none';
+//     }
+// }
+// oli[2].onclick=function () {
+//     if ( odiv3.style.display=='none') {
+//         odiv3.style.display = 'block';
+//     }else{
+//         odiv3.style.display='none';
+//     }
+// }
+for (var i=0;i<oli.length;i++)
+{
+    oli[i].xx=i;
+        oli[i].onclick=function () {
+        for (var j=0;j<oli.length;j++) {
+            odiv1[j].className='';
+            oli[j].id='';
+            // oli[j].style.background='#ccc';
+            // oli[j].style.color='black';
+        }
+
+
+        odiv1.innerHTML=arr[this.xx]
+        this.id='li1';
+            // odiv1[this.xx].className= 'div1';
+    }
+}
+
+</script>
+</body>
+</html>

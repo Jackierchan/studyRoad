@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #menu{
+            height: 300px;
+            width: 400px;
+            position: relative;
+            /*margin: 100px auto;*/
+            text-align: center;
+        }
+        #menu .top{
+
+            float: left;
+            height: 40px;
+            width: 200px;
+            line-height: 40px;
+            background: #f1f1f1;
+            font-size: 20px;
+
+        }
+        #menu #div1{
+            background: green;
+            color: white;
+        }
+        /*#menu .top:hover{*/
+/*z-index: 1;*/
+        /*}*/
+        #menu .bottom{
+            /*position: absolute;*/
+            /*top: 40px;*/
+            height: 260px;
+            width: 400px;
+        }
+        /*#menu #div3{*/
+            /*position: absolute;*/
+            /*top: 40px;*/
+        /*}*/
+        /*#menu #div4{*/
+            /*position: absolute;*/
+            /*top: 20px;*/
+        /*}*/
+        #menu .bottom img{
+            position: absolute;
+            left: 200px;
+            top: 30px;
+            width: 50%;
+        }
+        #menu-sub div{
+            position: absolute;
+            top: 40px;
+            display: none;
+        }
+        #menu-sub #div3{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div id="menu">
+    <div id="div1" class="top">
+今日疯抢
+    </div>
+    <div id="div2" class="top">
+量贩装
+    </div>
+    <div id="menu-sub">
+    <div id="div3" class="bottom">
+        <a href=""><img src="1.jpg" alt=""></a>
+    </div>
+    <div id="div4" class="bottom">
+        <a href=""><img src="3.jpg" alt=""></a>
+    </div>
+</div>
+</div>
+<script>
+    var otop=document.getElementsByClassName('top');
+    var obottom=document.getElementsByClassName('bottom');
+    for (var i=0;i<otop.length;i++) {
+        otop[i].onmouseover = function () {
+otop[i].xx=i;
+            for (var j=0;j<otop.length;j++) {
+obottom[j].id="";
+otop[i].id='';
+            }
+            obotttom[this.xx].id='div3';
+            this.id='div1';
+        }
+    }
+</script>
+</body>
+</html>

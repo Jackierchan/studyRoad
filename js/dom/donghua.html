@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            background: red;
+            width: 100px;
+            height: 100px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+
+</div>
+<script>
+    var odiv=document.getElementById('div1');
+    var w=getComputedStyle(odiv,false).width;
+    var h=getComputedStyle(odiv,false).height;
+    var o=getComputedStyle(odiv,false).opacity;
+        timer1 = setInterval(function () {
+            o = o * 0.5;
+            if(o<=0.1){
+                odiv.style.opacity=0;
+                clearInterval(timer1)
+            }else {
+                odiv.style.opacity = o;
+                }
+            console.log(o)
+        }, 1000)
+    timer2 = setInterval(function () {
+        w = parseInt(w) +50;
+        if(w>500){
+            odiv.style.width=500+'px';
+            clearInterval(timer2)
+        }else {
+            odiv.style.width = w+'px';
+        }
+        console.log(w)
+    }, 1000)
+    timer3 = setInterval(function () {
+        h = parseInt(h) +50;
+        if(h>500){
+
+            odiv.style.height=500+'px';
+            clearInterval(timer3)
+        }else {
+            odiv.style.height = h+'px';
+
+        }
+        console.log(h)
+    }, 1000)
+</script>
+</body>
+</html>
