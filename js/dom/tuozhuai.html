@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            background: #ff0000;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+
+</div>
+<script>
+    var odiv=document.getElementById("div1");
+    odiv.onmousedown=function (e) {
+          var ileft=e.clientX-this.offsetLeft;
+          var itop=e.clientY-this.offsetTop;
+          console.log(ileft);
+          console.log(itop);
+          document.onmousemove=function (e) {
+              divleft=e.clientX-ileft;
+              divtop=e.clientY-itop;
+              if (divleft>document.documentElement.offsetWidth-odiv.offsetWidth)
+              {
+                  divleft=document.documentElement.offsetWidth-odiv.offsetWidth;
+              }else if (divleft<0){
+                  divleft=0;
+              }
+
+              if (divtop>window.innerHeight-odiv.offsetHeight)
+              {
+                  divtop=window.innerHeight-odiv.offsetHeight;
+              }else if (divtop<0){
+                  divtop=0;
+              }
+              odiv.style.left=divleft+'px';
+              odiv.style.top=divtop+'px';
+          }
+        odiv.onmouseup = function () {
+            document.onmousemove = null;
+        }
+
+    }
+</script>
+</body>
+</html>
