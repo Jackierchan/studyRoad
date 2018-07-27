@@ -33,6 +33,12 @@
 // odiv.onclick=function () {
 //     console.log(9999999999)
 // }
+    //事件代理
+    for (var i=0;i<oli.length;i++){
+        oli.onclick=function (e) {
+            console.log(e.target.innerHTML)
+        }
+    }
     var obtn=document.getElementById('btn1');
     obtn.onclick=function () {
         var ili=document.createElement('li');
