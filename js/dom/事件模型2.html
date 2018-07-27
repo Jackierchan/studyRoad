@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">
+<ul id="ul1">
+    <li>
+        1111
+    </li>
+    <li>
+        22222
+    </li>
+    <li>
+        33333
+    </li>
+</ul>
+</div>
+<botton id="btn1">
+    abc
+</botton>
+<script>
+    var oul=document.getElementById('ul1');
+    var oli=document.getElementsByTagName('li');
+    var odiv=document.getElementById('div1');
+    oul.onclick=function (e) {
+    console.log(e.target.innerHTML)
+    // console.log(e.currentTarget.innerHTML)
+    e.stopPropagation();
+}
+// odiv.onclick=function () {
+//     console.log(9999999999)
+// }
+    var obtn=document.getElementById('btn1');
+    obtn.onclick=function () {
+        var ili=document.createElement('li');
+        oul.appendChild(ili)
+        ili.innerHTML=Math.random();
+    }
+</script>
+</body>
+</html>

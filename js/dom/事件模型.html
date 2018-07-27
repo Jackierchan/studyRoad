@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">
+    111111111
+    <div id="div2">
+        22222222222
+        <div id="div3">
+3333333333
+        </div>
+    </div>
+</div>
+<script>
+var odiv1=document.getElementById('div1');
+var odiv2=document.getElementById('div2');
+var odiv3=document.getElementById('div3');
+// odiv1.onclick=function () {
+//     console.log(1111111111);
+// }
+// odiv2.onclick=function () {
+//     console.log(2222222222);
+//}
+// odiv3.onclick=function (e) {
+//     console.log(3333333333);
+//     e.cancelbuble;//ie
+//     e.stopPropagation();//标准
+// }//冒泡
+// odiv1.onclick=function () {
+//     console.log(111111);
+// }
+// odiv3.onclick=function () {
+//     console.log(222222)
+// }
+odiv3.addEventListener('click',function () {
+console.log(33333333333)
+},true)
+// odiv2.addEventListener('click',function () {
+//     console.log(222222222)
+// },true)
+// odiv1.addEventListener('click',function () {
+//     console.log(11111111133)
+// },true)
+</script>
+
+</body>
+</html>

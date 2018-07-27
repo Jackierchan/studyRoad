@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        #menu{
+            float: left;
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+        #menu div{
+            width: 200px;
+            height: 200px;
+            background: gray;
+            display: none;
+            position: absolute;
+            opacity: .5;
+        }
+        #menu1{
+            position: relative;
+            float: left;
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            display: none;
+            margin-left: 20px;
+        }
+        #menu1 img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="menu">
+    <img src="10.jpg" alt="">
+    <div id="div1">
+
+    </div>
+</div>
+<div id="menu1">
+    <img id="img1" src="9.jpg" alt="">
+</div>
+<script>
+    var odiv=document.getElementById('div1');
+    var omenu=document.getElementById('menu');
+    var omenu1=document.getElementById('menu1');
+    var oimg=document.getElementById('img1');
+    omenu.onmouseover=function (e) {
+        odiv.style.display='block';
+        omenu1.style.display='block';
+
+        omenu.onmousemove=function(e) {
+            var ileft = e.clientX - odiv.offsetWidth * 0.5;
+            var itop = e.clientY - odiv.offsetHeight * 0.5;
+
+
+            if (ileft > omenu.offsetWidth - odiv.offsetWidth) {
+                ileft = omenu.offsetWidth - odiv.offsetWidth;
+            } else if (ileft < 0) {
+                ileft = 0;
+            }
+            if (itop > omenu.offsetHeight - odiv.offsetHeight) {
+                itop = omenu.offsetHeight - odiv.offsetHeight;
+            } else if (itop < 0) {
+                itop = 0;
+            }
+            odiv.style.left = ileft + 'px';
+            odiv.style.top = itop + 'px';
+
+            // odiv.style.zIndex='1';
+            console.log(ileft);
+            console.log(itop);
+            var xxx=ileft/(omenu.offsetWidth-odiv.offsetWidth);
+            var jleft=-xxx*(oimg.offsetWidth-omenu1.offsetWidth);
+
+
+            var YYY=itop/(omenu.offsetHeight-odiv.offsetHeight);
+            var jTOP=-YYY*(oimg.offsetHeight-omenu1.offsetHeight);
+
+            oimg.style.left=jleft+'px';
+            oimg.style.top=jTOP+'px';
+
+
+
+
+
+        }
+
+        }
+    omenu.onmouseout=function () {
+        odiv.style.display="none";
+    }
+
+</script>
+</body>
+</html>
