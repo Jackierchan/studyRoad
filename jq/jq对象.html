@@ -11,9 +11,65 @@ div1
 <div id="div2">
     div2
 </div>
+<ul id="ul1">
+    <li>001</li>
+    <li>002</li>
+    <li class="li3">003</li>
+    <li>004</li>
+    <li>005</li>
+    <li>006</li>
+    <p></p>
+    <p>pppp</p>
+</ul>
+<h1>h1h2h3h4</h1>
+<h2>h2h2h2h2h2</h2>
+<div>
+    <p>00000000</p>
+</div>
+<div>
+    <h1>
+    h1h1h1h
+</h1>
+    <input type="text" value="sss">
+    <input type="hidden" value="aaa">
+</div>
+<button id="btn"></button>
+<input type="button" disabled='disabled' value="提交">
+<select>
+    <option value="">黑大</option>
+    <option value="">农大</option>
+    <option value="" selected="selected">理工</option>
+    <option value="">林大</option>
+
+</select>
+<!--<input type="file">-->
+<input type="checkbox" checked="checked" disabled="disabled">
+<input type="checkbox">
+<textarea name="" id="" cols="30" rows="10"></textarea>
 <script src="jquery-1.12.4.js"></script>
 <script>
-// $('#div1').css('background','red');
+    $(function () {
+        $(':button').val('注册')
+        $(':selected').css('width','200')
+        $(':input[type=text]').css('background','red')
+    })
+    // $('ul li:gt(2)').css('background','red');//大于，lt小于
+    // $('ul li:first').css('background','red');//第一个
+    // $('ul :last').css('background','red');//最后一个
+    // $('ul li:even').css('background','red');//下表是偶数的，odd奇数的
+    // var a = '.li3';
+    //
+    //            $('ul li:not('+ a +')').css('background','red');//除了谁
+
+    // $(':header').css('background','red');//h1h2h3等标签
+
+     // $('ul li:contains(3)').css('background','red');//包含什么的
+    $('div :has(p)').css('background','red');
+    $('p.parent').html('p1p1p1p1p1p1p)
+    $('p:parent').html('p1p1p1p1p');
+    //           $('div:has(p)').css('background','red');
+
+    // $('#div1').css('background','red');
 // $(document).ready(function () {
 //
 // })
