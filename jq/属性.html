@@ -46,23 +46,23 @@
         })
     // $('#div1').clone(true);
         $('#div2').append($('#div1').clone(true))
-    console.log($('li').innerHeight())
-        console.log($('li').outerHeight())
-    console.log($('#div1').offset())
-        console.log($('p').offsetParent())
-    $(document).scroll(function () {
-        console.log($(document).scrollTop())
+         console.log($('li').innerHeight())
+         console.log($('li').outerHeight())
+         console.log($('#div1').offset())
+         console.log($('p').offsetParent())
+        $(document).scroll(function () {
+         console.log($(document).scrollTop())
     })
     // $('#div1').addClass('bb');
         $('#div1').addClass('vv');
         // $('#div1').removeClass('bb');
-    console.log($('#div1').hasClass('bb'));
-    $('#div1').toggleClass('vv');
+         console.log($('#div1').hasClass('bb'));
+        $('#div1').toggleClass('vv');
         $('#div1').css('width',function () {
             var a=10,b=20;
             return a+b
         })
-console.log(odiv1.style.width);
+        console.log(odiv1.style.width);
         $('#div1').attr('xx','yy');
         $('#div1').removeAttr('xx','yy');
 
