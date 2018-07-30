@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div3">
+<div id="div2">
+    <p>pppppp</p>
+</div>
+</div>
+<div id="div1">
+    div1
+</div>
+</body>
+<script src="jquery-1.12.4.js"></script>
+<script>
+$('p').unwrap();
+// $('<p>qqqqqqqqqqq</p>').appendTo($('#div3 ')).css('background','red')
+//     $('#div1').append($('<p>wwwwwwwww</p>')).css('background','red')
+//     $('#div1').html('<h1>hhhhhhh</h1>')
+// //     $('#div3').text('<h1>hhhhhhhhh</h1>')
+// //     $('#div3').after('<h1>hhhhhhhhhh</h1>')
+// $('#div1').before('<h1>hhhhhhhhhh</h1>')
+    $('#div1').on('click',function () {
+        alert(1111111111111111)
+    })
+//     alert(1111)
+    var xx=$('#div1').detach()
+// var xx=$('#div1').remove()
+console.log(xx)
+    $('#div3').after(xx)
+</script>
+</html>

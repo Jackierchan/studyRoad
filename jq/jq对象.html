@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">
+div1
+</div>
+<div id="div2">
+    div2
+</div>
+<script src="jquery-1.12.4.js"></script>
+<script>
+// $('#div1').css('background','red');
+// $(document).ready(function () {
+//
+// })
+//     $(function () {
+//         console.log(11111111111);
+//     })
+    window.onload=function () {
+        console.log(111111);
+        $('#div2').css('background','blue')
+        var odiv=document.getElementById('div1')
+        // odiv.css('background','blue')//不好用
+        // console.log($(odiv).css('background','blue'))js原生语言转换成jq
+        // console.log($('#div1').get(0))
+        // console.log($('#div1')[0]);jq转换js原生
+    }
+window.onload=function () {
+    console.log(22222222222)
+}
+$(document).ready(function () {
+    console.log(111111111);
+
+})//文档就绪函数
+
+</script>
+</body>
+</html>

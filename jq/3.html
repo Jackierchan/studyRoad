@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="checkbox">篮球
+<input type="checkbox">足球
+<input type="checkbox">冰球
+<input type="checkbox">棒球
+<button id="button1">quanxuan</button>
+<button id="button2">quanbuxuan</button>
+<button id="button3">fanxuan</button>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        $('#button1').on('click',function () {
+            $('input').prop('checked','checked')
+        })
+        $('#button2').on('click',function () {
+            $('input').prop('checked',false)
+        })
+        $('#button3').on('click',function () {
+            $('input').each(function (index,elem) {
+// elem.checked=!elem.checked;
+                if ($(elem).prop('checked')) {
+                    $(elem).prop('checked', false);
+                }
+                else
+                    {
+                    $(elem).prop('checked', 'checked');
+            }
+            })
+        })
+    })
+</script>
+</body>
+</html>
