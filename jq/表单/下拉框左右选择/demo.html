@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        select{
+            width: 100px;
+            height: 250px;
+        }
+        button{
+            display: block;
+        }
+        div{
+            float: left;
+            margin: 30px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <select multiple='multiple' name="" id="s1" style="...">
+        <option value="1">选项1</option>
+        <option value="2">选项2</option>
+        <option value="3">选项3</option>
+        <option value="4">选项4</option>
+        <option value="5">选项5</option>
+        <option value="6">选项6</option>
+        <option value="7">选项7</option>
+    </select>
+    <button id="btn1">选中添加到右边</button>
+    <button id="btn2">全部添加到右边</button>
+</div>
+<div>
+    <select multiple='multiple' name="" id="s2">
+        <option value="">选项8</option>
+    </select>
+    <button id="btn3">选中添加到左边</button>
+    <button id="btn4">全部添加到左边</button>
+</div>
+<script src="../../jquery-1.12.4.js"></script>
+<script>
+    $('#btn1').on('click',function () {
+        $('select option:selected').appendTo('#s2')
+    })
+    $('#btn2').on('click',function () {
+        $('select option').appendTo('#s2')
+    })
+    $('#btn3').on('click',function () {
+        $('select option:selected').appendTo('#s1')
+    })
+    $('#btn4').on('click',function () {
+        $('select option').appendTo('#s1')
+    })
+    //双击
+    $('#s1').dblclick(function () {
+        $('option:selected').appendTo('#s2')
+    })
+    $('#s2').dblclick(function () {
+        $('option:selected').appendTo('#s1')
+    })
+
+</script>
+</body>
+</html>
