@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        form{
+            width: 300px;
+        }
+        div{
+            padding: 2px;
+        }
+        input,textarea{
+            width: 20em;
+            border: 1px solid #888;
+
+        }
+        .focus{
+background: #00b262;
+            border: 1px solid #cccccc;
+        }
+    </style>
+</head>
+<body>
+      <form action="">
+        <fieldset>
+            <legend>个人基本信息</legend>
+
+                <lable>名称：</lable>
+                <input type="text">
+
+                <lable>密码：</lable>
+                <input type="text">
+
+                <lable>详细信息：</lable>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+
+            
+            
+            
+        </fieldset>
+      </form>
+<script src="../../jquery-1.12.4.js"></script>
+      <script>
+          // $(':input').on('click',function () {
+          //     $(this).addClass('focus').siblings().removeClass('focus')
+          // })
+          $(':input').focus(function () {
+              $(this).addClass('focus')
+           }).blur(function () {
+              $(this).removeClass('focus')
+          })
+      </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="">
+    你爱好的运动是？
+    </br>
+    <input type="checkbox" value="足球">足球
+    <input type="checkbox" value="篮球">篮球
+    <input type="checkbox" value="棒球">棒球
+    <input type="checkbox" value="乒乓">乒乓
+    </br>
+    <input id="ipt1" type="button" value="全选">
+    <input id="ipt2" type="button" value="全不选">
+    <input id="ipt3"type="button" value="反选">
+    </br>
+    <input id="ipt4" type="button" value="提交">
+</form>
+<script src="../../jquery-1.12.4.js"></script>
+<script>
+     $('#ipt1').on('click',function () {
+         $('input[type=checkbox]').prop('checked','checked')
+     })
+     $('#ipt2').on('click',function () {
+         $('input[type=checkbox]').prop('checked',false)
+     })
+     $('#ipt3').on('click',function () {
+         $('input[type=checkbox]').each(function () {
+             this.checked=!this.checked;
+
+         })
+
+         })
+     $('#ipt4').on('click',function () {
+         var str="你选中的是：\r\n";
+         $('input[type=checkbox]:checked').each(function(){
+             str+=$(this).val()+"\r\n";
+         })
+         alert(str);
+     })
+</script>
+</body>
+</html>
