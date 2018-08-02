@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // function user() {
+    //     this.name='zs',
+    //         this.age=19
+    // }
+    // user.prototype.say=function () {
+    //     console.log(this.name);
+    // }
+    // user.prototype.eat=function () {
+    //     console.log('正在吃饭');
+    // }
+    // var u=new user();
+    // u.say();
+    // console.log(u.age);
+    //
+    //
+    // function son(n) {
+    //     this.name=n;
+    // }
+    // son.prototype=new user();
+    // var s=new son('lisi');
+    // s.say();
+    class user{
+        constructor(n){
+            this.name=n
+        }
+        say(a,b,c,d){
+            return a*b/c*d
+        }
+    }
+    // var re=user.say(1,2,3,4)
+    // console.log(re)
+    var u=new user('lisi');
+    u.say(1,2,3,4);
+
+
+    class son extends user{
+        constructor(n,a){
+            super();
+this.name=n;
+         this.age=a;
+        }
+        eat(){
+            console.log(this.age)
+        }
+    }
+    var s=new son('zz',19)
+    console.log(s);
+    s.eat();
+    s.say(1,2,3,4);
+
+</script>
+</body>
+</html>
