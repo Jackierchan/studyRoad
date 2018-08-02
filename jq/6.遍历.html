@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+<ul>
+    <li id="li1">1111</li>
+    <li>2222</li>
+    <li class="li3">
+        <h1 class="red">222</h1>
+        3333</li>
+    <li>4444</li>
+</ul>
+<div id="div1">
+       <h2 class="li3">5555555555</h2>
+</div>
+<h1>11111111111</h1>
+<script src="jquery-1.12.4.js"></script>
+<script>
+      // $('#li1').nextUntil('#li3').css('background','red');//下一个直到谁
+      // $('ul').find('#li3').css('background','red');
+      // $('ul').find('#li3').css('background','red').end().css('background','blue')//找子代元素，end跳回上一级
+      // console.log($('#div1').filter('.li3'))
+      //    $('li').slice(2,3).css('background','red');//从开始到结束，不包括结束
+      //    $('li').filter('#li3').add('h1').css('background','red')
+      // $('li').filter('#li3').andSelf().css('background','red')
+      //    $('#li3').has('.red').css('background','red')
+      //     $('.li3').filter('h2').css('background','red');
+      // $('.li3').eq(1).css('background','red');
+
+    // var xx=$('li').map(function () {
+    //     return $(this).text()
+    // })
+    // console.log(xx.get(1))
+
+  $('ul').on('click',function (e) {
+      if ($(e.target).is('.li3')){
+          console.log(11111111)
+      }
+  })
+</script>
+</body>
+</html>
