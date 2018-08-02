@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #small img{
+            width: 25%;
+            border-bottom: 4px solid black;
+            border-right: 4px solid black;
+            box-sizing: border-box;
+            float: left;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        #big{
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            /*left: 0px;*/
+            /*top: 0px;*/
+            /*right: 0px;*/
+            /*bottom: 0px;*/
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="small">
+
+</div>
+<div id="big">
+
+</div>
+<script src="../zepto.js"></script>
+<script src="../touch.js"></script>
+<script>
+            var str='';
+            var inow=0;
+            for (i=0;i<24;i++){
+                // $('#small').append('<img src="img/thumbs/'+(i+1)+'.jpg">')
+               str=str+'<img src="img/thumbs/'+(i+1)+'.jpg">'
+            }
+            // $('#small').html(str);
+            $('#small').append(str);
+
+
+            $('#small').on('click', 'img' ,function () {
+                $('#small').hide();
+                $('#big').css('background-image', 'url(img/'+($(this).index()+1)+'.jpg)').show();
+                inow=$(this).index();
+            })
+            $('#big').on('click',function () {
+                $('#small').show();
+                $('#big').hide();
+            })
+                $('#big').on('swipeLeft',function () {
+                    console.log(1111111);
+                inow++;
+                    if (inow>=23){
+                        inow=0                }
+                    $('#big').css('background-image', 'url(img/'+(inow+1)+'.jpg)').show();
+
+            })
+            $('#big').on('swipeRight',function () {
+                console.log(1111111);
+                inow--;
+                if (inow<=-1){
+                   inow=23                }
+                $('#big').css('background-image', 'url(img/'+(inow+1)+'.jpg)').show();
+
+            })
+
+
+</script>
+</body>
+</html>
