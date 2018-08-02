@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>001</li>
+    <li>002</li>
+    <li>003</li>
+    <li>004</li>
+</ul>
+<script>
+    // var a=1;
+    // var a=5;
+    // console.log(a);
+
+
+
+// let a=1;
+//  let a=2;//let不能重复声明 //  块级作用域,暂时性死区(临时失效区),
+
+
+// console.log(111111);
+//     console.log(a);
+//     let a=111//let没有变量提升
+
+    // var a=1;
+    // function fn() {
+    //     let a=2;
+    //     console.log(a);
+    //
+    // }
+    // fn();
+    // console.log(a);
+
+
+    // for (var i=0;i<4;i++){
+    //     console.log(i)
+    //
+    // }
+    // console.log(i)
+    //
+    // for (let i=0;i<4;i++){
+    //     console.log(i)
+    //
+    // }
+    // console.log(i);        //
+
+    // {
+    //     var a=1;
+    // }
+    // console.log(a)
+    // {
+    //     let a=1;
+    // }
+    // console.log(a)
+var oli=document.getElementsByTagName('li')
+        for (var i=0;i<=3;i++){
+
+            (function(index){
+            oli[index].onclick=function () {
+
+                    console.log(index);
+                }
+            })(i)
+    } //一个外部函数里面声明了一个内部函数，内部函数里面调用了
+    //外部函数的局部变量，这个时候，局部变量不被释放
+    // for (let i=0;i<=3;i++){
+    //
+    //         oli[i].onclick=function () {
+    //
+    //             console.log(i);
+    //         }
+    //
+    // }
+
+
+
+
+    // var f1=function () {
+    //     console.log(1111)
+    // }
+    // f1();
+    //
+    // function f() {
+    //     var n=2
+    //     function f2() {
+    //         console.log(n)
+    //     }
+    //     return f2
+    // }
+    // var result=f();
+    // result();
+
+
+
+    // (function () {
+    //     console.log(1111)
+    // })()
+    // //函数立即调用
+    //
+    // (function (index) {
+    //     console.log(index)
+    // })(i)
+    //
+
+
+
+
+
+
+</script>
+</body>
+</html>
