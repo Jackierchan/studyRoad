@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>001</li>
+    <li>002</li>
+    <li>003</li>
+</ul>
+<script>
+    var oli=document.getElementsByTagName('li');
+    // for (var i=0;i<oli.length;i++){
+    //     oli[i].onclick=function () {
+    //         console.log(this.innerHTML);
+    //     }
+    // }
+
+    // for (var i=0;i<oli.length;i++){
+    //     var that=this
+    //     oli[i].onclick=function () {
+    //         setTimeout( ()=> {
+    //             console.log(this.innerHTML)
+    //         },1000)
+    //
+    //     }
+    // }
+    //     for (var i=0;i<oli.length;i++){
+    //         oli[i].onclick=function () {
+    //             setTimeout( ()=> {
+    //                 console.log(this.innerHTML)
+    //             },1000)
+    //
+    //         }
+    // }
+
+    //箭头函数里面的this是定义时指向
+    //普通函数里面的this是运行时指向
+
+
+    //     var fn=(a,b)=>{
+    //         console.log(a,b);
+    //     }
+    //     fn(1,2);
+    // function f() {
+    //     console.log(arguments[2])
+    // }
+    // f(1,2,3)//没有形参时的方法
+    //
+    // function user() {
+    //     this.name='zzzzzz'
+    // }
+    // var u=new user();
+    //
+    // console.log(u.name)
+
+    // var user=()=>{
+    //     this.name='qqqqqqq';
+    // }
+    // var u=new user();
+    // console.log(u.name);//箭头函数没有构造方法，不能实例化
+
+
+    // var obj={
+    //     name:'eeeeeeee',
+    //     age:22,
+    //     say:function () {
+    //         console.log(this.name)
+    //     }
+    // }
+    // obj.say();
+
+    // var obj={
+    //     name:'eeeeeeee',
+    //     age:22,
+    //     say:()=> {
+    //         console.log(this.age)
+    //     }
+    // }
+    // obj.say();
+
+
+    // var u=()=> {
+    //     console.log(arguments[0])
+    // }
+    // u(0,1,2)        //箭头函数不能用arguments
+
+</script>
+</body>
+</html>
