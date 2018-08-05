@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    <!--var n='aaa';-->
+    <!--var str='my';-->
+    <!--var myname=''-->
+    <!--//对象属性的简写-->
+    <!--var obj={-->
+        <!--n,-->
+        <!--age:18,-->
+        <!--[str+'name']:'xxx'-->
+    <!--}-->
+    <!--console.log(obj)-->
+    <!--obj[str+'name']='yyyy';-->
+    <!--console.log(obj);-->
+    <!--console.log(obj[str+'name']);-->
+
+
+    <!--var c={-->
+        <!--age:11-->
+    <!--}-->
+    <!--var obj={-->
+        <!--d:c,-->
+        <!--b:2-->
+    <!--}-->
+    <!--console.log(obj);-->
+    <!--obj.d.age=18;-->
+    <!--console.log(c.age);-->
+    <!--console.log(Object.assign(obj,{e:5,b:6},{}));-->
+
+
+    //  console.log(-0==+0);
+    // console.log(NaN==NaN);
+    // console.log(Object.is(-0,+0));
+    // console.log(Object.is(NaN,NaN));
+
+
+
+var arr=[1,2,3,4,5,6,NaN]
+    Array.prototype.inof=function (n) {
+        for (var i=0;i<=this.length;i++){
+            if (Object.is(n,this[i])){
+                return i
+            }
+        }
+        return -1
+    }
+    console.log(arr.inof(NaN))
+</script>
+</body>
+</html>

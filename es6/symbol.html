@@ -6,9 +6,23 @@
 </head>
 <body>
 <script>
-    //boolean布尔  number数值  object对象  string字符串  undefined  null   symbol
+    //boolean布尔  number数值  object对象  string字符串  undefined  null   symbol（不能用new）
         var a=Symbol();
-        console.log(a)
+        console.log(a)//无参
+    var b=Symbol('foo')
+    console.log(b)//有参
+
+    var ms=Symbol();
+    // var o={
+    //
+    // }
+    // o[ms]='aaa';
+    // console.log(o);
+    var o={
+        [ms]:'bbb'
+    }
+    console.log(o);
+
 </script>
 </body>
 </html>
