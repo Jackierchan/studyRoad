@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    // function* fn() {
+    //     yield "hello";
+    //     yield 'world';
+    //     yield 'generator';
+    //     return 0
+    // }
+    // var g=fn();
+    // console.log(g.next());
+    // console.log(g.next());
+    // console.log(g.next());
+    // console.log(g.next());
+
+    // function* fn() {
+    //     var a=2 * (yield 3+4);
+    //    var b=5+(yield a);
+    //     var c =yield b;
+    //     return 0
+    // }
+    // var g=fn();
+    // var x=g.next();
+    // var y=g.next(x.value);
+    // console.log(g.next(y.value));
+    //
+
+
+       function  r(url){
+               // $.get(url,function (res) {
+               //     console.log(res)
+               // })
+           return $.get(url,function (res) {
+               console.log(res)
+           })
+
+       }
+       function* fn() {
+           yield r('a.json');
+           yield r('b.json');
+           yield r('c.json');
+
+       }
+       var g=fn();
+       var a=g.next();
+       var b=g.next();
+       var c=g.next()
+       console.log(a);
+    console.log(b);
+    console.log(c);
+
+
+
+</script>
+</body>
+</html>
