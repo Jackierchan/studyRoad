@@ -1,0 +1,25 @@
+$color:red;
+$bg:background;
+$test:test;
+#div{
+   background: {
+     image: url("");
+     size: cover;
+     position: center;
+     repeat: no-repeat;
+   };
+  color: $color;
+  h1{
+    width: 200px;
+
+  }
+  &:hover{
+    color: #00b262;
+  }
+  &-test{
+    font-size: 20px;
+  }
+}
+##{$test} {
+  #{$bg}: url("");
+}
