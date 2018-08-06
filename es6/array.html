@@ -5,9 +5,77 @@
     <title>Title</title>
 </head>
 <body>
+<ul>
+    <li>001</li>
+    <li>002</li>
+    <li>003</li>
+
+    <li>004</li>
+</ul>
 <script src="jquery-1.12.4.js"></script>
 <script>
+    // var oli=document.getElementsByTagName('li');
+    // console.log(oli);
+    // var arr=Array.from(oli);
+    // arr.push('11111')
+    // console.log(arr);
+    //类数组转换成数组
 
+
+    // var obj={
+    //     0:'aaaaaa',
+    //     1:'bbbbbbb',
+    //     2:'ccccccc',
+    //     4:'ddddddddd',
+    //     length:6
+    // }
+    // var arr=Array.from(obj);
+    // console.log(arr);
+
+
+    //    var arr=[
+    //        [12,4],
+    //        [3,4],
+    //        ['a',3]
+    //    ]
+    // console.log(arr);
+
+
+
+    // var m=new Map();
+    // m.set('a',111);
+    // m.set(true,222);
+    //
+    //
+    // console.log(m);
+    // console.log(Array.from(m));
+
+
+       // var arr = new Array(3,3,4,5,6,6).fill(10,3,5);//(values,start,end)
+       //   console.log(arr);
+
+        // var arr=Array.of(3)
+        //     console.log(arr);
+        //  arr.fill(10)
+        //     console.log(arr);
+
+       var arr=[1,2,3,4,5,6,7];
+       // console.log(arr.forEach(function (xx,index) {
+       //     console.log(xx,index);
+       // }))//没有返回值
+
+    // console.log(arr.map(function(xx,index){
+    //        if(index > 3){
+    //            return 'sssss';
+    //        }else{
+    //            return xx + 1;
+    //        }
+    //    }));
+   console.log(arr.filter(function (xx,index) {
+       xx+=10;
+       return arr
+   }))
+    console.log(arr);
 </script>
 </body>
 </html>
