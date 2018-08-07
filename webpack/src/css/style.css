@@ -1,5 +1,10 @@
 #div1{
     width: 200px;
     height: 200px;
-    background-image: url("../img/aa.jpg");
+
+}
+#div2{
+    height: 800px;
+    background-image: url("aa.jpg");
+    background-size: 100px;
 }

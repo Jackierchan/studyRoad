@@ -9,7 +9,8 @@ module.exports={
     },
     output:{
         path:path.resolve(__dirname,'dist'),
-        filename:'[name].js'
+        filename:'[name].js',
+        publicPath:'http://localhost:8081/'
     },
     module:{
         rules:[
@@ -21,16 +22,20 @@ module.exports={
                     use:"css-loader"
                 })
             },{
-            test:/\.(png|jpg|gif)/,
+                test:/\.(png|jpg|gif)/,
                 use:[
                     {
                         loader:'url-loader',
-                        option:{
+                        options:{
                             limit:500,
-                            outputPath:'./'
+                            outputPath:'image/'
                         }
                     }
                 ]
+            }
+            ,{
+            test:/\.(htm|html)$/i,
+            loader:'html-withimg-loader'
             }
         ]
     },
@@ -40,9 +45,9 @@ module.exports={
           minify:{
               removeAttributeQuotes:true
           },
-        hash:true,
-        template:'./src/index.html'
-            }),
+            hash:true,
+            template:'./src/index.html'
+        }),
         new ExtractTextWebpackPlugin("./css/style.css")
     ],
    devServer:{

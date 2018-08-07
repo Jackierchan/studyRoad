@@ -24,4 +24,26 @@ $test:test;
 ##{$test} {
   #{$bg}: url("");
 }
+@mixin xxx($size,$color:#ccc){
+  width: $size;
+  height: $size;
+  background: $color;
+}
+#div3{
+@include xxx(200px);
+}
+#div4{
+  @include xxx($color:red,$size:200px);
+  a{
+    font-size: 20px;
+  }
+}
+#div5{
+  color: #00b262;
+  @extend #div4
+}
+#div6{
+  color: lighten($color,20%);
+  background: opacify($color,0.2);
+}
 

@@ -7,6 +7,77 @@
 <body>
 <script src="jquery-1.12.4.js"></script>
 <script>
+    //回调嵌套
+    // $.get('a.json',function (d1) {
+    //     console.log(d1.a);
+    //     var t=d1.teacher;
+    //     $.get('b.json',{name:t},function (d2) {
+    //         console.log(d2.b);
+    //         $.get('c.json',{name:t},function (d3) {
+    //             console.log(d3.c);
+    //         },'json')
+    //     },'json')
+    // },'json')
+
+
+    // var p=new Promise(function (resolve,reject) {
+    //     $.get('a.json',function (d1) {
+    //         console.log(d1)
+    //         resolve(d1.a);//成功
+    //         // reject(d1.a);//失败
+    //     })
+    //
+    // })
+    //
+    // p.then(function (data) {
+    //     console.log(data);
+    //    return $.get('b.json',function (d1) {
+    //         console.log(d1.b)
+    //
+    //     })
+    // }).then(function (data) {
+    //     console.log(data)
+    // }).catch(function (data) {
+    //     console.log(data+'aaa')
+    // })
+     
+    
+    
+    var p1=new Promise(function (resolve,reject) {
+        setTimeout(function () {
+            console.log(1111);
+            resolve(1111111);
+        },3000)
+    })
+    var p2=new Promise(function (resolve,reject) {
+        setTimeout(function () {
+            console.log(2222);
+            reject(22222222222);
+        },2000)
+    })
+    var p3=new Promise(function (resolve,reject) {
+        setTimeout(function () {
+            console.log(3333);
+            resolve(333333333);
+        },1000)
+    })
+console.log('ssss')
+
+    // var p=Promise.all([p1,p2,p3]);//返回数组，一个失败执行reject，所有都执行完后返回
+    // p.then(function (data) {
+    //     console.log(data)
+    // },function (data) {
+    //     console.log(data+'fail')
+    // })
+
+    //竞速，找最快的,返回最快的·
+    var p1=Promise.race([p1,p2,p3]);
+    p1.then(function (data) {
+        console.log(data)
+    },function (data) {
+        console.log(data+
+        'fail')
+    })
 
 </script>
 </body>
