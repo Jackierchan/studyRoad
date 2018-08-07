@@ -1,3 +1,4 @@
+@import "common";
 $color:red;
 $bg:background;
 $test:test;
@@ -23,3 +24,4 @@ $test:test;
 ##{$test} {
   #{$bg}: url("");
 }
+
