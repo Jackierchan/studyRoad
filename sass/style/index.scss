@@ -35,7 +35,7 @@ $test:test;
 #div4{
   @include xxx($color:red,$size:200px);
   a{
-    font-size: 20px;
+    font-size: 40px;
   }
 }
 #div5{
@@ -44,9 +44,9 @@ $test:test;
 }
 #div6{
   color: lighten($color,20%);
-  background: opacify($color,0.2);
+  background: opacify($color,0.4);
 }
 
 @for $i from 1 to 5{
-    #{$i}
+
 }

@@ -3,8 +3,21 @@
     height: 200px;
 
 }
+#div1 img{
+    width: 100%;
+
+}
 #div2{
     height: 800px;
     background-image: url("aa.jpg");
     background-size: 100px;
+}
+@keyframes xxx {
+
+}
+#aaa{
+    color: #795da3;
+}
+#div5{
+    color: #795da3;
 }
