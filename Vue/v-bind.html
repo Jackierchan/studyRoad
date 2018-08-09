@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    #div1{
+         width: 200px;
+        height: 200px;
+
+
+    }
+        .red{
+            background: red;
+        }
+        .font{
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1" :class="{red:isred,font:isfont}">
+    ddddd
+</div>
+<!--<div id="div1" :class="iclass">-->
+    <!--ddddd-->
+<!--</div>-->
+<!--<div id="div1" :class="[classa,classb]">-->
+    <!--ddddd-->
+<!--</div>-->
+<button @click="fn">toggle</button>
+
+<!--<div id="div1" :style="{background:style1,'font-size':style2}">ddddddddd</div>-->
+<!--<div id="div1" :style="styleobj">dddddddd</div>-->
+<!--<div id="div1" :style="[style11,style22]">dddddddd</div>-->
+<script src="vue.js"></script>
+<script>
+    var re=new Vue({
+        el:'#div1',
+        data:{
+            iclass:{
+                red:true,
+                font:true
+            },
+            isred:true,
+            isfont:true,
+            classa:'red',
+            classb:'font',
+            style1:'black',
+            style2:'50px',
+            styleobj:{
+                background:'yellow',
+                'font-size':'40px'
+            },
+            style11:{
+                background:'blue'
+            },
+            style22:{
+                'font-size':'30px'
+            }
+        },
+        methods:{
+            fn(){
+                this.isRed = !this.isRed;
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

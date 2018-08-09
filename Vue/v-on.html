@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+<div id="div3">
+    <button @click="click1">click</button>
+    {{msg}}
+<div id="div1" @click="fun(99999)">
+    <div id="div2" @click.stop="f(88888)">
+
+    </div>
+</div>
+</div>
+<script src="vue.js"></script>
+<script>
+   var re=new Vue({
+       el:'#div3',
+       data:{
+msg:0
+       },
+       methods:{
+           fun(a){
+              console.log(a) ;
+   },
+           f(b){
+               console.log(b)
+           },
+           click1(){
+              this.msg += 2
+           }
+       }
+
+   })
+</script>
+</body>
+</html>

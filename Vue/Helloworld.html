@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+<!--<div id="div1">-->
+    <!--{{msg}}-->
+<!--</div>-->
+<!--<div v-html=msg1>-->
+ <!--gsadgsa-->
+<!--</div>-->
+<!--<div v-if=msg2>-->
+    <!--aaaaaaaaa-->
+<!--</div>-->
+<!--<div v-else=msg2>-->
+    <!--bbbbbbbbbbb-->
+<!--</div>-->
+<!--<template v-if="!msg2">-->
+    <!--<p v-if="xx == 'a' ">qqqqq1111</p>-->
+    <!--<p v-else-if="xx == 'b' ">qqqqqq22222</p>-->
+    <!--<p v-else>qqqqq333333</p>-->
+<!--</template>-->
+    <div v-show="xx">
+        {{xx}}
+    </div>
+    <!--//v-show从css属性上改变&ndash;&gt;-->
+</div>
+<script src="vue.js"></script>
+<script>
+        // var ve=new Vue({
+        //     el:"#div1",
+        //     data:{
+        //         msg:"<helloworld>"
+        //     }
+        // })
+
+
+         // var re1=new Vue({
+         //     el:'div',
+         //     data:{
+         //         msg1:'aaaaaaaaaa'
+         //     }
+         // })
+
+
+
+            // var re2=new Vue({
+            //     el:'div',
+            //     data:{
+            //         msg2:false
+            //     }
+            // })
+
+          var re3=new Vue({
+              el:'div',
+              data:{
+                  xx:'b'
+              }
+          })
+</script>
+</body>
+</html>

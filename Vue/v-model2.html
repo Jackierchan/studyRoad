@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+<input type="text" v-model="msg">
+{{msg}}
+</div>
+<script src="vue.js"></script>
+<script>
+    var re=new Vue({
+        el:'div',
+        data:{
+            msg:''
+        }
+    })
+</script>
+</body>
+</html>

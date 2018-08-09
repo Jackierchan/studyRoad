@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+      <!--<ul>-->
+          <!--<li v-for="(a,b) in arr">-->
+              <!--{{a}},{{b}}-->
+          <!--</li>-->
+      <!--</ul>-->
+      <ul>
+          <li v-for="(a,b) in sortstu">
+              他的名字是{{a.name}},他的年龄是{{a.age}},索引是{{b}}
+          </li>
+      </ul>
+      <!--<ul>-->
+          <!--<li v-for="(a,b,c) in obj">-->
+              <!--{{a}},{{b}},{{c}}-->
+          <!--</li>-->
+          <!--//a:值，b:键 c:索引-->
+      <!--</ul>-->
+      <!--<ul>-->
+          <!--<li v-for="(a,b) in stylist">-->
+              <!--他的名字是{{a.name}},他的年龄是{{b.age}}-->
+          <!--</li>-->
+      <!--</ul>-->
+      <script src="vue.js"></script>
+      <script>
+          var re=new Vue({
+              el:'ul',
+              data: {
+                  arr:[111, 222, 333,444],
+                  stylist:[{
+                              name:'mayun',
+                              age:'42',
+                          },{
+                              name:'mayun',
+                              age:'33',
+                          },{
+                              name:'mayun',
+                              age:'55',
+                          },{
+                              name:'mayun',
+                              age:'66',
+                          }],
+                  obj:{
+                      name:'adad',
+                      age:12,
+                      xx:'adadaafa'
+                  }
+              },
+              computed:{
+                  sortstu(){
+                     return this.stylist.sort(function (a,b) {
+                          return a.age-b.age
+                      })
+                  }
+              }
+          })
+          // var re=new Vue({
+          //     el:'ul',
+          //     data:arr[{
+          //         name:'mayun',
+          //         age:'40',
+          //     },{
+          //         name:'mayun',
+          //         age:'40',
+          //     },{
+          //         name:'mayun',
+          //         age:'40',
+          //     },{
+          //         name:'mayun',
+          //         age:'40',
+          //     }]
+          // })
+      </script>
+</body>
+</html>
