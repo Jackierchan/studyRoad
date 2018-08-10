@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+            width: 300px;
+            height: 50px;
+            background: #00b262;
+            margin-top: 20px;
+        }
+        h3{
+            display: block;
+            height: 50px;
+            width: 300px;
+            text-align: center;
+            line-height: 50px;
+        }
+        #div3{
+
+            margin: 0 auto;
+            width: 400px;
+        }
+        span{
+            float: right;
+            height: 50px;
+            line-height: 50px;
+        }
+        hr{
+            margin-top: 20px;
+        }
+        .red{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="div3">
+
+    <h3>services</h3>
+   <ul>
+       <li v-for="(a,b) in arr" :class="{red:a.active}" @click="fn(b)">
+           {{a.name}}<span>{{a.age}}</span>
+       </li>
+   </ul>
+
+
+    <hr>
+    total
+    <span>{{msg}}</span>
+</div>
+<script src="vue.js"></script>
+<script>
+    var arr=[];
+    var re=new Vue({
+        el:'#div3',
+        data:{
+            msg:0,
+         arr:[
+            {
+            name:'aaa',
+            age:234,
+            active:false
+            },
+            {
+            name:'bbb',
+            age:927,
+                active:false
+                },
+            {
+            name:'ccc',
+            age:247,
+                active:false
+                },
+            {
+            name:'ddd',
+            age:316,
+                active:false
+                },
+            {
+            name:'eee',
+            age:532,
+                active:false
+
+                }
+           ]} ,
+        methods:{
+            fn(b){
+              this.arr[b].active=!this.arr[b].active;
+                if(this.arr[b].active){
+                    this.msg+=this.arr[b].age;
+                }else{
+                    this.msg-=this.arr[b].age;
+                }
+                // a.active=!a.active;
+                // if(a.active){
+                //     this.msg+=a.age;
+                // }else{
+                //     this.msg-=a.age;
+                // }
+                // console.log(111)
+            }
+        }
+    })
+</script>
+</body>
+</html>

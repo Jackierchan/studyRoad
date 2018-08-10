@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-    #div1{
+    #div2{
          width: 200px;
         height: 200px;
 
@@ -19,20 +19,24 @@
     </style>
 </head>
 <body>
-<div id="div1" :class="{red:isred,font:isfont}">
-    ddddd
+<div id="div1">
+<div id='div2' :class="{red:isRed,font:isFont}">
+   dddddd
+
 </div>
+<button @click="fn">toggle</button>
 <!--<div id="div1" :class="iclass">-->
     <!--ddddd-->
 <!--</div>-->
 <!--<div id="div1" :class="[classa,classb]">-->
     <!--ddddd-->
 <!--</div>-->
-<button @click="fn">toggle</button>
+
 
 <!--<div id="div1" :style="{background:style1,'font-size':style2}">ddddddddd</div>-->
 <!--<div id="div1" :style="styleobj">dddddddd</div>-->
 <!--<div id="div1" :style="[style11,style22]">dddddddd</div>-->
+</div>
 <script src="vue.js"></script>
 <script>
     var re=new Vue({
@@ -42,8 +46,8 @@
                 red:true,
                 font:true
             },
-            isred:true,
-            isfont:true,
+            isRed:true,
+            isFont:true,
             classa:'red',
             classb:'font',
             style1:'black',
@@ -62,6 +66,7 @@
         methods:{
             fn(){
                 this.isRed = !this.isRed;
+                this.isFont= !this.isFont;
             }
         }
     })
