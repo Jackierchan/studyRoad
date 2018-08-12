@@ -5,6 +5,62 @@
     <title>Title</title>
 </head>
 <body>
+<div id="div1">
+    是否需要额外付费设施 ：<input type="checkbox" @click="show">
+<ul>
+    <li id="oli" v-for="(a,b) in msg" v-show="qqq">
+        {{a.key}}({{a.value}}) <input type="checkbox" @click="add" v-model="sss" :value="a">
+    </li>
+</ul>
+    订单费用信息 ：
+    <ul>
+        <li v-for="c in sss">
+            {{c.key}}({{c.value}})
+        </li>
+    </ul>
+    总金额：{{total}}
+</div>
+<script src="vue.js"></script>
+<script>
+     var oli=document.getElementById('#oli')
+    var ve=new Vue({
+        el:'#div1',
+        data:{
+            msg:[{
+                key:'沙发',
+                value:100
+            },{
+                key:'床',
+                value:200
+            },{
+                key:'wifi',
+                value:30
+            }],
+            sss:[{
+                key:'群力',
+                value:400
+            }],
+            qqq:false
+        },
+        methods:{
+            show(){
+                this.qqq=!this.qqq;
+            },
+            add(){
 
+            }
+        },
+        computed:{
+            total(){
+                var sum=0;
+
+                this.sss.forEach(function (e) {
+                    sum=sum+e.value
+                });
+                return sum
+            }
+        }
+    })
+</script>
 </body>
 </html>
