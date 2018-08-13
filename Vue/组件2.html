@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">
+    <demo o-xx="我爱" yy="学习">
+        <p slot="al">ppppppp</p>
+        <p slot="al1">p3p3pp3p3p3p3p3</p>
+    </demo>
+    <demo o-xx="我不爱" yy="玩游戏"></demo>
+</div>
+<script type="text/x-template" id="temp">
+<div>
+    {{oXx}}{{yy}}
+    <slot name="al">
+        <p>p1p1p1p1pp1pp1p</p>
+    </slot>
+    <slot name="al1">
+        <p>iiiiiiiiiiiiiiii</p>
+    </slot>
+
+
+
+</div>
+</script>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#div1',
+        data:{
+
+        },
+        components:{
+            demo:{
+                template:'#temp',
+                props:['oXx','yy']//有大写变成-加小写
+            }}
+    })
+</script>
+</body>
+</html>

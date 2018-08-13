@@ -22,7 +22,7 @@
         <tbody id="product-list">
         <tr v-for="(a,b) in arr">
             <td><input type="checkbox" v-model=" checklist " :value="a"></td>
-            <td><img src="v-for='i in img'" alt="" width="100"></td>
+            <td><img :src="a.road" alt="" width="100"></td>
             <td>{{a.key1}}</td>
             <td>
                 <ul>
@@ -33,7 +33,7 @@
             </td>
             <td> {{a.value1}}</td>
             <td>
-                <button @click="a.xx--">-</button>
+                <button @click="a.xx>0? a.xx--:0">-</button>
                 <input type="text" v-model="a.xx">
                 <button @click="a.xx++">+</button>
             </td>
@@ -64,14 +64,16 @@
                     value1:19,
                     value2:0,
                     key2:'删除',
-                    xx:1
+                    xx:1,
+                    road:'加多宝.jpg'
                 },
                 {
                     key1:'加多宝',
                     value1:8,
                     value2:0,
                     key2:'删除',
-                    xx:5
+                    xx:5,
+                    road:'黄金叶.jpg'
                 }
             ],
             checklist:[],
