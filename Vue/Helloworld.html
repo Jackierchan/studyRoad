@@ -23,8 +23,14 @@
     <!--<p v-else-if="xx == 'b' ">qqqqqq22222</p>-->
     <!--<p v-else>qqqqq333333</p>-->
 <!--</template>-->
+    <div v-html="xxxx">
+
+    </div>
     <div v-show="xx">
         {{xx}}
+    </div>
+    <div v-text="xxxxxx">
+
     </div>
     <!--//v-show从css属性上改变&ndash;&gt;-->
 </div>
@@ -57,7 +63,9 @@
           var re3=new Vue({
               el:'div',
               data:{
-                  xx:'b'
+                  xx:'b',
+                  xxxx:'<h1>111111</h1>',
+                  xxxxxx:'<h1>111111</h1>'
               }
           })
 </script>
