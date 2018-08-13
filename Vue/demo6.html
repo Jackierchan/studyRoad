@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div2{
+            width: 400px;
+            height: 450px;
+            margin: 0 auto;
+        }
+        #top{
+            width: 400px;
+            height: 50px;
+            background: #ff0000;
+            line-height: 50px;
+        }
+        #bottom{
+            width: 400px;
+            height: 400px;
+            background: #888888;
+        }
+        #div2 #top #sp1{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <button @click="login">登陆</button>
+    <button @click="reg">注册</button>
+
+    <demo title='登陆' v-show="isshow" @fclose="close">
+        用户名：<input type="text">
+        <br>
+        密码是：<input type="text">
+        <br>
+        <button>提交</button>
+
+    </demo>
+    <demo title="注册" v-show="isshow1" @fclose="close">
+        用户名：<input type="text">
+        <br>
+        密码是：<input type="text">
+        <br>
+         邮箱是：<input type="text">
+        <br>
+        <button>提交</button>
+        <input type="reset">
+
+    </demo>
+</div>
+<script type="text/x-template" id="temp">
+    <div id="div2">
+ <div id="top">
+     <span>{{title}}</span>
+     <span ID="sp1" @click="$emit('fclose')">X</span>
+ </div>
+ <div id="bottom">
+      <slot></slot>
+ </div>
+</div>
+</script>
+<script src="vue.js"></script>
+<script>
+    var ve=new Vue({
+        el:'#div1',
+        data:{
+             isshow:false,
+            isshow1:false
+        },
+        components:{
+            demo:{
+                template:'#temp',
+                props:['isshow','title','isshow1']
+            }
+        },
+        methods:{
+            login(){
+                this.isshow=true;
+                this.isshow1=false;
+            },
+            reg(){
+                this.isshow1=true;
+                this.isshow=false;
+            },
+            close(){
+                this.isshow1=false;
+                this.isshow=false;
+                console.log(1111)
+
+            }
+        }
+    })
+
+
+
+</script>
+</body>
+</html>
