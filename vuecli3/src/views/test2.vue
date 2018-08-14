@@ -1,0 +1,9 @@
+<template>
+    <div>
+        <h1>{{$route.params.xx}}请点餐{{$route.params.price}}</h1>
+        <h1>请付款{{$route.params.price}}</h1>
+        <h1>优惠选餐{{$route.params.price}}</h1>
+        <h1>饮料类{{$route.params.price}}</h1>
+        <h1>满减{{$route.params.price}}</h1>
+    </div>
+</template>

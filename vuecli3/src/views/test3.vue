@@ -1,0 +1,10 @@
+<template>
+    <div>
+        <h1>{{$route.params.xx}}请点餐{{$route.params.age}}</h1>
+        <h1>{{$route.params.xx}}请付款{{$route.params.age}}</h1>
+        <h1>店长推荐</h1>
+        <h1>七彩石锅拌饭</h1>
+        <h1>牛肉拌饭</h1>
+        <h1>哈哈哈哈哈哈</h1>
+    </div>
+</template>
