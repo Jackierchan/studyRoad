@@ -1,7 +1,7 @@
 <template>
     <div class="common-header" :style="{background:bgColor}">
         <span>首页</span>
-        <h1 >{{title}}</h1>
+        <h3>{{title}}</h3>
     </div>
 </template>
 <script>
@@ -25,7 +25,7 @@
     .common-header span{
         font-size: 16px;
     }
-    .common-header h1{
+    .common-header h3{
         position: absolute;
         top: 50%;
         left: 50%;

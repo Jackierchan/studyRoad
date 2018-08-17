@@ -22,15 +22,14 @@ export default {
     computed:mapState(['bgColor']),
 }
 </script>
-<style>
+<style scoped>
     .common-footer{
         height: 1rem;
         /*background: rgb(33, 150, 243);*/
         position: fixed;
-
+        line-height: 1rem;
         bottom: 0px;
         width: 100%;
-        line-height: 1rem;
         color: honeydew;
         display: flex;
     }
