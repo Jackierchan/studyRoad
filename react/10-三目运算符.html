@@ -3,12 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        .aaa{
-            background: red;
-            color: #00b262;
-        }
-    </style>
 </head>
 <body>
 <div id="root">
@@ -23,14 +17,31 @@
             super(props);
             this.xx='唯创';
             this.state={
-                msg:'商品列表。。。。。。'
+                msg:'商品列表。。。。。。',
+                isshow:false
             }
         }
+        change(){
+            this.setState({
+                isshow:!this.state.isshow
+            })
+        }
         render(){
+            let style={
+                background:'green',
+                fontSize:'20px'
+            };
             return (
                 <div>
                     <h1 className="aaa">{this.state.msg}</h1>
+                    <p style={style}>hello 黑大</p>
+                    {
+                        this.state.isshow?
+                        <h1 className="aaa">初夏了</h1>
+                        :null
 
+                    }
+                    <button onClick={this.change.bind(this)}>aaa</button>
                 </div>
             );
         }
@@ -40,6 +51,5 @@
         document.getElementById('root')
     )
 </script>
-
 </body>
 </html>

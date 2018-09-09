@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .aaa{
+            background: red;
+            color: #00b262;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+
+</div>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="browser.min.js"></script>
+<script type="text/babel">
+    class Root extends React.Component{
+        constructor(props){
+            super(props);
+            this.xx='唯创';
+            this.state={
+                msg:'商品列表。。。。。。',
+                isshow:false
+            }
+        }
+        change(){
+            this.setState({
+                isshow:!this.state.isshow
+            })
+        }
+        render(){
+            let style={
+              background:'green',
+              fontSize:'20px'
+            };
+            let ele=null
+            if (this.state.isshow){
+                ele=<h1 className="aaa">初夏了</h1>
+            }
+            return (
+                <div>
+                    <h1 className="aaa">{this.state.msg}</h1>
+                    <p style={style}>hello 黑大</p>
+                    {ele}
+                    <button onClick={this.change.bind(this)}>aaa</button>
+                </div>
+            );
+        }
+    }
+    ReactDOM.render(
+        <Root/>,
+        document.getElementById('root')
+    )
+</script>
+
+</body>
+</html>
