@@ -3,8 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .b{
+            float: left;
+        }
+        .a{
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+        }
+        .c{
+            margin-left: 50px;
+            size: 50px;
+
+        }
+        .d{
+            width: 600px;
+            margin: 0 auto;
+        }
+        .e{
+            background: #00b262;
+            color: white;
+            display: block;
+        }
+        .f{
+            float: right;
+        }
+        .g{
+            border: 1px black solid;
+            background: yellowgreen;
+        }
+    </style>
 </head>
 <body>
+<div id="root">
 
+</div>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="browser.min.js"></script>
+<script type="text/babel">
+    class Root extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={
+                arr:[{
+                    name:'吃饭'
+                },{
+                    name:'睡觉'
+
+                },{
+                    name:'打豆豆'
+                }
+                ]
+            }
+        }
+
+            change(){
+                  let arr1=this.state.arr;
+                  arr1.push({name:this.refs.mytext.value})
+                  this.setState({
+                    arr:arr1
+                  });
+                  this.refs.mytext.value=''
+            }
+        render(){
+
+            return (
+                <div className="d">
+                    <h1 className="a">todoList</h1>
+                    <span className="b">任务</span><input type="text" ref="mytext" className="c" placeholder="请输入关键字。。。"/>
+                    <Product1 myclick={this.change.bind(this)}></Product1>
+                    <ul>
+                        {this.state.arr.map((elem,index)=>{
+                            return <Product2 key={index} elem={elem}></Product2>
+                    })}
+                    </ul>
+
+                    <span></span>
+                </div>
+            );
+        }
+    }
+    class Product1 extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={
+            }
+        }
+        // change1(){
+        //     this.props.myclick();
+        // }
+        render(){
+
+            return (
+                <button className="e" onClick={this.props.myclick.bind(this)}>添加任务</button>
+            );
+        }
+    }
+    class Product2 extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={
+            }
+        }
+        render(){
+
+            return (
+              <div className="g">
+                  <li>
+                  <input type="checkbox"/>
+                      {this.props.elem.name}
+                  <button className="f">删除</button>
+                  </li>
+              </div>
+            );
+        }
+    }
+    ReactDOM.render(
+        <Root/>,
+        document.getElementById('root')
+    )
+</script>
 </body>
 </html>
