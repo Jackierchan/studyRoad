@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+
+</div>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="browser.min.js"></script>
+<script type="text/babel">
+    class Root extends React.Component{
+        constructor(props){
+            super(props);
+            this.xx='唯创';
+            this.state={
+                msg:'商品列表。。。。。。'
+            }
+        }
+        change(msg){
+              this.setState({
+                  msg:msg
+              })
+        }
+        render(props){
+            return (
+                <div>
+                    <h1>{this.state.msg}</h1>
+                    <Product name="食品" myclick={this.change.bind(this)}></Product>
+                    <Product name="饮品"></Product>
+
+                    <Product name="烟酒"></Product>
+
+                </div>
+            );
+        }
+    }
+    class Product extends React.Component{
+        constructor(props){
+            super(props);
+        }
+        render(props){
+            return (
+                <div
+                    onClick={()=>{this.props.myclick('1111')}}>
+                    {this.props.name}
+                </div>
+            );
+        }
+    }
+    ReactDOM.render(
+        // <Welcome name="黑大" detail="黑大c25">99999999</Welcome>,
+        <Root/>,
+        document.getElementById('root')
+    )
+</script>
+
+</body>
+</html>

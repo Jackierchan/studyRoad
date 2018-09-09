@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+
+</div>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="browser.min.js"></script>
+<script type="text/babel">
+    class Welcome extends React.Component{
+        constructor(props){
+            super(props);
+            this.xx='唯创';
+            this.state={
+                count:1
+            }
+        }
+        add(){
+            this.setState({
+                count:++this.state.count
+            })
+
+        }
+        render(props){
+            return (
+                <div>
+                    <button onClick={this.add.bind(this)}>add</button>
+                    <p>aaaaaaaaa{this.state.count}</p>
+                    <p>{this.xx}</p>
+                </div>
+            );
+        }
+    }
+    ReactDOM.render(
+        // <Welcome name="黑大" detail="黑大c25">99999999</Welcome>,
+        <Welcome name="黑大" detail="黑大c25"/>,
+        document.getElementById('root')
+    )
+</script>
+
+</body>
+</html>

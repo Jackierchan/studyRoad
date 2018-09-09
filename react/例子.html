@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+
+</div>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="browser.min.js"></script>
+<script type="text/babel">
+    class Root extends React.Component{
+        constructor(props){
+            super(props);
+            this.xx='唯创';
+            this.state={
+                msg1:100,
+            }
+        }
+        change(num){
+            this.setState({
+                msg1:this.state.msg1-num,
+            })
+        }
+        render(){
+            return (
+                <div>
+                    <h1>全部士兵数量：{this.state.msg1}</h1>
+                    <Product name="将军数量" val='20' count={this.state.msg1} myclick={this.change.bind(this,20)}>
+                    <br/>
+
+                    </Product>
+                    <Product name="小兵数量" val='10' count={this.state.msg1} myclick={this.change.bind(this,10)} xx={this.state.msg2}>
+                        <br/>
+                    </Product>
+
+                </div>
+            );
+        }
+    }
+    class Product extends React.Component{
+        constructor(props){
+            super(props);
+            this.state= {
+                num:100
+        }
+        }
+        change(){
+            if(this.props.count >= this.props.val)
+            {
+                this.setState({
+                    num:this.state.num+=this.props.val*1
+                })
+                this.props.myclick();
+            }
+
+        }
+        render(){
+            return (
+                <div>
+                    {this.props.name}
+                    <br/>
+                    {this.state.num}
+                    <button onClick={this.change.bind(this)}>add</button>
+
+                </div>
+            );
+        }
+    }
+    ReactDOM.render(
+        <Root/>,
+        document.getElementById('root')
+    )
+</script>
+</body>
+</html>
