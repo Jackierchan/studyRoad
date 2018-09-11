@@ -60,12 +60,28 @@
         }
 
             change(){
-                  let arr1=this.state.arr;
-                  arr1.push({name:this.refs.mytext.value})
+                if(this.refs.mytext.value) {
+                    let arr1 = this.state.arr;
+                    arr1.push({name: this.refs.mytext.value});
+
+                    this.setState({
+                        arr: arr1
+                    });
+                    this.refs.mytext.value = ''
+                }else
+                {
+                    this.setState({
+                        arr: this.state.arr
+                    });
+                }
+            }
+            del(key){
+                  let arr2=this.state.arr;
+                  arr2.splice(key,1);
                   this.setState({
-                    arr:arr1
-                  });
-                  this.refs.mytext.value=''
+                      arr:arr2
+                  })
+                  console.log(event.target)
             }
         render(){
 
@@ -76,7 +92,7 @@
                     <Product1 myclick={this.change.bind(this)}></Product1>
                     <ul>
                         {this.state.arr.map((elem,index)=>{
-                            return <Product2 key={index} elem={elem}></Product2>
+                            return <Product2 key={index} aaa={index} elem={elem} myclick={this.del.bind(this)}></Product2>
                     })}
                     </ul>
 
@@ -107,6 +123,9 @@
             this.state={
             }
         }
+        del1(){
+            this.props.myclick(this.props.aaa)
+        }
         render(){
 
             return (
@@ -114,7 +133,7 @@
                   <li>
                   <input type="checkbox"/>
                       {this.props.elem.name}
-                  <button className="f">删除</button>
+                  <button className="f" onClick={this.del1.bind(this)}>删除</button>
                   </li>
               </div>
             );
