@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 700px;
+            margin: 0 auto;
+            border: #00b262 2px solid;
+            padding: 50px;
+
+        }
+        button{
+            font-size: 50px;
+            margin-right: 20px;
+        }
+        input{
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" id="ipt1" placeholder="请输入明文" value="">
+    <input type="text" id="ipt2" value="" id="ipt2">
+    <button id="btn1">加密</button>
+    <button id="btn2">解密</button>
+</div>
+<script>
+     var oipt=document.getElementById('ipt1');
+     var oipt2=document.getElementById('ipt2');
+     var obtn=document.getElementById('btn1');
+     var obtn2=document.getElementById('btn2');
+     obtn.onclick=function () {
+         oipt2.value='';
+         var arr0=oipt.value.split('');
+         console.log(arr0);
+         var arr1=['a','b','c','d','e','f','g','h','i','g','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' '];
+         var arr2=['f','q','i','e','h','n','c','v','j','t','y','a','u','w','d','r','e','x','l','b','m','z','o','g','k','p',' '];
+         var arr3=[];
+         for (var i=0;i<arr0.length;i++){
+             for (var j=0;j<arr1.length;j++){
+                 if (arr0[i]==arr1[j]){
+                     arr3.push(arr2[j]);
+                 }
+             }
+             // console.log(arr3);
+             oipt2.value+=arr3[i];
+
+         }
+
+     }
+     obtn2.onclick=function () {
+         arr3=[];
+         var arr2=['a','b','c','d','e','f','g','h','i','g','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' '];
+         var arr1=['f','q','i','e','h','n','c','v','j','t','y','a','u','w','d','r','e','x','l','b','m','z','o','g','k','p',' '];
+         var arr4=oipt2.value.split('');
+         for (var i=0;i<arr4.length;i++){
+             for (var j=0;j<arr2.length;j++){
+                 if (arr4[i]==arr1[j]){
+                     arr3.push(arr2[j]);
+                 }
+             }
+             oipt2.value+=arr3[i];
+
+         }
+
+     }
+</script>
+</body>
+</html>
