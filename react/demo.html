@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background: #63a35c">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        li{
+            list-style: none;
+        }
         .b{
             float: left;
         }
@@ -33,6 +36,10 @@
             border: 1px black solid;
             background: yellowgreen;
         }
+        .slect{
+            background: #404040;
+        }
+        .slect
     </style>
 </head>
 <body>
@@ -47,24 +54,30 @@
         constructor(props){
             super(props);
             this.state={
+                msg:3,
+                msg1:0,
                 arr:[{
-                    name:'吃饭'
+                    name:'吃饭',
+                    check:false
                 },{
-                    name:'睡觉'
+                    name:'睡觉',
+                    check:false
 
                 },{
-                    name:'打豆豆'
+                    name:'打豆豆',
+                    check:false
+
                 }
                 ]
             }
         }
-
             change(){
                 if(this.refs.mytext.value) {
                     let arr1 = this.state.arr;
                     arr1.push({name: this.refs.mytext.value});
 
                     this.setState({
+                        msg:this.state.msg+1,
                         arr: arr1
                     });
                     this.refs.mytext.value = ''
@@ -75,13 +88,23 @@
                     });
                 }
             }
-            del(key){
-                  let arr2=this.state.arr;
-                  arr2.splice(key,1);
-                  this.setState({
-                      arr:arr2
-                  })
-                  console.log(event.target)
+            del(key) {
+                    if(this.state.arr[key].check) {
+                        let arr2 = this.state.arr;
+                        arr2.splice(key,1);
+                        this.setState({
+                            arr: arr2
+                        });
+                        console.log(event.target)
+                     }
+            }
+            check(index){
+                let arr3=this.state.arr;
+                arr3[index].check=!arr3[index].check;
+                this.setState({
+                    arr:arr3
+                });
+                console.log(1111);
             }
         render(){
 
@@ -92,8 +115,11 @@
                     <Product1 myclick={this.change.bind(this)}></Product1>
                     <ul>
                         {this.state.arr.map((elem,index)=>{
-                            return <Product2 key={index} aaa={index} elem={elem} myclick={this.del.bind(this)}></Product2>
+                            return <Product2 ref='c' check1={elem.check} key={index} aaa={index} elem={elem} myclick={this.del.bind(this)} mycheck={this.check.bind(this)}></Product2>
                     })}
+                    <li>
+                        {this.state.msg1}已完成/{this.state.msg}全部
+                    </li>
                     </ul>
 
                     <span></span>
@@ -107,9 +133,6 @@
             this.state={
             }
         }
-        // change1(){
-        //     this.props.myclick();
-        // }
         render(){
 
             return (
@@ -130,8 +153,8 @@
 
             return (
               <div className="g">
-                  <li>
-                  <input type="checkbox"/>
+                  <li className={this.props.elem.check?'slect':''}>
+                  <input type="checkbox" checked={this.props.check1} onClick={()=>{this.props.mycheck(this.props.aaa)}}/>
                       {this.props.elem.name}
                   <button className="f" onClick={this.del1.bind(this)}>删除</button>
                   </li>
