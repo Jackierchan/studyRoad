@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div>
+    <input type="text" id="ipt1" placeholder="请输入" value="">
+    <button id="btn1">click</button>
+</div>
+<script>
+    var oipt=document.getElementById('ipt1');
+    var obtn=document.getElementById('btn1');
+    var reg=/dd*(.dd|'')/;
+    obtn.onclick=function() {
+        console.log(reg.exec(oipt.value));
+    }
+</script>
+</body>
+</html>

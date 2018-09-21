@@ -4,12 +4,25 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        div{
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            background: #00b262;
+        }
+        #div{
             width: 700px;
             margin: 0 auto;
             border: #00b262 2px solid;
             padding: 50px;
 
+        }
+        #div1{
+            font-size: 40px;
+        }
+        #div2{
+            font-size: 40px;
         }
         button{
             font-size: 50px;
@@ -22,51 +35,69 @@
     </style>
 </head>
 <body>
-<div>
+<div id="div">
     <input type="text" id="ipt1" placeholder="请输入明文" value="">
-    <input type="text" id="ipt2" value="" id="ipt2">
+    <div id="div1"></div>
+    <input type="text" id="ipt2" placeholder="请输入暗纹" value="" id="ipt2">
+    <input type="text" placeholder="请输入密码" id="ipt3">
+    <div id="div2"></div>
+
     <button id="btn1">加密</button>
     <button id="btn2">解密</button>
 </div>
 <script>
      var oipt=document.getElementById('ipt1');
      var oipt2=document.getElementById('ipt2');
+     var oipt3=document.getElementById('ipt3');
+
      var obtn=document.getElementById('btn1');
      var obtn2=document.getElementById('btn2');
+     var odiv1=document.getElementById('div1');
+     var odiv2=document.getElementById('div2');
+
      obtn.onclick=function () {
-         oipt2.value='';
-         var arr0=oipt.value.split('');
-         console.log(arr0);
-         var arr1=['a','b','c','d','e','f','g','h','i','g','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' '];
-         var arr2=['f','q','i','e','h','n','c','v','j','t','y','a','u','w','d','r','e','x','l','b','m','z','o','g','k','p',' '];
-         var arr3=[];
-         for (var i=0;i<arr0.length;i++){
-             for (var j=0;j<arr1.length;j++){
-                 if (arr0[i]==arr1[j]){
-                     arr3.push(arr2[j]);
+         if (oipt3.value=='123456'){
+             oipt2.value='';
+             var arr0=oipt.value.split('');
+             console.log(arr0);
+             var arr1=['a','b','c','d','e','f','g','h','i','g','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' '];
+             var arr2=['f','q','i','e','h','n','c','v','j','t','y','a','u','w','d','r','e','x','l','b','m','z','o','g','k','p',' '];
+             var arr3=[];
+             for (var i=0;i<arr0.length;i++){
+                 for (var j=0;j<arr1.length;j++){
+                     if (arr0[i]==arr1[j]){
+                         arr3.push(arr2[j]);
+                     }
                  }
-             }
-             // console.log(arr3);
-             oipt2.value+=arr3[i];
+                 // console.log(arr3);
+                 odiv1.innerHTML+=arr3[i];
 
+             }
+             oipt3.value='';
+         }else {
+             alert('密钥错误，请重新输入');
+             oipt3.value='';
          }
 
-     }
+     };
      obtn2.onclick=function () {
-         arr3=[];
-         var arr2=['a','b','c','d','e','f','g','h','i','g','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' '];
-         var arr1=['f','q','i','e','h','n','c','v','j','t','y','a','u','w','d','r','e','x','l','b','m','z','o','g','k','p',' '];
-         var arr4=oipt2.value.split('');
-         for (var i=0;i<arr4.length;i++){
-             for (var j=0;j<arr2.length;j++){
-                 if (arr4[i]==arr1[j]){
-                     arr3.push(arr2[j]);
+         if (oipt3.value='123456') {
+             arr3 = [];
+             var arr2 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'g', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' '];
+             var arr1 = ['f', 'q', 'i', 'e', 'h', 'n', 'c', 'v', 'j', 't', 'y', 'a', 'u', 'w', 'd', 'r', 'e', 'x', 'l', 'b', 'm', 'z', 'o', 'g', 'k', 'p', ' '];
+             var arr4 = oipt2.value.split('');
+             for (var i = 0; i < arr4.length; i++) {
+                 for (var j = 0; j < arr2.length; j++) {
+                     if (arr4[i] == arr1[j]) {
+                         arr3.push(arr2[j]);
+                     }
                  }
+                 odiv2.innerHTML += arr3[i];
              }
-             oipt2.value+=arr3[i];
-
+         }else {
+             alert('密钥错误，请重新输入');
+             oipt3.value='';
          }
-
      }
 </script>
 </body>

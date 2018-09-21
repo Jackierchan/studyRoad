@@ -74,7 +74,9 @@
             change(){
                 if(this.refs.mytext.value) {
                     let arr1 = this.state.arr;
-                    arr1.push({name: this.refs.mytext.value});
+                    arr1.push({name: this.refs.mytext.value,
+                                check:false
+                    });
 
                     this.setState({
                         msg:this.state.msg+1,
@@ -93,6 +95,8 @@
                         let arr2 = this.state.arr;
                         arr2.splice(key,1);
                         this.setState({
+                            msg1:--this.state.msg1,
+                            msg:--this.state.msg,
                             arr: arr2
                         });
                         console.log(event.target)
@@ -100,9 +104,18 @@
             }
             check(index){
                 let arr3=this.state.arr;
+                var sum=0;
                 arr3[index].check=!arr3[index].check;
                 this.setState({
                     arr:arr3
+                });
+                this.state.arr.forEach(obj => {
+                    if(obj.check){
+                        sum++;
+                    }
+                });
+                this.setState({
+                    msg1:sum
                 });
                 console.log(1111);
             }

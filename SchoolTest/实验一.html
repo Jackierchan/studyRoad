@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验一</title>
+    <style>
+        html{
+            background: #00b262;
+        }
+    </style>
+</head>
+<body>
+    <p>代替法</p>
+    <input type="text" id="qwe" placeholder="请输入k">
+    <input type="text" id="mwen1" placeholder="请输入明文">
+    <input type="button" value="提交" onclick="aa()">   
+    <p id="awen1"></p>
+    <input type="text" id="mwen2" placeholder="请输入密文">
+    <input type="button" value="提交" onclick="bb()">   
+    <p id="awen2"></p>
+    <p>仿射法</p>
+    <input type="text" placeholder="请输入k1" id="fsk1">
+    <input type="text" placeholder="请输入k2" id="fsk2">
+    <input type="text" placeholder="请输入明文" id="fsmw">
+    <input type="button" value="提交" onclick="cc()"> 
+    <p id="awen3"></p>
+    <input type="text" placeholder="请输入密文" id="fsaw">
+    <input type="button" value="提交" onclick="ee()"> 
+    <p id="awen4"></p>
+</body>
+<script>
+    var v;
+    function quchong3(str) {
+        var newStr = "";
+        for (var i = 0; i < str.length; i++) {
+            if (newStr.search(str[i]) == -1)
+                newStr += str[i];
+
+        }
+        return newStr;
+    }
+    function aa(){   
+        var str1="";          
+        var d1=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+        var h1=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+        var qc1=quchong3(document.getElementById("qwe").value);
+        var a1=[];
+        var b1=document.getElementById("mwen1").value;
+        var f1=document.getElementById("awen1");
+        var g1=document.getElementById("qwe").value;
+       
+        var c1=[];
+        for(var y=0;y<qc1.length;y++){
+          for(var o=0;o<h1.length;o++){
+             if(qc1[y]==h1[o]){
+                h1.splice(o,1);
+             }
+          }
+        }
+        for(var n=0;n<qc1.length;n++){
+           a1.push(qc1[n]);
+        }
+        for(var m=0;m<h1.length;m++){
+           a1.push(h1[m]);
+        }
+        console.log(a1);
+
+        for(var i=0;i<b1.length;i++){
+        for(var x=0;x<26;x++){
+            if(b1[i]==d1[x]){
+                c1[i]=a1[x];
+                str1=str1+c1[i];
+                console.log(str1);
+            }
+        }
+        }
+        f1.innerText="密文为"+str1;
+    }
+    function bb(){   
+        var str1="";          
+        var a1=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"," "];
+        var h1=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+        var qc1=quchong3(document.getElementById("qwe").value);
+        var d1=[];
+        var b1=document.getElementById("mwen2").value;
+        var f1=document.getElementById("awen2");
+        var g1=document.getElementById("qwe").value;
+        var c1=[];
+        for(var y=0;y<qc1.length;y++){
+          for(var o=0;o<h1.length;o++){
+             if(qc1[y]==h1[o]){
+                h1.splice(o,1);
+             }
+          }
+        }
+        for(var n=0;n<qc1.length;n++){
+           d1.push(qc1[n]);
+        }
+        for(var m=0;m<h1.length;m++){
+           d1.push(h1[m]);
+        }
+        console.log(d1);
+        for(var i=0;i<b1.length;i++){
+        for(var x=0;x<27;x++){
+            if(b1[i]==d1[x]){
+                c1[i]=a1[x];
+                str1=str1+c1[i];
+                console.log(str1);
+            }
+        }
+        }
+        f1.innerText="明文为"+str1;
+    }
+    function cc(){
+        var a1=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"," "];
+        var b1=document.getElementById("fsk1").value;
+        var c1=document.getElementById("fsk2").value;
+        var d1=[];//x
+        var e1=document.getElementById("fsmw").value;
+        var f1=[];//结果
+        var g1=document.getElementById("awen3");
+        var str2="";
+        dd();
+        for(var i1=0;i1<e1.length;i1++){
+           for(var i2=0;i2<a1.length;i2++){
+            if(e1[i1]==a1[i2]){
+                d1[i1]=i2;
+            }
+           }
+           f1[i1]=a1[(Number(b1)*d1[i1]+Number(c1))%26];
+        console.log(f1[i1]);
+        str2+=f1[i1];
+        }
+        g1.innerText="密文为"+str2;
+    }  
+        function ee(){
+        var a1=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+        var c1=document.getElementById("fsk2").value;
+        var d1=[];
+        var e1=document.getElementById("fsaw").value;
+        var f1=[];
+        var g1;
+        var h1;
+        var j1=document.getElementById("awen4");
+        var str3="";
+        dd();
+        for(var i1=0;i1<e1.length;i1++){
+           for(var i2=0;i2<a1.length;i2++){
+            if(e1[i1]==a1[i2]){
+                d1[i1]=i2;
+            }
+           }
+        g1=v*Number(c1);
+        h1=v*d1[i1]-g1%26;
+        if(v<0){
+           v=parseInt((-1*v)/26+1)*26+v;
+        }
+        if(g1<0){
+           g1=parseInt((-1*g1)/26+1)*26+g1;
+        }
+        if(h1<0){    
+           h1=parseInt((-1*h1)/26+1)*26+h1;
+        }
+            f1[i1]=a1[h1%26];
+        console.log(f1[i1]);
+        str3+=f1[i1];
+        }     
+        j1.innerText="明文为"+str3;
+
+   }   
+   function dd(){
+       var i=1;
+       var f=26;
+       var k1=document.getElementById("fsk1").value;
+       var q=[];
+       var b=[];
+       b[0]=0;
+       b[1]=1;
+       var c=[];
+       c[1]=f%k1;
+       c[2]=k1%c[1];
+       q[1]=parseInt(f/k1);
+       q[2]=parseInt(k1/c[1]);
+       b[2]=(-1)*b[1]*q[1]+b[0];
+       b[3]=(-1)*b[2]*q[2]+b[1];
+       while(c[i+1]>1){
+         q[i+2]=parseInt(c[i]/c[i+1]);
+         c[i+2]=c[i]%c[i+1];
+         b[i+3]=(-1)*b[i+2]*q[i+2]+b[i+1];
+         i++;
+       }
+      v=b[i+2];
+      return v;
+   } 
+</script>
+</html>
