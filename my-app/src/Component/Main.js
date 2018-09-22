@@ -33,7 +33,7 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            show: false
+            show: true
         }
     }
     render(){
@@ -59,8 +59,6 @@ class Main extends Component {
                          <Jump to='/'></Jump>
                          ---
                          <Link to='/x'>编程式导航</Link>
-
-
                          ----
                                  {/* <Switch>
                                     <Route path="/a" component={PageA}></Route>
