@@ -1,0 +1,49 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+li{
+    list-style: none;
+    width: 138px;
+    height: 150px;
+    float: left;
+    display: block;
+    text-align: center;
+
+}
+li img{
+    width: 90px;
+    margin: 0 auto;
+}
+li #img2{
+    margin-top: 10px;
+}
+li p{
+    font-size: 15px;
+}
+li span{
+    font-size: 20px;
+}
+li #s1{
+    color: red;
+}
+li #s2{
+    color: green;
+
+}
+li #s3{
+    color: yellow;
+
+}
+#div1{
+position: relative;
+    top: 150px;
+    border: 1px gray solid;
+
+}
+#div1 span{
+
+    font-size: 18px;
+
+    margin-left: 20px;
+}
