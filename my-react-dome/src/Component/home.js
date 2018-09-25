@@ -1,9 +1,13 @@
 import React,{Component} from 'react';
 import { NavBar, Icon } from 'antd-mobile';
-import './app.css'
+import '../asset/css/app.css';
 import { Grid } from 'antd-mobile';
 import { NoticeBar, WhiteSpace } from 'antd-mobile';
-import './app.css'
+import '../asset/css/home.css';
+import '../asset/css/reset.css';
+import Contain from './contain';
+import Product from './product';
+import {Link} from 'react-router-dom'
 
 class home extends Component {
     constructor(props){
@@ -45,9 +49,22 @@ class home extends Component {
             },{
                 icon:require('./../asset/img/img2.png'),
                 text:'冒险'
-            },]
+            },],
+            product:[]
         };
     }
+    componentWillMount(){
+        fetch('http://www.xiechenxi.cn/').
+        then((response)=>{
+            return response.json()
+        }).
+        then((data)=>{
+            this.setState({
+                product: data
+            })
+        })
+    }
+
     componentDidMount() {
         setTimeout(() => {
             this.setState({
@@ -57,7 +74,7 @@ class home extends Component {
     }
     render() {
         return (
-            <div>
+            <div id='div7'>
                 <NavBar
                     className='aa'
                     mode="dark"
@@ -74,29 +91,57 @@ class home extends Component {
 
                 <Grid className='icon1' data={this.state.arr} isCarousel/>
 
+                <WhiteSpace size="lg" />
+
 
                 <ul id='ul1'>
                     <li>
-                        <span id='s1'>我们约会吧</span>
+                        <h3 id='s1'>我们约会吧</h3>
                         <p>恋人家人好朋友</p>
                         <img src={require('./../asset/img/activity1.png')} alt="找不到"/>
                     </li>
                     <li>
-                        <span id='s2'>我们约会吧</span>
-                        <p>恋人家人好朋友</p>
+                        <h3 id='s2'>低价超值</h3>
+                        <p>十元惠生活</p>
                         <img id='img2' src={require('./../asset/img/activity2.jpg')} alt="找不到"/>
                     </li>
 
                     <li>
-                        <span id='s3'>我们约会吧</span>
+                        <h3 id='s3'>家庭聚会</h3>
                         <p>恋人家人好朋友</p>
                         <img src={require('./../asset/img/activity3.png')} alt="找不到"/>
                     </li>
 
                 </ul>
-                <div id='div1'>
-                    <span>猜你喜欢</span>
-                </div>
+                <WhiteSpace size="lg" />
+                <Contain title='猜你喜欢'>
+                    {
+                        this.state.product.map((elem,index)=>{
+                            return <Link to='/detail'><Product key={elem.product_id} elem={elem}></Product></Link>
+})
+                    }
+                </Contain>
+
+
+
+                {/*<div id='div1'>*/}
+                    {/*<span>猜你喜欢</span>*/}
+                {/*</div>*/}
+                {/*<div id='div2'>*/}
+                    {/*<div id='left'>*/}
+                        {/*<img src={require('./../asset/img/activity3.png')} alt=""/>*/}
+                    {/*</div>*/}
+                    {/*<div id='right'>*/}
+                        {/*<div>*/}
+                        {/*<h3>aaaaaa</h3>*/}
+                        {/*<p>[11店通用]10元代金卷一份</p>*/}
+                        {/*<span>8</span>*/}
+                        {/*<p>门市价：6元</p>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
+                {/*</div>*/}
+
+
             </div>
         )
     }

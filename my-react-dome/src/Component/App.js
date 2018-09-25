@@ -1,9 +1,8 @@
 import React,{Component} from 'react';
 import {BrowserRouter as Router,Route} from 'react-router-dom'
 import Home from './home'
-import './app.css'
+import '../asset/css/app.css'
 import Detail from './detail'
-import './app.css'
 
 export default class App extends Component {
     constructor(props){

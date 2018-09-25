@@ -1,0 +1,21 @@
+#div8{
+    display: flex;
+}
+
+#div8 .con-left img{
+    width: 1rem;
+    height: 1rem;
+    margin-top: 12px;
+}
+#div8 .con-right{
+    margin-left: 10px;
+    flex: 1;
+}
+.pro-sold{
+    float: right;
+}
+.pro-current-price{
+    color: #00b262;
+    font-size: 20px;
+    margin-right: 10px;
+}
