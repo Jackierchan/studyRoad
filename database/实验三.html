@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验三</title>
+</head>
+<body>
+    <div style="margin-left:20px;margin-top:20px;float: right;">
+            <input type="text" placeholder="密码" id="passw" style="width:200px;height:20px;"><input type="button" value="登录" onclick="dianji()">
+    </div>
+    <div style="margin-left:20px;margin-top:20px;float: right;">
+        <input type="text" placeholder="撤销权限" id="chequan" style="width:200px;height:20px;"><input type="button" value="撤销权限" onclick="del()">
+    </div>
+    <div style="margin-left:20px;margin-top:20px;float: right;">
+        <input type="text" placeholder="授权" id="shouquan" style="width:200px;height:20px;"><input type="button" value="授权" onclick="give()">
+    </div>
+    <div style="margin-left:20px;margin-top:20px;" id="qwe1">
+            <input type="text" placeholder="新建数据库" id="xjku" style="width:200px;height:20px;" value="create database frf"><input type="button" value="确定" onclick="xjku2()"><div id="ku"></div>
+    </div>
+    <div style="margin-left:20px;margin-top:20px;" id="qwe2">
+            <input type="text" placeholder="新建表" id="xjbiao" style="width:200px;height:20px;"><input type="button" value="确定" onclick="xjbiao2()">
+    </div>
+    <div style="margin-left:20px;margin-top:20px;" id="qwe3">
+            <input type="text" placeholder="进行表操作" id="czbiao" style="width:200px;height:20px;"><input type="button" value="确定" onclick="czbiao2()">
+    </div>
+    <div style="margin-left:20px;margin-top:20px;" id="qwe4">
+        <input type="text" placeholder="进行索引操作" id="sybiao" style="width:200px;height:20px;"><input type="button" value="确定" onclick="suoyin()">
+    </div>
+    <div id="selectzhi">
+      
+    </div>
+    
+</body>
+<script>
+    function xjku2(){            /* create database  文件夹名  */
+       var fso = new ActiveXObject("Scripting.FileSystemObject");      
+       var xjku1=document.getElementById("xjku").value;
+       var xjku2=xjku1.split(" ");
+       if(xjku2.length==3&&xjku2[0]=="create"&&xjku2[1]=="database"){
+          var str1="c:\\"+xjku2[2];
+       document.getElementById("ku").innerHTML=xjku2[2];
+       alert("新建数据库成功！");
+          if(!fso.FileExists(str1)){
+            fso.CreateFolder (str1);
+          }
+       }
+       else{
+           alert("输入格式不正确");
+       }
+       
+   }
+
+    function xjbiao2(){
+        var fso = new ActiveXObject("Scripting.FileSystemObject");
+        var xjbiao1=document.getElementById("xjbiao").value;
+        var xjbiao2=xjbiao1.split(" ");
+        var xjku1=document.getElementById("xjku").value;
+        var xjku2=xjku1.split(" ");
+        var xjbiao5="";
+        var xjbiao6="";
+        var xjbiao7="";
+        var xjbiao9=[];
+        var xjbiao10="";
+        var str1="";
+        var str4="";
+        var arr1=[];
+        var arr2=[];
+        if(xjbiao2.length>=4&&xjbiao2[0]=="create"&&xjbiao2[1]=="table"){
+            var xjbiao4=xjbiao2[2].indexOf("(");
+            for(var i=0;i<xjbiao2[2].indexOf("(");i++){       //找出表名（左括号之前的元素）
+                xjbiao5=xjbiao5+xjbiao2[2][i];
+            }
+            for(var i=xjbiao2[2].indexOf("(");i<xjbiao2[2].length;i++){
+                xjbiao6=xjbiao6+xjbiao2[2][i];
+            }
+            xjbiao2[2]=xjbiao6;               //将数组xjbiao2[2]等于左括号右面的值（包括左括号）                 
+            for(var i=2;i<xjbiao2.length;i++){
+                var xjbiao3=xjbiao2[i].replace('(','').replace(')','');
+                xjbiao7+=xjbiao3+" ";
+            }
+            var xjbiao8=xjbiao7.split(",");
+            for(var i=0;i<xjbiao8.length;i++){
+              xjbiao9[i]=xjbiao8[i].split(" ")[0];            //找出属性
+              console.log(xjbiao9[i]);
+            }
+            for(var i=0;i<xjbiao9.length;i++){
+               xjbiao10+=xjbiao9[i]+" ";
+            }
+            xjbiao10=xjbiao10.substr(0, xjbiao10.length - 1);
+            // xjbiao10=xjbiao10+'\r\n';
+            if(xjku2.length==3&&xjku2[0]=="create"&&xjku2[1]=="database"){
+            var str2="c:\\"+xjku2[2]+"\\"+xjbiao5+".txt"; 
+            var str3="c:\\"+xjku2[2]+"\\"+xjbiao5+"01.txt"; 
+            if (!fso.FileExists(str2)){
+            // 创建文本文件
+            var f1 = fso.createtextfile(str2,true);
+            var f2 = fso.createtextfile(str3,true);
+            for(var i=0;i<xjbiao8.length;i++){         
+              arr1[i]=xjbiao8[i].split(" ")[1].replace(')','').replace(/[0-9]/g,"");   //找出类型
+              arr2[i]=parseInt(xjbiao8[i].split(" ")[1].replace(')','').replace(/[a-z]/g,""));     //找出类型对应的长度
+            }
+            for(var i=0;i<arr1.length;i++){
+              str1+=arr1[i]+" ";
+              str4+=arr2[i]+" ";
+            }
+            str1=str1.substr(0, str1.length - 1); 
+            str4=str4.substr(0, str4.length - 1); 
+            console.log(str1);
+            console.log(str4);
+            f1.WriteLine(xjbiao10); 
+            f2.WriteLine(str1);
+            f2.WriteLine(str4);
+            f1.Close(); // 关闭文件
+            f2.close();
+            alert("创建成功");
+            }
+            else
+            alert("文本文件: " + xjbiao5 + "已经存在");   
+        }
+        else{
+            alert("文件夹不存在！");
+        }
+    }
+  else{
+     alert("新建表格式不正确！");
+  }
+        
+        
+    }
+    function czbiao2(){
+        var fso = new ActiveXObject("Scripting.FileSystemObject");
+        var xjku1=document.getElementById("ku").innerHTML;
+        var czbiao1=document.getElementById("czbiao").value;
+        document.getElementById("selectzhi").innerHTML="";
+        var czbiao3=czbiao1.split(" ");
+        var czbiao4="";
+        var str4="";    
+        var str6;    
+        var str3="";  
+        var str5="";
+        var arr1=[];
+        var str9="";
+        var psword=document.getElementById("passw").value;
+        var f10=fso.opentextfile("c:\\"+xjku1+"\\renyuan.txt",1);
+        var cunzai1=0;
+        var cunzai2="";
+        while(!f10.AtEndOfStream){
+            var str20=f10.Readline();
+            if(str20.split(" ")[0]==psword){
+               cunzai2=str20.split(" ")[1];
+               for(var i=0;i<czbiao3.length;i++){
+               if(str20.split(" ")[2]==czbiao3[i]){
+                  cunzai1=1;                  
+               }
+            }
+            }
+            
+        }
+        f10.close();
+        if((czbiao3[0]!=cunzai2&&cunzai1==1)||cunzai1!=1){
+            if(czbiao3[0]=="insert"&&czbiao3[1]=="into"&&czbiao3[4]=="values"&&czbiao3.length==6){     //insert into table_name (列1,列2,...) values (值1,值2,....)
+                var str2="c:\\"+xjku1+"\\"+czbiao3[2]+".txt"; 
+                var str21="c:\\"+xjku1+"\\"+czbiao3[2]+"01.txt"; 
+                if(fso.FileExists(str2)&&fso.FileExists(str21)){
+                    console.log(str2);
+                    var f4 = fso.opentextfile(str21,1);
+                    var read1=f4.Readline().split(" ");
+                    var read2=f4.Readline().split(" ");
+                    var get1=[];  
+                    var z=0;        
+                    var panding=0;       
+                    for(var i=0;i<read1.length;i++){
+                       if(read1[i]=="int"){
+                          get1[z]=i;               //找出int类型的位置
+                          z++;
+                       }
+                    }
+                    console.log(get1);
+                    czbiao4=czbiao3[3].replace('(','').replace(')','');
+                    czbiao5=czbiao4.split(",");
+                    var f1 = fso.opentextfile(str2,1);
+                    // if(!f1.AtEndOfStream){
+                    str3=f1.Readline();
+                    // } 
+                    f1.close();
+                    var f3 = fso.opentextfile(str2,1);
+                    str6=f3.ReadAll();
+                    f3.close();
+                    str3=str3.split(" ");
+                    console.log(czbiao5);
+                    console.log(str3);
+                    console.log(str6);
+                    for(var i=0;i<czbiao5.length;i++){
+                        if(czbiao5[i]!=str3[i]){
+                            panding=1;
+                            break;
+                        }
+                    }
+                    if(panding==1){
+                        alert("属性不正确！");
+                    }
+                    else{
+                        str4=czbiao3[5].replace('(','').replace(')','').replace(/,/g,' ').replace(/'/g,'');
+                        // str4=str4.replace(/,/g,' ');
+                        console.log(str4);
+                        var arr9=str4.split(" ");
+                      if(arr9.length==czbiao5.length){
+                        for(var i=0;i<read2.length;i++){
+                          if(arr9[i].length>parseInt(read2[i])){
+                            panding=1;
+                            alert("超出设定长度限制");
+                            break;
+                          }
+                        }   
+                        for(var b=0;b<get1.length;b++){
+                              var haha;
+                              haha=Number(arr9[get1[b]]);
+                              console.log(haha);
+                             if(isNaN(haha)){
+                                panding=1;
+                                alert("数据类型输入错误！");
+                                break;
+                             }
+                          }
+                        if(panding!=1){
+                            var f5 = fso.opentextfile(str2,1);
+                            str9=f5.Readline();
+                            var deldz2;
+                            var deldz3="";
+                            var chachong=0;
+                            console.log(str9.split(" "));
+                            for(var i=0;i<str9.split(" ").length;i++){
+                            var deldz1="c:\\"+xjku1+"\\"+czbiao3[2]+"_"+str9.split(" ")[i]+".txt";
+                            if(fso.FileExists(deldz1)){
+                                deldz2=i;
+                                deldz3=deldz1;
+                                break;
+                             }
+                            }
+                            f5.close();
+                            var f9 = fso.opentextfile(str2,1);
+                            f9.Readline();
+                            while(!f9.AtEndOfStream){
+                             var str17=f9.Readline();
+                              if(str17.split(" ")[Number(deldz2)]==arr9[Number(deldz2)]){
+                                 chachong=1;
+                              }
+                            }
+                            f9.close();
+                            if(chachong==0){
+                                var f2 = fso.CreateTextFile(str2,1);
+                                f2.WriteLine(str6+str4);
+                                f2.close();
+                                var f8 = fso.opentextfile(str2,1);
+                                var suoyinh1=0;
+                                while(!f8.AtEndOfStream){
+                                f8.Readline();
+                                suoyinh1++;
+                                }
+                                f8.close();
+                                var f7 = fso.opentextfile(deldz3,1);
+                                var syall1=f7.ReadAll();
+                                f7.close();
+                                var f8 = fso.opentextfile(deldz3,1);
+                                var syall2=f8.Readline();
+                                f8.close();
+                                var f6 = fso.CreateTextFile(deldz3,1);
+                                if(syall2!=""&&syall1!=""){
+                                    f6.WriteLine(syall1+eval(suoyinh1-1)+" "+str4.split(" ")[Number(deldz2)]);
+                                }
+                                else{
+                                    f6.WriteLine(eval(suoyinh1-1)+" "+str4.split(" ")[Number(deldz2)]);                                
+                                }
+                                f6.close();
+                                alert("添加成功！");
+                                }
+                             else{
+                                 alert("主键属性值重复！");
+                             }
+
+                            
+                        }
+                        else{
+                            alert("添加失败！");
+                        }
+                      }
+                      else{
+                          alert("属性与属性值不对应！");
+                      } 
+                        
+                  }
+                }
+                else{
+                    alert("插入信息的表不存在！");
+                }
+             }
+              else if(czbiao3[0]=="delete"&&czbiao3[1]=="from") {       // delete from 表名称 where 列名称=值
+                var str2="c:\\"+xjku1+"\\"+czbiao3[2]+".txt"; 
+                var b;
+                var f4 = fso.opentextfile(str2,1);
+                var del2=f4.Readline();
+                f4.close();
+                if(fso.FileExists(str2)){
+                    if(czbiao3.length==3){            //删除表中全部内容
+                        var f2 = fso.opentextfile(str2,1);
+                        var del1=f2.Readline().split(" ");
+                        for(var i=0;i<del1.length;i++){
+                           var deldz1="c:\\"+xjku1+"\\"+czbiao3[2]+"_"+del1[i]+".txt";
+                           if(fso.FileExists(deldz1)){
+                              f3 = fso.createtextfile(deldz1,1);
+                              f3.WriteLine("");
+                              f3.close();
+                              alert("改动对应索引表成功！");
+                           }
+                        }
+                        var f1 = fso.CreateTextFile(str2,1);
+                        f1.WriteLine(del2);
+                        f1.close();
+                        f2.close();
+                        alert("删除成功！");
+                    }
+                    else if(czbiao3.length==5&&czbiao3[3]=="where"){
+                        var f1 = fso.opentextfile(str2,1);
+                        var x=0;
+                        f1.Readline();
+                        while(!f1.AtEndOfStream){    //x:求出文件除了属性行的行数
+                         f1.Readline();
+                         x++;
+                        } 
+                        f1.close();
+                        console.log("有"+x+"行数据");
+                        var f2 = fso.opentextfile(str2,1);
+                        str5=f2.Readline().split(" ");    //将属性存入数组中
+                        console.log(str5);
+                        for(b=0;b<str5.length;b++){
+                            if(str5[b]==czbiao3[4].split("=")[0]){          //b:找出SQL语句中的属性与文件中的属性对应的位置
+                                break;
+                            }
+                        }
+                        console.log("属性对应的位置 "+b);
+                        var str7=[];
+                        var str8=[];
+                        for(var i=0;i<x;i++){          //将每行存储到数组中
+                          
+                          var arr2=[];
+                          
+                          arr1[i]=f2.Readline(); 
+                          str7[i]=arr1[i].split(" ")[b];
+                          
+                          if(str7[i]!=czbiao3[4].split("=")[1].replace(/'/g,'')){           //str7[i]为属性值
+                            //  arr1.splice(i,1);
+                            str8.push(arr1[i]);
+                          }
+                        //   console.log(arr1[i]);
+                        } 
+                        console.log(str8);
+                        f2.close();
+                        var f3 = fso.opentextfile(str2,1);
+                        str9=f3.Readline();
+                        var deldz2;
+                        var deldz3="";
+                        console.log(str9.split(" "));
+                        for(var i=0;i<str9.split(" ").length;i++){
+                           var deldz1="c:\\"+xjku1+"\\"+czbiao3[2]+"_"+str9.split(" ")[i]+".txt";
+                           if(fso.FileExists(deldz1)){
+                              deldz2=i;
+                              deldz3=deldz1;
+                              break;
+                           }
+                        }
+
+                        f3.close();
+                        // console.log("dfef"+deldz3);
+                        var f4 = fso.CreateTextFile(str2,1);
+                        f4.WriteLine(str9);
+                        var f5 = fso.CreateTextFile(deldz3,1);
+                        for(var o=0;o<str8.length;o++){
+                            f4.WriteLine(str8[o]);
+                            f5.WriteLine(eval(o+1)+" "+str8[o].split(" ")[Number(deldz2)]);
+                        }
+                        f4.close();
+                        f5.close();
+                        alert("删除成功！");
+                    }
+                    else{
+                        alert("格式不正确！");
+                    }
+                }
+                 else{
+                     alert("表或索引表不存在！");
+                 } 
+              }
+              else if(czbiao3[0]=="update"&&czbiao3[2]=="set"&&czbiao3[4]=="where"&&czbiao3.length==6){   //update 表名称 set 列名称=新值 where 列名称=某值
+                var str2="c:\\"+xjku1+"\\"+czbiao3[1]+".txt"; 
+                var b;
+                if(fso.FileExists(str2)){
+                        var f1 = fso.opentextfile(str2,1);
+                        var x=0;
+                        f1.Readline();
+                        while(!f1.AtEndOfStream){    //x:求出文件除了属性行的行数
+                         f1.Readline();
+                         x++;
+                        } 
+                        f1.close();
+                        console.log("有"+x+"行数据");
+                        var f2 = fso.opentextfile(str2,1);
+                        str5=f2.Readline().split(" ");    //将属性存入数组中
+                        console.log(str5);
+                        for(b=0;b<str5.length;b++){
+                            if(str5[b]==czbiao3[5].split("=")[0]){          //b:找出SQL语句中where后查找的属性与文件中的属性对应的位置
+                                break;
+                            }
+                        }
+                        console.log("查找属性对应的位置 "+b);
+                        for(var c=0;c<str5.length;c++){
+                            if(str5[c]==czbiao3[3].split("=")[0]){          //c:找出SQL语句中set后要改的属性与文件中的属性对应的位置
+                                break;
+                            }
+                        }
+                        console.log("要改属性对应的位置 "+c);
+                        var str7=[];
+                        var str8=[];
+                        var arr3=[];
+                        for(var i=0;i<x;i++){          //将每行存储到数组中              
+                          var arr2=[];              
+                          arr1[i]=f2.Readline(); 
+                          str7[i]=arr1[i].split(" ")[b];                        
+                          if(str7[i]!=czbiao3[5].split("=")[1].replace(/'/g,'')){           //str7[i]为属性值
+                            //  arr1.splice(i,1);
+                            str8.push(arr1[i]);
+                          }
+                          else{
+                              var str10="";
+                              arr3=arr1[i].split(" ");
+                              arr3.splice(c,1,czbiao3[3].split("=")[1].replace(/'/g,''));
+                            //   arr1[i].split(" ")[c]=czbiao3[3].split("=")[1].replace(/'/g,'');
+                              console.log("变换为"+arr3);
+                              for(var d=0;d<arr3.length;d++){
+                                str10+=arr3[d]+" ";
+                               
+                              }                      
+                              str10=str10.substr(0, str10.length - 1);        
+                              str8.push(str10);
+                             
+                          }
+                        //   console.log(arr1[i]);
+                        } 
+                        console.log(str8);
+                        f2.close();
+                        var f3 = fso.opentextfile(str2,1);
+                        str9=f3.Readline();
+                        f3.close();
+                        var deldz2;
+                        var deldz3="";
+                        console.log(str9.split(" "));
+                        for(var i=0;i<str9.split(" ").length;i++){
+                           var deldz1="c:\\"+xjku1+"\\"+czbiao3[1]+"_"+str9.split(" ")[i]+".txt";
+                           if(fso.FileExists(deldz1)){
+                              deldz2=i;
+                              deldz3=deldz1;
+                              break;
+                           }
+                        }
+                        var f9=fso.opentextfile(deldz3,1);
+                        var chachong1=0;
+                        while(!f9.AtEndOfStream){
+                          var str17=f9.Readline();
+                          if(czbiao3[3].split("=")[1].replace(/'/g,'')==str17.split(" ")[1]){
+                            chachong1=1;
+                          }
+                        }
+                        f9.close();
+                       if(chachong1==0){
+                        var f4 = fso.CreateTextFile(str2,1);
+                        f4.WriteLine(str9);
+                        var f5 = fso.CreateTextFile(deldz3,1);
+                        for(var o=0;o<str8.length;o++){
+                            f4.WriteLine(str8[o]);
+                            f5.WriteLine(eval(o+1)+" "+str8[o].split(" ")[Number(deldz2)]);
+                            console.log("haha"+eval(o+1)+" "+str8[o].split(" ")[Number(deldz2)]);
+                        }
+                        f4.close();
+                        f5.close();
+                        alert("更改成功！");
+                       }
+                        else{
+                            alert("主键属性值重复！");
+                        }
+                   
+                }
+                 else{
+                     alert("表不存在！");
+                 } 
+
+              }
+              else if(czbiao3[0]=="select"&&czbiao3[2]=="from"&&czbiao3[3].split(",").length>=2){  //多表:select 属性1,属性2.. from 表1,表2.. where 条件1 and 条件2
+                 var arra1=[];
+                 var cc1=0;
+                 var cc2=0;
+                 var cc3=[];
+                 var cc4=0;
+                 var cc5=0;
+                 document.getElementById("selectzhi").innerHTML="";
+                 var arra6=czbiao3[3].split(",");
+                 for(var i=0; i<czbiao3[3].split(",").length;i++){
+                    arra1[i]="c:\\"+xjku1+"\\"+czbiao3[3].split(",")[i]+".txt";
+                    if(!fso.FileExists(arra1[i])){
+                       cc1=1;
+                    }
+                 }
+                 console.log(arra1);
+                 if(cc1==0){            //判断多表是否都存在
+                    var arra2=czbiao1.split(" and ");
+                    var arra3=[];  //储存条件等号左边的内容
+                    var arra4=[];  //储存条件等号右边的内容
+                    arra3.push(czbiao3[5].split("=")[0]);
+                    arra4.push(czbiao3[5].split("=")[1]);
+                    for(var i=1;i<arra2.length;i++){
+                       arra3.push(arra2[i].split("=")[0]);
+                       arra4.push(arra2[i].split("=")[1].replace(/'/g,''));
+                    }
+                    console.log(arra3);
+                    console.log(arra4);
+                    for(var i=0;i<arra3.length;i++){
+                      if(!fso.FileExists("c:\\"+xjku1+"\\"+arra3[i].split(".")[0]+".txt")){
+                        cc2=1;
+                      }
+                    }
+                    // console.log();
+                    if(cc2==0){
+                      for(var i=0;i<arra3.length;i++){
+                        var f1=fso.opentextfile("c:\\"+xjku1+"\\"+arra3[i].split(".")[0]+".txt",1);
+                        var arra5=f1.Readline().split(" ");
+                        cc3[i]=undefined;
+                        for(var b=0;b<arra5.length;b++){
+                           if(arra3[i].split(".")[1]==arra5[b]){
+                              cc3[i]=1;
+                              break;
+                           }
+                        }
+                        f1.close();
+                      }
+                      console.log(cc3);
+                      for(var i=0;i<cc3.length;i++){
+                        if(cc3[i]==undefined){
+                          cc4=1;
+                        }
+                      }
+                      if(cc4==0){
+                         for(var i=0;i<arra3.length;i++){
+                            if(arra3[i].split(".").length==2&&arra4[i].split(".").length==2){
+                               for(var b=0;b<czbiao3[3].split(",").length;b++){
+                                 if(arra3[i].split(".")[0]==czbiao3[3].split(",")[b]||arra4[i].split(".")[0]==czbiao3[3].split(",")[b]){
+                                    arra6[b]=0;
+                                 }
+                               }
+                            }
+                         }
+                         console.log(arra6);   
+                         for(var i=0;i<arra6.length;i++){
+                           if(arra6[i]!=0){
+                              cc5=1;
+                           }
+                         }
+                         if(cc5==0){         //进行笛卡儿积操作
+                           var f1=fso.opentextfile(arra1[0],1);
+                           var arra7=f1.Readline();
+                           var arra8=[];
+                           while(!f1.AtEndOfStream){
+                            arra8.push(f1.Readline());
+                           }
+                            f1.close();
+                            for(var i=1;i<arra1.length;i++){
+                              var arra11=[];
+                              for(var d=0;d<arra8.length;d++){
+                                arra11.push(arra8[d]);
+                              }
+                              var f2=fso.opentextfile(arra1[i],1);
+                              var arra9=f2.Readline();
+                              arra8=[];
+                              while(!f2.AtEndOfStream){
+                                  var arra10=f2.Readline();
+                                  for(var b=0;b<arra11.length;b++){
+                                    arra8.push(arra11[b]+" "+arra10);
+                                  }
+                              }
+                              f2.close();
+                              arra7+=" "+arra9;
+                            }
+                            arra8.splice(0, 0, arra7);
+                            console.log(arra8);
+                            if(czbiao3[1]=="*"){
+                                var cc6=0;       //判断是否有条件（只有表之间连接）
+                                var arra15=[];   //存储带有条件的属性位置(例:hehe.name1='rag')
+                                for(var i=0;i<arra4.length;i++){
+                                   if(arra4[i].split(".").length!=2){
+                                     cc6=1;
+                                     arra15.push(i);
+                                   }
+                                }
+                                // alert(cc6);
+                                if(cc6==0){        //只有表之间连接
+                                    for(var i=0;i<arra8.length;i++){
+                                      document.getElementById("selectzhi").innerHTML+=arra8[i]+"<br>"; 
+                                    }
+                                }
+                                else{         //有条件
+                                    var arra16=arra8[0].split(" ");
+                                    var arra17=[];
+                                    var arra18=[];
+                                  for(var e=0;e<arra15.length;e++){
+                                    for(var i=0;i<arra16.length;i++){
+                                      if(arra3[arra15[e]].split(".")[1]==arra16[i]){
+                                        arra17.push(i);
+                                      }
+                                    }
+                                  }
+                                  console.log(arra17);
+                                for(var u=1;u<arra8.length;u++){
+                                  var cc7=0;
+                                  for(var i=0;i<arra17.length;i++){
+                                    console.log("ideji"+arra8[u].split(" ")[arra17[i]]);
+                                    if(arra4[arra15[i]]==arra8[u].split(" ")[arra17[i]]){
+                                       cc7=cc7+1;
+                                    }
+                                  }  
+                                  if(cc7==arra15.length){
+                                    arra18.push(arra8[u]);
+                                  }                                  
+                                 }
+                                 console.log("hah"+arra18);
+                                 for(var i=0;i<arra18.length;i++){
+                                      document.getElementById("selectzhi").innerHTML+=arra18[i]+"<br>"; 
+                                    }
+                                }
+                                
+                            }
+                            else{
+                                var cc6=0;       //判断是否有条件（只有表之间连接）
+                                var arra15=[];   //存储带有条件的属性位置(例:hehe.name1='rag')
+                                for(var i=0;i<arra4.length;i++){
+                                   if(arra4[i].split(".").length!=2){
+                                     cc6=1;
+                                     arra15.push(i);
+                                   }
+                                }
+                                // alert(cc6);
+                                if(cc6==0){        //只有表之间连接
+                                    for(var i=0;i<arra8.length;i++){
+                                      document.getElementById("selectzhi").innerHTML+=arra8[i]+"<br>"; 
+                                    }
+                                }
+                                else{         //有条件
+                                    var arra16=arra8[0].split(" ");
+                                    var arra17=[];
+                                    var arra18=[];
+                                  for(var e=0;e<arra15.length;e++){
+                                    for(var i=0;i<arra16.length;i++){
+                                      if(arra3[arra15[e]].split(".")[1]==arra16[i]){
+                                        arra17.push(i);
+                                      }
+                                    }
+                                  }
+                                  console.log(arra17);
+                                for(var u=1;u<arra8.length;u++){
+                                  var cc7=0;
+                                  for(var i=0;i<arra17.length;i++){
+                                    console.log("ideji"+arra8[u].split(" ")[arra17[i]]);
+                                    if(arra4[arra15[i]]==arra8[u].split(" ")[arra17[i]]){
+                                       cc7=cc7+1;
+                                    }
+                                  }  
+                                  if(cc7==arra15.length){
+                                    arra18.push(arra8[u]);
+                                  }                                  
+                                 }
+                                 var arra12=[];
+                                 var arra13=czbiao3[1].split(",");
+                                 for(var i=0;i<arra13.length;i++){
+                                   for(var b=0;b<arra8[0].split(" ").length;b++){
+                                     if(arra13[i]==arra8[0].split(" ")[b]){
+                                       arra12.push(b);
+                                     }
+                                   }
+                                 }
+                                 console.log("frgt"+arra12);
+                                 var arra20=[];
+                                 for(var i=0;i<arra18.length;i++){
+                                     var arra19="";
+                                     for(var c=0;c<arra12.length;c++){
+                                        arra19+=arra18[i].split(" ")[arra12[c]]+" ";
+                                     }
+                                    //  console.log("ref"+arra19);
+                                     arra20.push(arra19);
+                                 }
+                                 for(var i=0;i<arra20.length;i++){
+                                      document.getElementById("selectzhi").innerHTML+=arra20[i]+"<br>"; 
+                                    }
+                                }
+                            }
+
+                         }
+                         else{
+                             alert("表之间没有连接上！");
+                         }
+
+                      }
+                      else{
+                          alert("某表中没有此属性！");
+                      }
+                    }
+                    else{
+                        alert("条件有不符合的！");
+                    }
+                 }
+                 else{
+                     alert("有表不存在！");
+                 }
+              }
+              else if(czbiao3[0]=="select"&&czbiao3[2]=="from"){    //单表:select 列名称 from 表名称
+                var str2="c:\\"+xjku1+"\\"+czbiao3[3]+".txt"; 
+                var b;
+                var str10="";
+                var str12="";
+                var c=0; 
+                if(fso.FileExists(str2)){
+                    var f4= fso.opentextfile(str2,1);
+                    var str11=f4.Readline().split(" ");
+                    var arr4=[];           //存储列名称的位置
+                    str12=czbiao3[1].split(",");
+                    for(var i=0;i<str12.length;i++){    //先将列名称中的属性进行检查，查看表中是否有这些属性
+                       arr4[i]=undefined;
+                    }
+                    for(var i=0;i<str12.length;i++){
+                        for(var j=0;j<str11.length;j++){
+                         if(str12[i]==str11[j]){
+                            arr4[i]=j;
+                          }
+                        }
+                      
+                    }
+                    for(var i=0;i<arr4.length;i++){
+                       if(arr4[i]==undefined){         //c:判断列名称是否都能找到
+                           c=1;
+                       }
+                    }
+                    // console.log(arr4);
+                    // console.log(c);
+                    f4.close();
+                    if(czbiao3.length==4){
+                        if(czbiao3[1]=="*"){              //select * from 表名称 
+                            var f1 = fso.opentextfile(str2,1);
+                            f1.Readline();
+                            // var x=0;
+                            while(!f1.AtEndOfStream){    //x:求出文件除了属性行的行数
+                            document.getElementById("selectzhi").innerHTML+=f1.Readline()+"<br>";
+                            } 
+                            f1.close();
+                        }            
+                        else if(c==0){                      //列名称所对应的值都能找到    select 属性值1,属性值2... from 表名称
+                            var f5 = fso.opentextfile(str2,1);
+                            f5.Readline();
+                            while(!f5.AtEndOfStream){    
+                                var str13="";
+                                var arr5=f5.Readline().split(" ");
+                             for(var d=0;d<arr4.length;d++){                                 
+                                 str13+=arr5[arr4[d]]+" ";
+                                 console.log(arr5[arr4[d]]);
+                                 
+                             }   
+                             document.getElementById("selectzhi").innerHTML+=str13+"<br>";                         
+                            } 
+                            f5.close();
+                        }
+                        else{
+                            alert("属性值不符合！");
+                        }
+                    }
+                    else if(czbiao3.length==6&&czbiao3[4]=="where"){       //select 属性值1,属性值2... from 表名称 where 列属性=/>/<属性值
+                        // if(czbiao3[1]=="*"){                                   //select * from 表名称 where 列属性=/>/<属性值
+                            var f1 = fso.opentextfile(str2,1);
+                            var x=0;
+                            f1.Readline();
+                            while(!f1.AtEndOfStream){    //x:求出文件除了属性行的行数
+                            f1.Readline();
+                            x++;
+                            } 
+                            var f2 = fso.opentextfile(str2,1);
+                            str5=f2.Readline().split(" ");    //将属性存入数组中
+                            console.log(str5);
+                           for(b=0;b<str5.length;b++){
+                            if(str5[b]==czbiao3[5].split("=")[0]){          //b:找出SQL语句中where后查找的属性与文件中的属性对应的位置
+                                break;
+                            }
+                           }
+                            console.log("查找属性对应的位置 "+b);
+                            var str7=[];
+                            var str8=[];
+                            for(var i=0;i<x;i++){          //将每行存储到数组中                       
+                            arr1[i]=f2.Readline(); 
+                            str7[i]=arr1[i].split(" ")[b];                        
+                            if(str7[i]==czbiao3[5].split("=")[1].replace(/'/g,'')){           //str7[i]为属性值
+                                //  arr1.splice(i,1);
+                                str8.push(arr1[i]);
+                            }
+                            //   console.log(arr1[i]);
+                         } 
+                         if(czbiao3[1]=="*"){
+                            for(var o=0;o<str8.length;o++){
+                                document.getElementById("selectzhi").innerHTML+=str8[o]+"<br>";
+                            }
+                            console.log(str8);
+                        }
+                        else if(c==0){             //select 属性值1,属性值2... from 表名称 where 列属性=属性值
+                            // var f5 = fso.opentextfile(str2,1);
+                            // f5.Readline();
+                            // while(!f5.AtEndOfStream){   
+                            for(var o=0;o<str8.length;o++){
+                                var str13="";
+                                var arr5=str8[o].split(" ");
+                             for(var d=0;d<arr4.length;d++){                                 
+                                 str13+=arr5[arr4[d]]+" ";
+                                 console.log(arr5[arr4[d]]);
+                                 
+                             }   
+                             document.getElementById("selectzhi").innerHTML+=str13+"<br>";     
+                            }   
+                                                    
+                            // } 
+                            // f5.close();
+                        }
+                        else{
+                            alert("格式不正确！");
+                        }
+                        f1.close();
+                        f2.close();
+                    }
+                    else if(czbiao3.length>6&&czbiao3[4]=="where"){
+                            var str18=czbiao1.split(" and ");
+                            var str19=str18[0].split(" ");
+                            var jishu=0;
+                            var arr10=[];    //存储等号左边的属性
+                            var arr11=[];    //存储等号右边的属性值
+                            var arr12=[];
+                            arr10.push(str19[5].split("=")[0]);
+                            arr11.push(str19[5].split("=")[1].replace(/'/g,''));
+                            for(var i=1;i<str18.length;i++){
+                              arr10.push(str18[i].split("=")[0]);
+                              arr11.push(str18[i].split("=")[1].replace(/'/g,''));
+                            }
+                            console.log(arr10);
+                            console.log(arr11);
+                            var f1 = fso.opentextfile(str2,1);
+                            var x=0;
+                            f1.Readline();
+                            while(!f1.AtEndOfStream){    //x:求出文件除了属性行的行数
+                            f1.Readline();
+                            x++;
+                            } 
+                            var f2 = fso.opentextfile(str2,1);
+                            str5=f2.Readline().split(" ");    //将属性存入数组中
+                            console.log(str5);
+                          for(var i=0;i<arr10.length;i++){
+                            for(b=0;b<str5.length;b++){
+                            if(arr10[i]==str5[b]){          //b:找出SQL语句中where后查找的属性与文件中的属性对应的位置
+                                jishu=jishu+1;
+                                arr12.push(b);
+                            }
+                           }
+                          }
+                           console.log("哈哈"+arr12);
+                            // console.log("查找属性对应的位置 "+b);
+                            var str7=[];
+                            var str8=[];
+                            var f6=fso.opentextfile(str2,1);
+                            f6.Readline(); 
+                            for(var i=0;i<x;i++){    
+                              var aa=0;       
+                              arr1[i]=f6.Readline(); 
+                             for(var g=0;g<arr12.length;g++){                   
+                              str7[i]=arr1[i].split(" ")[arr12[g]];                        
+                              if(str7[i]==arr11[g]){           //str7[i]为属性值
+                                console.log("qie"+str7[i]);
+                                aa=aa+1;
+                             }
+                            }                        
+                            if(aa==arr10.length){
+                               str8.push(arr1[i]);
+                            }
+                         } 
+                         f6.close();
+                         console.log("str8为"+str8);
+                        if(jishu==arr11.length){
+                          if(czbiao3[1]=="*"){
+                            for(var o=0;o<str8.length;o++){
+                                document.getElementById("selectzhi").innerHTML+=str8[o]+"<br>";
+                            }
+                            console.log(str8);
+                         }
+                        else if(c==0){             //select 属性值1,属性值2... from 表名称 where 列属性=属性值
+                            // var f5 = fso.opentextfile(str2,1);
+                            // f5.Readline();
+                            // while(!f5.AtEndOfStream){   
+                            for(var o=0;o<str8.length;o++){
+                                var str13="";
+                                var arr5=str8[o].split(" ");
+                             for(var d=0;d<arr4.length;d++){                                 
+                                 str13+=arr5[arr4[d]]+" ";
+                                 console.log(arr5[arr4[d]]);
+                                 
+                             }   
+                             document.getElementById("selectzhi").innerHTML+=str13+"<br>";     
+                            }   
+                                                    
+                        // } 
+                        // f5.close();
+                         }
+                         else{
+                            alert("格式不正确！");
+                         }
+                         f1.close();
+                         f2.close();
+                        }
+                         else{
+                             alert("找不着对应值!");
+                         }
+                       
+                    }
+                    else{
+                        alert("格式不正确！");
+                    }
+                }
+                 else{
+                     alert("表不存在！");
+                 } 
+              }
+              
+              else if(czbiao3[0]=="alter"&&czbiao3[1]=="table"){       //alter table 表名 
+                var str2="c:\\"+xjku1+"\\"+czbiao3[2]+".txt"; 
+                var str3="c:\\"+xjku1+"\\"+czbiao3[2]+"01.txt"; 
+                if(fso.FileExists(str2)){
+                    if(czbiao3[3]=="add"&&czbiao3.length==6){                  //alter table 表名 add 属性名 数据类型
+                        var f1=fso.opentextfile(str2,1);
+                        var str10=f1.Readline()+" "+czbiao3[4];
+                        var arr2=[];
+                        while(!f1.AtEndOfStream){
+                           arr2.push(f1.Readline());
+                        }
+                        f1.close();
+                        var f2=fso.CreateTextFile(str2,1);
+                        f2.WriteLine(str10);
+                        var f3=fso.opentextfile(str3,1);
+                        var str11=f3.Readline()+" "+czbiao3[5].split("(")[0];
+                        var str12=f3.Readline()+" "+czbiao3[5].split("(")[1].replace(")","");
+                        f3.close();
+                        var f4=fso.createtextfile(str3,1);
+                        f4.WriteLine(str11);
+                        f4.WriteLine(str12);
+                        for(var i=0;i<arr2.length;i++){
+                          f2.WriteLine(arr2[i]);                          
+                        }
+                        f2.close();
+                        alert("添加属性名成功！");
+                        
+                    }
+                    else if(czbiao3[3]=="drop"&&czbiao3[4]=="comumn"&&czbiao3.length==6){     //alter table 表名 drop comumn 列名
+                        var f1=fso.opentextfile(str2,1);
+                        var d;
+                        var str10=f1.Readline().split(" ");
+                        var f3=fso.opentextfile(str3,1);
+                        var str13=f3.Readline().split(" ");
+                        var str14=f3.Readline().split(" ");
+                        var arr6=[];
+                        var str11="";
+                        var str15="";
+                        var str16="";
+                        for(var i=0;i<str10.length;i++){
+                            if(czbiao3[5]==str10[i]){
+                               d=i;             //找出删除列的位置
+                               break;
+                            } 
+                        }
+                        str10.splice(d,1);
+                        str13.splice(d,1);
+                        str14.splice(d,1);
+                        for(var i=0;i<str10.length;i++){
+                          str11+=str10[i]+" ";
+                          str15+=str13[i]+" ";
+                          str16+=str14[i]+" ";
+                        }
+                        str11=str11.substr(0, str11.length - 1);
+                        str15=str15.substr(0, str15.length - 1);
+                        str16=str16.substr(0, str16.length - 1);
+                        arr6.push(str11);
+                        while(!f1.AtEndOfStream){
+                           var str12="";
+                           var arr8=f1.Readline().split(" ");
+                           arr8.splice(d,1);
+                           for(var i=0;i<arr8.length;i++){
+                              str12+=arr8[i]+" ";
+                           }
+                           str12=str12.substr(0, str12.length - 1);
+                           arr6.push(str12);
+                        }
+                        console.log(arr6);
+                        if(d==undefined){            
+                           alert("属性不存在！");
+                        }
+                        else{
+                            var suoyin1="c:\\"+xjku1+"\\"+czbiao3[2]+"_"+czbiao3[5]+".txt";
+                            if(fso.FileExists(suoyin1)){
+                                f3 = fso.GetFile(suoyin1);
+                                f3.Delete();
+                                alert("删除对应索引表成功！");
+                            }
+                            var f2=fso.CreateTextFile(str2,1);
+                              for(var i=0;i<arr6.length;i++){
+                                f2.WriteLine(arr6[i]);
+                              }
+                              f2.close();
+                              var f4=fso.CreateTextFile(str3,1);
+                              f4.WriteLine(str15);
+                              f4.WriteLine(str16);
+                              f4.close();
+                              alert("更改成功！");
+                        }
+                        f1.close();
+
+                    }
+                    else{
+                        alert("输入格式不正确！");
+                    }
+                }
+                else{
+                    alert("表不存在");
+                }
+              }
+              else if(czbiao3[0]=="drop"&&czbiao3[1]=="table"&&czbiao3.length==3){             //drop table 表名称;
+                var str2="c:\\"+xjku1+"\\"+czbiao3[2]+".txt"; 
+                var str3="c:\\"+xjku1+"\\"+czbiao3[2]+"01.txt";
+                var f2 = fso.opentextfile(str2,1);
+                var del1=f2.Readline().split(" ");
+                f2.close();
+                if(fso.FileExists(str2)){
+                    for(var i=0;i<del1.length;i++){
+                    var deldz1="c:\\"+xjku1+"\\"+czbiao3[2]+"_"+del1[i]+".txt";
+                     if(fso.FileExists(deldz1)){
+                        f3 = fso.GetFile(deldz1);
+                        f3.Delete();
+                        alert("删除对应索引表成功！");
+                     }
+                   }
+                    f1 = fso.GetFile(str2);
+                    f1.Delete();
+                    f4 = fso.GetFile(str3);
+                    f4.Delete();
+                    alert("删除成功！");
+                }
+                else{
+                    alert("文件不存在！");
+                }
+              }
+              
+
+
+              else{
+                  alert("格式不符合要求！");
+              }
+        // var a=document.getElementById("czbiao").value.split(",");
+        // console.log(a);
+        // a.splice(2,1);
+        // console.log(a);
+      }
+      else{
+          alert("用户不能进行"+czbiao3[0]+"操作！");
+      }
+    }
+    function suoyin(){             //create index 索引名称 on 表名称 (列名称)
+        var str1=document.getElementById("sybiao").value;
+        var czbiao1=document.getElementById("sybiao").value;
+        var arr1=str1.split(" ");
+        var czbiao3=czbiao1.split(" ");
+        var fso = new ActiveXObject("Scripting.FileSystemObject");
+        var xjku1=document.getElementById("ku").innerHTML;
+        var str2="c:\\"+xjku1+"\\"+arr1[4]+".txt";
+        var str3="c:\\"+xjku1+"\\"+arr1[2]+".txt";
+        var a=0;
+        var b=0;
+        var arr3=[];
+        var c;
+        if(arr1[0]=="create"&&arr1[1]=="index"&&arr1[3]=="on"&&fso.FileExists(str2)&&!fso.FileExists(str3)){
+            var str4 = arr1[5].replace("(","").replace(")","");
+            var f2 = fso.opentextfile(str2,1);
+            var arr2 = f2.Readline().split(" ");
+            for(var i=0;i<arr2.length;i++){
+               if(arr2[i]==str4){
+                  a=1;
+                  c=i;
+               }
+            }
+            if(a==1){
+               while(!f2.AtEndOfStream){
+                 arr3[b]=f2.Readline().split(" ")[c];
+                 b++;
+               }
+            //    arr3=arr3.sort();
+               var f3 = fso.CreateTextFile(str3,true);
+               for(var i=0;i<b;i++){
+                f3.WriteLine(eval(i+1)+" "+arr3[i]);                 
+               }
+               f3.close();
+               alert("创建索引成功！");   
+            }
+            else{
+               alert("表中属性不存在！");
+            }
+            f2.close();
+        }
+        else if(arr1[0]=="alter"&&arr1[1]=="table"&&arr1[3]=="drop"&&arr1[4]=="index"){    //alter table 表名 drop index 索引表名
+            var str2="c:\\"+xjku1+"\\"+arr1[5]+".txt"; 
+            if(fso.FileExists(str2)){
+                f1 = fso.GetFile(str2);
+                f1.Delete();
+                alert("删除成功！");
+            }
+            else{
+                alert("该索引表不存在！");
+            }
+        }
+        else if(arr1[0]=="select"&&arr1[1]=="*"&&arr1[2]=="from"&&arr1[4]=="where"&&arr1[5].split("=")[0]=="id"){ //select * from 索引表名 where id=第几个
+           var str4="c:\\"+xjku1+"\\"+arr1[3]+".txt";
+           var f1 = fso.opentextfile(str4,1);
+           var x=0;
+           var b=0;
+           var str5="";
+           var str7="";
+           var str8=""; 
+           var str9="";
+           while(!f1.AtEndOfStream){    //x:求出文件除了属性行的行数
+            f1.Readline();
+            x++;
+           } 
+           f1.close();
+           if(fso.FileExists(str4)){
+             if(Number(arr1[5].split("=")[1])<=x){
+                 var f2=fso.opentextfile(str4,1);
+                for(var i=0;i<Number(arr1[5].split("=")[1]);i++){
+                  str5=f2.Readline().split(" ")[1];        //找到索引对应的主键值     
+                }
+                console.log(str5);
+                var str6="c:\\"+xjku1+"\\"+arr1[3].split("_")[0]+".txt";
+                if(fso.FileExists(str6)){
+                  var f3=fso.opentextfile(str6,1);
+                  str7=f3.Readline().split(" ");    //将属性存入数组中
+                  for(b=0;b<str7.length;b++){
+                    if(str7[b]==arr1[3].split("_")[1]){          //b:找出SQL语句中where后查找的属性与文件中的属性对应的位置
+                        break;
+                    }
+                  }
+                  while(!f3.AtEndOfStream){
+                     str8=f3.Readline();
+                     if(str8.split(" ")[b]==str5){
+                        str9=str8;
+                     }
+                  }
+                  document.getElementById("selectzhi").innerHTML=str9;
+                  console.log(str9);
+                }
+                else{
+                    alert("文件"+arr1[3].split("_")[0]+"不存在！");
+                }
+             }
+              else{
+                alert("第"+arr1[5].split("=")[1]+"行不存在数据！");
+              }
+           }
+           else{
+               alert("该索引表不存在！");
+           }
+        }
+        else if(czbiao3[0]=="select"&&czbiao3[2]=="from"&&czbiao3[3].split(",").length>=2){  //多表:select 属性1,属性2.. from 表1,表2.. where 条件1 and 条件2
+                 var arra1=[];
+                 var cc1=0;
+                 var cc2=0;
+                 var cc3=[];
+                 var cc4=0;
+                 var cc5=0;
+                 document.getElementById("selectzhi").innerHTML="";
+                 var arra6=[];
+                 for(var i=0;i<czbiao3[3].split(",").length;i++){
+                   arra6.push(czbiao3[3].split(",")[i].split("_")[0]);
+                 }
+                //  arra6=czbiao3[3].split(",");
+                console.log(arra6);
+                 for(var i=0; i<czbiao3[3].split(",").length;i++){
+                    arra1[i]="c:\\"+xjku1+"\\"+czbiao3[3].split(",")[i].split("_")[0]+".txt";
+                    if(!fso.FileExists(arra1[i])){
+                       cc1=1;
+                    }
+                 }
+                 console.log(arra1);
+                 if(cc1==0){            //判断多表是否都存在
+                    var arra2=czbiao1.split(" and ");
+                    var arra3=[];  //储存条件等号左边的内容
+                    var arra4=[];  //储存条件等号右边的内容
+                    arra3.push(czbiao3[5].split("=")[0]);
+                    arra4.push(czbiao3[5].split("=")[1]);
+                    for(var i=1;i<arra2.length;i++){
+                       arra3.push(arra2[i].split("=")[0]);
+                       arra4.push(arra2[i].split("=")[1].replace(/'/g,''));
+                    }
+                    console.log(arra3);
+                    console.log(arra4);
+                    for(var i=0;i<arra3.length;i++){
+                      if(!fso.FileExists("c:\\"+xjku1+"\\"+arra3[i].split(".")[0]+".txt")){
+                        cc2=1;
+                      }
+                    }
+                    // console.log();
+                    if(cc2==0){
+                      for(var i=0;i<arra3.length;i++){
+                        var f1=fso.opentextfile("c:\\"+xjku1+"\\"+arra3[i].split(".")[0]+".txt",1);
+                        var arra5=f1.Readline().split(" ");
+                        cc3[i]=undefined;
+                        for(var b=0;b<arra5.length;b++){
+                           if(arra3[i].split(".")[1]==arra5[b]){
+                              cc3[i]=1;
+                              break;
+                           }
+                        }
+                        f1.close();
+                      }
+                      console.log(cc3);
+                      for(var i=0;i<cc3.length;i++){
+                        if(cc3[i]==undefined){
+                          cc4=1;
+                        }
+                      }
+                      if(cc4==0){
+                         for(var i=0;i<arra3.length;i++){
+                            if(arra3[i].split(".").length==2&&arra4[i].split(".").length==2){
+                               for(var b=0;b<czbiao3[3].split(",").length;b++){
+                                 if(arra3[i].split(".")[0]==czbiao3[3].split(",")[b].split("_")[0]||arra4[i].split(".")[0]==czbiao3[3].split(",")[b].split("_")[0]){
+                                    arra6[b]=0;
+                                 }
+                               }
+                            }
+                         }
+                         console.log(arra6);   
+                         for(var i=0;i<arra6.length;i++){
+                           if(arra6[i]!=0){
+                              cc5=1;
+                           }
+                         }
+                         if(cc5==0){         //进行笛卡儿积操作
+                           var f1=fso.opentextfile(arra1[0],1);
+                           var arra7=f1.Readline();
+                           var arra8=[];
+                           while(!f1.AtEndOfStream){
+                            arra8.push(f1.Readline());
+                           }
+                            f1.close();
+                            for(var i=1;i<arra1.length;i++){
+                              var arra11=[];
+                              for(var d=0;d<arra8.length;d++){
+                                arra11.push(arra8[d]);
+                              }
+                              var f2=fso.opentextfile(arra1[i],1);
+                              var arra9=f2.Readline();
+                              arra8=[];
+                              while(!f2.AtEndOfStream){
+                                  var arra10=f2.Readline();
+                                  for(var b=0;b<arra11.length;b++){
+                                    arra8.push(arra11[b]+" "+arra10);
+                                  }
+                              }
+                              f2.close();
+                              arra7+=" "+arra9;
+                            }
+                            arra8.splice(0, 0, arra7);
+                            console.log(arra8);
+                            if(czbiao3[1]=="*"){
+                                var cc6=0;       //判断是否有条件（只有表之间连接）
+                                var arra15=[];   //存储带有条件的属性位置(例:hehe.name1='rag')
+                                for(var i=0;i<arra4.length;i++){
+                                   if(arra4[i].split(".").length!=2){
+                                     cc6=1;
+                                     arra15.push(i);
+                                   }
+                                }
+                                // alert(cc6);
+                                if(cc6==0){        //只有表之间连接
+                                    for(var i=0;i<arra8.length;i++){
+                                      document.getElementById("selectzhi").innerHTML+=arra8[i]+"<br>"; 
+                                    }
+                                }
+                                else{         //有条件
+                                    var arra16=arra8[0].split(" ");
+                                    var arra17=[];
+                                    var arra18=[];
+                                  for(var e=0;e<arra15.length;e++){
+                                    for(var i=0;i<arra16.length;i++){
+                                      if(arra3[arra15[e]].split(".")[1]==arra16[i]){
+                                        arra17.push(i);
+                                      }
+                                    }
+                                  }
+                                  console.log(arra17);
+                                for(var u=1;u<arra8.length;u++){
+                                  var cc7=0;
+                                  for(var i=0;i<arra17.length;i++){
+                                    console.log("ideji"+arra8[u].split(" ")[arra17[i]]);
+                                    if(arra4[arra15[i]]==arra8[u].split(" ")[arra17[i]]){
+                                       cc7=cc7+1;
+                                    }
+                                  }  
+                                  if(cc7==arra15.length){
+                                    arra18.push(arra8[u]);
+                                  }                                  
+                                 }
+                                 console.log("hah"+arra18);
+                                 for(var i=0;i<arra18.length;i++){
+                                      document.getElementById("selectzhi").innerHTML+=arra18[i]+"<br>"; 
+                                    }
+                                }
+                                
+                            }
+                            else{
+                                var cc6=0;       //判断是否有条件（只有表之间连接）
+                                var arra15=[];   //存储带有条件的属性位置(例:hehe.name1='rag')
+                                for(var i=0;i<arra4.length;i++){
+                                   if(arra4[i].split(".").length!=2){
+                                     cc6=1;
+                                     arra15.push(i);
+                                   }
+                                }
+                                // alert(cc6);
+                                if(cc6==0){        //只有表之间连接
+                                    for(var i=0;i<arra8.length;i++){
+                                      document.getElementById("selectzhi").innerHTML+=arra8[i]+"<br>"; 
+                                    }
+                                }
+                                else{         //有条件
+                                    var arra16=arra8[0].split(" ");
+                                    var arra17=[];
+                                    var arra18=[];
+                                  for(var e=0;e<arra15.length;e++){
+                                    for(var i=0;i<arra16.length;i++){
+                                      if(arra3[arra15[e]].split(".")[1]==arra16[i]){
+                                        arra17.push(i);
+                                      }
+                                    }
+                                  }
+                                  console.log(arra17);
+                                for(var u=1;u<arra8.length;u++){
+                                  var cc7=0;
+                                  for(var i=0;i<arra17.length;i++){
+                                    console.log("ideji"+arra8[u].split(" ")[arra17[i]]);
+                                    if(arra4[arra15[i]]==arra8[u].split(" ")[arra17[i]]){
+                                       cc7=cc7+1;
+                                    }
+                                  }  
+                                  if(cc7==arra15.length){
+                                    arra18.push(arra8[u]);
+                                  }                                  
+                                 }
+                                 var arra12=[];
+                                 var arra13=czbiao3[1].split(",");
+                                 for(var i=0;i<arra13.length;i++){
+                                   for(var b=0;b<arra8[0].split(" ").length;b++){
+                                     if(arra13[i]==arra8[0].split(" ")[b]){
+                                       arra12.push(b);
+                                     }
+                                   }
+                                 }
+                                 console.log("frgt"+arra12);
+                                 var arra20=[];
+                                 for(var i=0;i<arra18.length;i++){
+                                     var arra19="";
+                                     for(var c=0;c<arra12.length;c++){
+                                        arra19+=arra18[i].split(" ")[arra12[c]]+" ";
+                                     }
+                                    //  console.log("ref"+arra19);
+                                     arra20.push(arra19);
+                                 }
+                                 for(var i=0;i<arra20.length;i++){
+                                      document.getElementById("selectzhi").innerHTML+=arra20[i]+"<br>"; 
+                                    }
+                                }
+                            }
+
+                         }
+                         else{
+                             alert("表之间没有连接上！");
+                         }
+
+                      }
+                      else{
+                          alert("某表中没有此属性！");
+                      }
+                    }
+                    else{
+                        alert("条件有不符合的！");
+                    }
+                 }
+                 else{
+                     alert("有表不存在！");
+                 }
+              }
+        else{
+            alert("表或索引表不存在！");
+        }
+    }
+    function dianji(){
+        var mima=document.getElementById("passw").value;
+        var str1="c:\\"+document.getElementById("ku").innerHTML+"\\renyuan.txt";
+        var fso = new ActiveXObject("Scripting.FileSystemObject");
+        var f1=fso.opentextfile(str1,1);
+        var a=0;
+        var jilu="";
+       
+        while(!f1.AtEndOfStream){
+          var str2=f1.Readline();
+          if(mima==str2.split(" ")[0]){
+             a=1;
+             jilu=str2.split(" ")[1];
+             break;
+          }
+        }
+        f1.close();
+        console.log(a);
+        console.log(jilu);
+        
+            if(a==1){
+                alert("输入正确！");
+            }
+            else{
+                alert("输入错误！");
+            }
+
+    }
+    function del(){
+        var chexiao=document.getElementById("chequan").value;
+        var fso = new ActiveXObject("Scripting.FileSystemObject"); 
+        var str1="c:\\"+document.getElementById("ku").innerHTML+"\\renyuan.txt";
+        var f1=fso.opentextfile(str1,1);
+        var arr1=[];
+        while(!f1.AtEndOfStream){
+            var str2=f1.Readline();
+            if(str2!=chexiao){
+              arr1.push(str2);
+            }
+        }  
+        f1.close();
+        var f2=fso.createtextfile(str1,1);
+        for(var i=0;i<arr1.length;i++){
+           f2.WriteLine(arr1[i]);          
+        }
+        f2.close();
+        alert("撤销权限成功！");
+    }
+    function give(){
+        var shouquan1=document.getElementById("shouquan").value;
+        var fso = new ActiveXObject("Scripting.FileSystemObject"); 
+        var str1="c:\\"+document.getElementById("ku").innerHTML+"\\renyuan.txt";
+        var f1=fso.opentextfile(str1,1);
+        var str2=f1.ReadAll();
+        if(str2==""){
+           var f2=fso.createtextfile(str1,1);
+           f2.WriteLine(shouquan1);
+           f2.close();
+        }
+        else{
+            var f2=fso.createtextfile(str1,1);
+            f2.WriteLine(str2);
+            f2.WriteLine(shouquan1);
+            f2.close();
+        }
+        alert("授权成功！");
+    }
+</script>
+</html>

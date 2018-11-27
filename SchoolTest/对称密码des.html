@@ -7,6 +7,7 @@
 textarea{width:600px; height:150px;}
 body{font-size:12px}
 input{font-size:12px}
+html{background: #00b262}
 </style>
 <script language="JavaScript">
 
@@ -236,12 +237,12 @@ function jiemi(){
 <font color="red">(*目前密钥只能是八位)</font><br>
  
 未加密文本:<br>
-<textarea id="taText"></textarea>
+<input id="taText">
 <input type="button" value="clear" onclick="$('taText').value=''"><br>
 <input type="button" value="加密" onclick="jiami()">
 <input type="button" value="解密" onclick="jiemi()"><br><br>
 加密后文本:<br>
-<textarea id="taCipher"></textarea>
+<input id="taCipher">
 <input type="button" value="clear" onclick="$('taCipher').value=''"><br>
 </body>
 </html>

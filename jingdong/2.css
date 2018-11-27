@@ -1,0 +1,112 @@
+#div3{
+    height: 150px;
+    position: relative;
+}
+#btn1{
+    background: red;
+    height: 38px;
+    width: 60px;
+    margin-top: 35px;
+    /*margin-left: -6px;*/
+    position: absolute;
+    /*top: 50px;*/
+    float: left;
+}
+#img2{
+    height: 40px;
+}
+#ipt1{
+    height: 35px;
+    width: 425px;
+    margin-left: 110px;
+    float: left;
+    margin-top: 35px;
+
+}
+.d1{
+    float: left;
+    position: relative;
+}
+#div4{
+    width: 250px;
+    height: 150px;
+}
+#div5{
+    height: 100px;
+    /*width: 700px;*/
+}
+#ul6{
+    margin-left: 110px;
+    margin-top: 80px;
+}
+#ul6 li{
+    float: left;
+    font-size: 12px;
+    margin-right: 7px;
+}
+#ul6 li a{
+    color: #999999;
+}
+#ul6 #l1{
+
+    margin-right: 10px;
+}
+#ul6 #l1 a{
+    color: red;
+}
+#ul6 li a:hover{
+    color: brown;
+}
+#div6{
+    height: 35px;
+    background: white;
+    width: 160px;
+    /*text-align: center;*/
+    line-height: 35px;
+    position: absolute;
+    top: 36px;
+    left: 650px;
+    font-size: 14px;
+    color: red;
+}
+#div6 a{
+    margin-left: 55px;
+    color: red;
+}
+#div6 img{
+    position: absolute;
+    top: 9px;
+    left: 30px;
+    color: red;
+    width: 18px;
+}
+#div7{
+    position: absolute;
+    top: 0px;
+    left: 841px;
+    height: 35px;
+
+}
+#div7 img{
+    width: 75px;
+}
+#div8{
+    position: absolute;
+    top: 120px;
+    left: 275px;
+}
+#div8 ul li{
+    float: left;
+    margin-right: 15px;
+    font-size: 14px;
+
+}
+#div8 ul li a{
+    color: black;
+}
+#div8 ul li a:hover{
+    color: red;
+}
+#div8 ul .xu{
+    color: #999999;
+}

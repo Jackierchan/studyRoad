@@ -1,0 +1,186 @@
+#div9{
+    position: relative;
+    height: 500px;
+}
+#ul7{
+    float: left;
+    margin-left: 78px;
+    background: white;
+    width: 180px;
+
+}
+#ul7 li{
+    color: #999999;
+    font-size: 14px;
+    margin-top: 8px;
+    margin-left: 16px;
+}
+#ul7 li a{
+    color: #999999;
+}
+#ul7 #ll1{
+    margin-top: 0px;
+}
+#div10{
+    padding: 5px;
+}
+#ul7 li a:hover{
+    color: red;
+}
+#div11{
+    background: white;
+    position: absolute;
+    left: 257px;
+    top: 0px;
+    width: 910px;
+    height: 486px;
+    border: 1px solid #999999;
+    display: none;
+}
+#div12{
+    width: 700px;
+    float: left;
+}
+#div13{
+    float: left;
+    width: 200px;
+}
+#ul8{
+    margin-top: 8px;
+    height: 40px;
+}
+#ul8 li{
+    float: left;
+    background: black;
+    /*width: 90px;*/
+    /*margin-top: 10px;*/
+    height: 25px;
+}
+#ul8 li a{
+    margin-left: 8px;
+    color: white;
+    font-size: 12px;
+    padding: 5px;
+    line-height: 25px;
+}
+.uu{
+    margin-top: 15px;
+
+    height: 25px;
+}
+.uu li{
+    float: left;
+    margin-top: 100px;
+}
+.uu .lll1 a{
+    color: black;
+}
+#div10 #ll1:hover #div11{
+    display: block;
+    z-index: 2;
+}
+#div13 ul{
+    margin-top: 20px;
+}
+#div13 ul li{
+    float: left;
+}
+#div13 .img2{
+    margin-left: 16px;
+}
+#div14{
+    float: left;
+    padding: 10px;
+}
+#div15{
+    float: left;
+    /*width: 200px;*/
+
+}
+#div16{
+    float: left;
+    width: 220px;
+
+}
+#div16 img{
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+#div17{
+    background: white;
+    float: left;
+    width: 200px;
+    position: relative;
+    height: 470px;
+}
+
+#div18{
+    color: #999999;
+    font-size: 12px;
+}
+#div17 .spp1{
+    color: black;
+}
+#div17 img{
+    width: 75px;
+    margin-top: -12px;
+}
+#sppp1{
+    color: red;
+    background: #f1f1f1;
+}
+#sppp1:hover{
+    color: #f1f1f1;
+    background: red;
+}
+#sppp2{
+    color: darkgoldenrod;
+    background: black;
+}
+#div19{
+    text-align: center;
+}
+#sppp3{
+    margin-left: 10px;
+    color: #404040;
+}
+#sppp4{
+    color: #404040;
+}
+#sppp5{
+    margin-left: 50px;
+}
+#ul9{
+    margin-left: 10px;
+    z-index: 0;
+    position: absolute;
+    top: 175px;
+    /*display: none;*/
+    height: 80px;
+}
+
+#ul9 li a{
+    color: #999999;
+    font-size: 12px;
+}
+#sppp3:hover #ul9{
+    display: block;
+}
+#ul10{
+    margin-left: 10px;
+
+    position: absolute;
+    top: 175px;
+    display: none;
+}
+#sppp4:hover #ul10{
+    display: block;
+    z-index: 1;
+
+}
+#div20{
+    height: 165px;
+}
+#div16 img:hover{
+    opacity: 0.8;
+}

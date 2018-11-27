@@ -1,0 +1,243 @@
+#div1{
+    background: #e3e4e5;
+    height: 32px;
+    position: relative;
+    z-index: 1;
+}
+span{
+    color: #999999;
+    font-size: 12px;
+    padding: 5px;
+    line-height: 32px;
+
+}
+#div2{
+    position: absolute;
+    left: 250px;
+    height: 32px;
+
+}
+#div2 a{
+    color: #999999;
+}
+/*.sp1{*/
+/*border-right: 1px solid #cccccc;*/
+/*overflow:hidden;*/
+/*}*/
+#div2 a:hover{
+    color: red;
+}
+#sp3 a{
+    color: red;
+}
+#img1{
+    width: 12px;
+}
+/*.after::after{*/
+/*content: '';*/
+/*border: 3px solid transparent;*/
+/*border-top-color: #bbb;*/
+/*position: absolute;*/
+/*right: 4px;*/
+/*top:16px;*/
+/*transform-origin: 3px 1.5px;*/
+/*}*/
+#s1{
+    position: relative;
+    margin-right: 150px;
+}
+#sp5{
+    position: relative;
+}
+
+#s1:hover{
+    background: white;
+}
+li{
+    list-style: none;
+}
+#ul1{
+    width: 300px;
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    background: white;
+    display: none;
+    border: 1px solid #999999;
+}
+#ul1 li{
+    float: left;
+    margin: 8px;
+    padding: 5px;
+    font-size: 12px;
+    color: #999999;
+
+
+}
+#ul1 li:hover{
+    color: red;
+}
+#s1:hover #ul1{
+    display: block;
+}
+#ul2{
+    width: 220px;
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    background: white;
+    border: 1px solid #999999;
+
+    display: none;
+}
+#ul2 li{
+    float: left;
+    margin: 5px 10px 5px 8px;
+    padding: 5px;
+    font-size: 12px;
+    color: #999999;
+
+}
+#ul2 li:hover{
+    color: red;
+}
+#sp5:hover{
+    background: white;
+}
+#sp5:hover #ul2{
+    display: block;
+}
+#sp7{
+    position: relative;
+}
+#ul3{
+    width: 150px;
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    background: white;
+    border: 1px solid #999999;
+    display: none;
+}
+#sp7:hover{
+    background: white;
+}
+#sp7:hover #ul3{
+    display: block;
+}
+#ul3 li{
+    float: left;
+    margin: 5px 3px 5px 3px;
+    padding: 3px;
+    font-size: 12px;
+    color: #999999;
+
+}
+#ul3 li:hover{
+    color: red;
+}
+#sp8{
+    position: relative;
+}
+#ul4{
+    width: 150px;
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    background: white;
+    border: 1px solid #999999;
+
+    display: none;
+}
+#ul4 .left{
+    float: left;
+    margin-top: 1px;
+    margin-left: 8px;
+    margin-right: 15px;
+    padding: 1px;
+    font-size: 12px;
+    color: #999999;
+
+}
+#ul4 .right{
+    float: left;
+    margin-top: 1px;
+    margin-left: 8px;
+    padding: 1px;
+    font-size: 12px;
+    color: #999999;
+}
+#ul4 .title{
+    font-size: 13px;
+    color: #404040;
+    margin-left: 8px;
+}
+#ul4 li:hover{
+    color: red;
+}
+#sp8:hover{
+    background: white;
+}
+#sp8:hover #ul4{
+    display: block;
+}
+#ul4 #top1{
+    /*height: 150px;*/
+    border-bottom: 1px solid #888888;
+}
+#sp9{
+    position: relative;
+}
+#ul5{
+    width: 1000px;
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    background: white;
+    border: 1px solid #999999;
+    display: none;
+}
+#ul5 li{
+    float: left;
+    margin-top: 1px;
+    margin-left: 8px;
+    margin-right: 15px;
+    padding: 1px;
+    font-size: 12px;
+    color: #999999;
+}
+#ul5 #first{
+    width: 300px;
+    float: left;
+    border-right: 1px solid #888888;
+}
+#ul5 .title{
+    font-size: 13px;
+    color: #404040;
+    margin-left: 8px;
+}
+#ul5 #second{
+    width: 220px;
+    float: left;
+    border-right: 1px solid #888888;
+
+}
+#ul5 #third{
+    width: 220px;
+    float: left;
+    border-right: 1px solid #888888;
+
+}
+#ul5 #fouth{
+    width: 220px;
+    float: left;
+}
+#ul5 li:hover{
+    color: red;
+}
+#sp9:hover{
+    background: white;
+}
+#sp9:hover #ul5{
+    display: block;
+}

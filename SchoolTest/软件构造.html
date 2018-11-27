@@ -6,16 +6,234 @@
 
 </head>
 <body>
-<div>
-    <input type="text" id="ipt1" placeholder="请输入" value="">
-    <button id="btn1">click</button>
-</div>
 <script>
-    var oipt=document.getElementById('ipt1');
-    var obtn=document.getElementById('btn1');
-    var reg=/dd*(.dd|'')/;
-    obtn.onclick=function() {
-        console.log(reg.exec(oipt.value));
+    var fs = require("fs");
+    var str = readTableFile();
+    var arr = [];
+    var len = str.length;
+    var first = 0;
+    var second = 0;
+    get(first,second);
+    //[ 'void', 'main()', '{', 'int', 'i;', 'varchar', 'x=4;', '}' ]
+    var arr1 = apart();
+    enter(arr1);
+    getaway();
+    //console.log(arr);
+    var arr2 = arr;
+    //console.log(arr1)
+    //writeFile(arr2);
+    //console.log(arr1);
+    var Aone = ['void','main'];
+    var Atwo = ['string','int'];
+    var Athree = [">","<","=","+",';'];
+    var Afour = ['{','}','(',')'];
+    // console.log(Aone);
+    // console.log(Atwo);
+    // console.log(Athree);
+    // console.log(Afour);
+    // console.log(arr)
+    output();
+    //console.log(arr);
+    writeFile(arr);
+    //console.log(arr1)
+    function writeFile(arr){
+        var e = [];
+        console.log(arr);
+        e.push(arr);
+        //e.push(arr1);		fs.writeFile("./2.txt",e,{flag:'w',encoding:'utf-8'},function(err){
+        if(err){
+            console.log("写入失败");
+        }
+    }
+    function output(){
+        var one = Aone.length;
+        var two = Atwo.length;
+        var three = Athree.length;
+        var four = Afour.length;
+        var len = arr.length;
+        //arr[0] = 'void';
+        //arr[8] = 'varchar';
+        //console.log(arr[8] == Atwo[0]);
+        for(var j = 0; j < len; j++){
+            //console.log(arr[6])
+            var len1 = arr[j].length;
+            for (var i = 0; i < one; i++) {
+                var len2 = Aone[i].length;
+                var k = 0;
+                for(var  m= 0; m< len1; m ++){
+                    for(var n = 0;n < len2; n ++){
+                        if(arr[j][m] == Aone[i][n]){
+                            k ++;
+                        }
+                    }
+                }
+                if(k == len2){
+                    arr[j] = 1;
+                }
+            };
+            for (var i = 0; i < three; i++) {
+                var len2 = Athree[i].length;
+                var k = 0;
+                for(var  m= 0; m< len1; m ++){
+                    for(var n = 0;n < len2; n ++){
+                        if(arr[j][m] == Athree[i][n]){
+                            k ++;
+                        }
+                    }
+                }
+                if(k == len2){
+                    //		console.log(arr[j])
+                    arr[j] = 3;
+                }
+            };
+            for (var i = 0; i < four; i++) {
+                var len2 = Afour[i].length;
+                var k = 0;
+                for(var  m= 0; m< len1; m ++){
+                    for(var n = 0;n < len2; n ++){
+                        if(arr[j][m] == Afour[i][n]){
+                            k ++;
+                        }
+                    }
+                }
+                if(k == len2){
+                    arr[j] = 4;
+                }
+            };
+            for (var i = 0; i < two; i++) {
+                var len2 = Atwo[i].length;
+                var k = 0;
+                for(var  m= 0; m< len1; m ++){
+                    for(var n = 0;n < len2; n ++){
+                        if(arr[j][m] == Atwo[i][n]){
+                            k ++;
+                        }
+                    }
+                }
+                if(k == len2){
+                    arr[j] = 2;
+                }
+            };
+            if(typeof(arr[j]) != "number"){
+                if(arr[j - 1] == 2){
+                    var x = arr[j][0];
+                    if(x > "a" && x < "z"){
+                        arr[j] = "变量";
+                    }
+                }
+            }
+        }
+    }
+    function getaway(){
+        var len = arr.length;
+        for(var i = 0; i < len; i ++){
+            arr[i].replace(/(\w{1,});/g,function($,$1){
+                arr[i] = $1;
+                //	console.log(arr[i]);
+                //	console.log(arr[i + 1])
+            });
+        }
+    }
+    function enter(arr1){
+        var len = arr1.length;
+        var change =''
+        var flag;
+        var k = 0;
+        for(var i = len - 1; i >= 0; i --){
+            if(arr1[i] == 0){
+                flag = arr1[i + 1];
+                arr.splice(flag,0,'(')
+                flag ++;
+                arr.splice(flag,0,')')
+            }else if(arr1[i] == 1){
+                flag = arr1[i + 1];
+                flag --;
+                arr[flag] = arr1[len - 1][k];
+                k ++;
+                change = arr1[len - 1][k];
+                flag ++;
+                arr.splice(flag,0,change);
+                arr.splice(flag,0,'=');
+                k ++;
+            }/*else if(arr1[i] == 2){
+			flag = arr1[i + 1];
+			//flag ++;
+			arr.splice(flag,0,',');
+		}*/else if(arr1[i] == 3){
+                flag = arr1[i + 1];
+                arr.splice(flag,0,';');
+            }
+        }
+    }
+    //分解数组里的东西
+    function apart(){
+        var len = arr.length;
+        //var flag = 0;
+        //存arr1[0]表示空格
+        var arr1 = [];
+        var arr2 = [];
+        var k = 0;
+        var j = 0;
+        for(var i = 0; i < len; i ++){
+            arr[i].replace(/(\w*)\(/g,function($,$1){
+                arr[i] = $1;
+                arr1[k] = 0;
+                k ++;
+                arr1[k] = i + 1;
+                k ++;
+            })
+            arr[i].replace(/(\w*)\=/g,function($,$1){
+                arr2[j] = $1;
+                arr1[k] = 1;
+                k ++;
+                arr1[k] = i + 1;
+                k ++;
+                j ++;
+            })
+            arr[i].replace(/\=(\w*)/g,function($,$1){
+                arr2[j] = $1;
+                j ++;
+            })
+            //var len = arr1.length;
+            arr[i].replace(/(\w*),/g,function($,$1){
+                arr1[k] = 2;
+                k ++;
+                arr1[k+1]= i + 1;
+            })
+            arr[i].replace(/(\w*);/g,function($,$1){
+                arr1[k] = 3;
+                k ++;
+                arr1[k]= i + 1;
+                k ++;
+            })
+        }
+        arr1.push(arr2);
+        return arr1;
+    }
+    function readTableFile(){
+        return fs.readFileSync("./1.txt",'utf-8',function(err,data){});
+    }
+    function get(first,second){
+        for(var i = first;i < len;i ++){
+            if(str[i] == " "){
+                if(first > i){
+                    first = i;
+                }
+                if(second < i){
+                    second = i;
+                }
+                pushArr(str,first,second);
+                first = second + 1;
+            }
+        }
+        arr.push(str[second + 1])
+    }
+    function pushArr(str,first,second) {
+        var name = '';
+        for (var i = first; i < second; i++) {
+            name += str[i];
+        }
+        arr.push(name);
     }
 </script>
 </body>
