@@ -94,8 +94,55 @@
 }
 #div15{
     float: left;
-    /*width: 200px;*/
+    width: 590px;
+    height: 470px;
+    overflow: hidden;
+}
+#div15 div{
+    width: 4150px;
+    animation:xxx 60s 5s infinite;
 
+}
+@keyframes xxx {
+    0%{
+        transform: translateX(0px);
+    }
+    10%{
+        transform: translateX(-590px);
+    }
+    18%{
+        transform: translateX(-590px);
+    }
+    28%{
+        transform: translateX(-1180px);
+    }
+    36%{
+        transform: translateX(-1180px);
+    }
+    46%{
+        transform: translateX(-1770px);
+    }
+    54%{
+        transform: translateX(-1770px);
+    }
+    64%{
+        transform: translateX(-2360px);
+    }
+    72%{
+        transform: translateX(-2360px);
+    }
+    80%{
+        transform: translateX(-2950px);
+    }
+    90%{
+        transform: translateX(-2950px);
+    }
+    100%{
+        transform: translateX(-3540px);
+    }
+}
+#div15 div img{
+    float: left;
 }
 #div16{
     float: left;
@@ -128,6 +175,7 @@
 #sppp1{
     color: red;
     background: #f1f1f1;
+    border-radius: 1em;
 }
 #sppp1:hover{
     color: #f1f1f1;
@@ -136,10 +184,19 @@
 #sppp2{
     color: darkgoldenrod;
     background: black;
+    border-radius: 1em;
+}
+#sppp2:hover{
+    background: red;
+    color: #f1f1f1;
+
 }
 #div19{
     text-align: center;
 }
+/*#div19 div{*/
+    /*border-radius: 1em;*/
+/*}*/
 #sppp3{
     margin-left: 10px;
     color: #404040;

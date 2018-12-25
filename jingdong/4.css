@@ -72,3 +72,37 @@
     border: 1px solid red;
     width: 80px;
 }
+#div24{
+    width: 180px;
+    overflow: hidden;
+}
+#div24 div{
+    width: 360px;
+    animation:yyy 10s linear infinite;
+
+}
+#div24 div img{
+    float: left;
+}
+
+@keyframes yyy {
+    0%{
+        transform: translateX(0px);
+    }
+    15%{
+        transform: translateX(0px);
+    }
+    40%{
+        transform: translateX(-180px);
+    }
+    55%{
+        transform: translateX(-180px);
+    }
+    90%{
+        transform: translateX(0px);
+    }
+    100%{
+        transform: translateX(0px);
+
+    }
+}
