@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn1">click</button>
+<script>
+    var obtn=document.getElementById('btn1');
+    function debounce(fn,delay){
+        var timer=null;//利用闭包存入内存
+        return function f(){
+            clearTimeout(timer);
+            timer=setTimeout((function () {
+                fn.call(this);
+            }).bind(this),delay)
+        }
+    }
+    obtn.onclick=debounce(function () {
+            console.log(Math.random());
+            console.log(this);
+        },600);
+    //this指向问题，
+</script>
+</body>
+</html>

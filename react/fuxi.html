@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root"></div>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="browser.min.js"></script>
+<script type="text/babel">
+    class Product extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={
+                msg:1
+            }
+        }
+        change(){
+            alert('111111');
+            console.log(this);
+            this.setState({
+                msg:++this.state.msg
+            });
+            // console.log(this.refs.haha.innerHTML);
+            console.log(this.setDiv);
+        }
+        gaibian(event){
+                this.setState({
+                    msg:event.target.value
+                })
+        }
+        render(){
+            return(
+                <div>
+                    {
+                        // <div ref={'haha'}>测试</div>
+                    }
+                    <div ref={(div)=>{
+                            this.setDiv=div;
+                    }}>
+                        qqq
+                    </div>
+                    <h1>{this.state.msg}22222222{this.props.title}</h1>
+                    <button onClick={this.change.bind(this)}>click</button>
+                    <br/>
+                    <input type="text" placeholder="zezeze" onChange={this.gaibian.bind(this)}/>
+                </div>
+            )
+        };
+    }
+    ReactDOM.render(
+        <Product title={'ssss'}></Product>,
+        document.getElementById('root')
+    )
+
+
+
+    // ReactDOM.render(
+    //     <div>11111</div>,
+    //     document.getElementById('root')
+    // )
+</script>
+</body>
+</html>

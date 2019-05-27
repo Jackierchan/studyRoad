@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            background: red;
+            width: 100px;
+            border: 2px solid green;
+            border-radius:25px;
+            transition: width 2s ease 1s;
+
+        }
+        #div1:hover{
+            width: 1000px;
+            height: 500px;
+        }
+        #div2{
+            width: 100px;
+            box-shadow: 10px 5px 10px gray;
+            animation:run 2s linear 1s infinite;
+        }
+        #div3{
+            border-image: url("../../img/1.jpg") 30 30 round;
+        }
+        @keyframes run {
+            25%{
+                box-shadow: 10px 5px 10px green;
+            }
+            50%{
+                box-shadow: 10px 5px 10px red;
+            }
+            75%{
+                box-shadow: 10px 5px 10px black;
+            }
+            100%{
+                box-shadow: 10px 5px 10px blue;
+
+            }
+        }
+        #div4{
+            display: flex;
+            width: 500px;
+            height: 500px;
+            background: #00bfae;
+            align-items: center;
+            justify-content: center;
+
+        }
+        #div4 #div5{
+           width: 100px;
+            height: 100px;
+            background:chartreuse;
+        }
+        #div4 #div6{
+            width: 100px;
+            height: 100px;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    11111111
+</div>
+<div id="div2">
+    222222
+</div>
+<div id="div3">
+    333333
+</div>
+<div id="div4">
+    <div id="div5">
+        saadaas
+    </div>
+    <div id="div6">
+        dwsadasa
+    </div>
+</div>
+</body>
+</html>

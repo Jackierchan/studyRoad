@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //变量提升，是函数的优先级高还是变量的优先级高
+    //函数会首先被提升，然后才是变量
+    console.log(foo);
+    function foo(){
+        console.log("函数声明");
+    }
+    var foo = "变量";
+
+    function A() {
+        let a = 3;
+        this.a = 4;
+        setTimeout(function() {
+            console.log(a)
+        },100);
+        setTimeout(function() {
+            console.log(this.a)
+        },200);
+        setTimeout(() => {
+            console.log(a)    },300);
+        setTimeout(() => {
+            console.log(this.a)
+        },400)}
+    new A();
+</script>
+</body>
+</html>

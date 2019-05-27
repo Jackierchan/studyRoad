@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // function * gen(){
+    //     console.log('开始');
+    //     let a=yield '我是第一个yield';
+    //     console.log(a);
+    //     console.log('haahah');
+    //     yield '我是第二个yield';
+    //     console.log('heheheh');
+    // }
+    // let g=gen();
+    // console.log(g.next());
+    // g.next(123);
+    // console.log(g.next());
+
+
+    function * f() {
+        console.log('开始');
+        let a=yield firstYield();
+        console.log(a);
+        yield secondYield(a);
+        console.log('结束');
+    }
+    var f=f();
+    console.log(f.next());
+    function firstYield() {
+        console.log('进入第一个yield');
+        setTimeout(function () {
+            var x=20;
+            console.log(f.next(x));
+        },1000);
+        return 'firstYield';
+    }
+    function secondYield(a) {
+        console.log('进入第二个yield');
+        setTimeout(function () {
+            console.log(++a);
+            console.log(f.next());
+        },2000);
+        return 'secondYield';
+
+    }
+
+</script>
+</body>
+</html>

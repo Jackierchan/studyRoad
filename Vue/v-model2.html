@@ -5,16 +5,21 @@
     <title>Title</title>
 </head>
 <body>
-<div>
-<input type="text" v-model="msg">
+<div id="div1">
+<input type="text" v-model="msg" @keyup="output(11)">
 {{msg}}
 </div>
 <script src="vue.js"></script>
 <script>
     var re=new Vue({
-        el:'div',
+        el:'#div1',
         data:{
             msg:''
+        },
+        methods:{
+          output(res){
+              console.log(this,this.msg,res);
+          }
         }
     })
 </script>

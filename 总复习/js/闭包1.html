@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+<script>
+           var ali=document.getElementsByTagName('li');
+           // for(var i=0;i<ali.length;i++){
+           //     (function(i){
+           //         ali[i].onclick=function () {
+           //             console.log(i);
+           //         }
+           //     })(i);
+           //
+           // };
+           for(let i=0;i<ali.length;i++){
+                   ali[i].onclick=function () {
+                       console.log(i);
+                   }
+
+           };
+    
+    
+</script>
+</body>
+</html>

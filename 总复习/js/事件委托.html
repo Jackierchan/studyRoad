@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li{
+            background: #00bfae;
+        }
+    </style>
+</head>
+<body>
+        <ul id="ul1">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <button id="btn1">click</button>
+<script>
+            var oli=document.getElementsByTagName('LI');
+            var obtn=document.getElementById('btn1');
+            var oul=document.getElementById('ul1');
+            console.log(obtn);
+            // for(var i=0;i<oli.length;i++){
+            //     oli[i].onclick=function (e) {
+            //         console.log(e.target.innerHTML);
+            //     }
+            // }
+            obtn.onclick=function () {
+                var li=document.createElement('LI');
+                li.innerHTML=Math.random();
+                oul.appendChild(li);
+
+            }
+            oul.onclick=function (e) {
+                if (e.target.tagName=='LI') {
+                    console.log(e.target.innerHTML);
+                    console.log(this);
+                }
+            }
+</script>
+</body>
+</html>

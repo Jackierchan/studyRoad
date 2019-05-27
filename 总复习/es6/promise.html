@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // var p1=new Promise(function (resolve,reject) {
+    //     setTimeout(function () {
+    //         console.log(111);
+    //         resolve();
+    //     },1000)
+    // });
+    // p1.then(function () {
+    //     return new Promise(function (resolve,reject) {
+    //         console.log(222);
+    //         setTimeout(function () {
+    //             console.log(333);
+    //             resolve();
+    //         },2000)
+    //     })
+    // },function () {
+    //
+    // }).then(function () {
+    //     return new Promise(function(resolve,reject){
+    //         console.log(444);
+    //         setTimeout(function () {
+    //             console.log(555);
+    //             reject(666);
+    //         },3000);
+    //     })
+    // },function () {
+    //
+    // }).then().catch(function (rej) {
+    //     console.log(rej);
+    // })
+
+    var p2=new Promise(function (resolve,reject) {
+        setTimeout(function () {
+            console.log('aaa');
+            resolve(10);
+        },1000);
+    });
+    var p3=new Promise(function (resolve,reject) {
+        setTimeout(function () {
+            console.log('bbb');
+            resolve(11);
+
+        },2000);
+    });
+    var p4=new Promise(function (resolve,reject) {
+        setTimeout(function () {
+            console.log('ccc');
+            resolve(12);
+        },3000);
+    });
+    Promise.all([p2,p3,p4]).then(
+        function (res) {
+            console.log('hahahahahah');
+            console.log(res);
+        }
+    ).catch(function (rej) {
+        console.log('failed');
+        console.log(rej);
+    })
+    // Promise.race([p2,p3,p4]).then(
+    //     function (res) {
+    //         console.log(res);
+    //     }
+    // )
+</script>
+</body>
+</html>

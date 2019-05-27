@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .parent{
+            /* height: 50px; */
+            background: #cccccc;
+            /* overflow: hidden; */
+        }
+        .chilren{
+            float: left;
+        }
+        .clearfix{
+            clear:both;
+        }
+        .c1{
+            background: #ff0000;
+        }
+        .c2{
+            background: #0000ff;
+        }
+    </style>
+</head>
+<body>
+<div class="parent clearfix">
+    <div class="chilren c1">111</div>
+    <div class="chilren c2">222</div>
+     <div class="clearfix"></div>
+</div>
+</body>
+</html>

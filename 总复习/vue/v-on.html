@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div v-text="aa" @click="bb"></div>
+</div>
+<script src="vue.js"></script>
+<script>
+    var re=new Vue(
+        {
+            el:'#app',
+            data:{
+                aa:111
+            },
+            methods:{
+                bb(){
+                    console.log(111);
+                }
+            }
+
+
+
+        }
+    )
+
+</script>
+</body>
+</html>

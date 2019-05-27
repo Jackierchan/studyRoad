@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+        <demo title="login" @fclick="click" sex="nan">
+            登录<input type="text" placeholder="login">
+        </demo>
+        <demo title="logup" sex="nu">
+            注册 <input type="text" placeholder="logup">
+        </demo>
+        <template id="tem">
+            <div>
+                <div @click=$emit('fclick',12)>
+                    性别：{{sex}}
+                    {{title}}
+                </div>
+                <slot></slot>
+            </div>
+        </template>
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+
+        },
+        methods:{
+            click(re){
+                console.log(re);
+            }
+        },
+        components:{
+            demo:{
+                template:'#tem',
+                props:['title','sex']
+            }
+
+        }
+    })
+
+
+</script>
+</body>
+</html>

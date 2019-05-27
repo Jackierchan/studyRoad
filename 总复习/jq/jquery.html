@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">qqqqqqqqqqqqqqq</div>
+<div class="div2">qqqqqqqqqqqqqqq</div>
+<div class="div2">qqqqqqqqqqqqqqq</div>
+
+<script>
+    $('.div2');
+    function $(a) {
+        return new Query(a);
+    }
+    function Query(a) {
+        this.eles=[];
+        if (a.charAt(0)=='#'){
+            var b=a.substring(1);
+            this.eles.push(document.getElementById(b));
+
+        }else if (a.charAt(0)=='.'){
+            var b=a.substring(1);
+            this.eles=[...document.getElementsByClassName(b)];
+        }
+        console.log(this.eles);
+    }
+    Query.prototype.css=function (arg1,arg2) {
+        console.log(arg1,arg2);
+        if (typeof arg1=='string'&&typeof arg2=='string') {
+            console.log(arg1,arg2);
+            this.eles.map(function(ele){
+            ele.style[arg1]=arg2;
+        })
+        }else if(typeof arg1=='object'&&typeof arg2=='undefined'){
+            console.log(arg1,arg2);
+
+            this.eles.map(function (ele) {
+                for (key in arg1){
+                    ele.style[key]=arg1[key];
+                }
+            })
+        }
+        return this;
+    };
+    Query.prototype.on=function (eventName,callback) {
+        if (eventName=='click'){
+            // this.eles.map(function (ele){
+            //     ele.onclick=function () {
+            //     callback();
+            // }
+            // }
+            // );
+            this.eles.map(function (ele) {
+                ele.addEventListener('click',callback)
+            })
+        }else if (eventName==''){
+
+        }
+        return this;//链式操作
+    };
+    $('#div1').css('background','red').on('click',function () {
+        console.log(11111111);
+    });
+    $('.div2').css({background:'green',fontSize:20+'px'}).on('click',function () {
+        alert('hahahaahahah')
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // 对象
+        var per1 = {
+          name:'zs',
+          age:20,
+          say:function () {
+              
+          }  
+        };
+        // 类 具有相同实行 方法的对象集合
+        属性写在构造函数中
+        方法写在原型下
+        function Person(age) { //构造函数
+            // this.name=name;
+            this.age=age;
+            // this.say=function () {
+            //     //也可以，但new100个人会有100个方法
+            // }
+        }
+        Person.prototype.name='zs';//属性写在原型下无法传参
+        Person.prototype.father={
+            name:'zx'
+        };//引用数据类型，改一个都改
+        // var p1=new Person('zs',13);
+
+        Person.prototype.say=function () {
+            console.log(this.name+'dasdad');
+        };
+        // p1.say();
+        var p1=new Person(20);
+        var p2=new Person(30);
+
+        console.log(p1);
+        console.log(p2);
+        console.log(p1.father);
+        console.log(p2.father);
+        p1.father.name='zxxx';
+        console.log(p1.father);
+        console.log(p2.father);
+
+    </script>
+</body>
+</html>

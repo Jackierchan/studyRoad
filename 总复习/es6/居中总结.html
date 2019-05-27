@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>居中总结</title>
+    <style>
+        #div1{
+            width: 500px;
+            height: 500px;
+            background: #00bfae;
+            margin: 0 auto;
+            /*display: flex;*/
+            /*align-items: center;*/
+            /*justify-content: center;*/
+        }
+        #div2{
+            width: 250px;
+            height: 250px;
+            background: #63a35c;
+            margin: 0 auto;
+            line-height: 250px;
+            text-align: center;
+        }
+        #ddd{
+            height: 500px;
+        }
+        #div3{
+            width: 500px;
+            height: 500px;
+            background: #00bfae;
+            position: relative;
+        }
+        #div4{
+            width: 250px;
+            height: 250px;
+            background: #63a35c;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /*margin: -125px 0 0 -125px;*/
+            transform:translate(-50%,-50%);
+            line-height: 250px;
+            text-align: center;
+        }
+        #div5{
+            width: 500px;
+            height: 500px;
+            background: #00bfae;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        #div6{
+            display: inline-block;
+            width: 250px;
+            height: 250px;
+            background: #63a35c;
+            line-height: 250px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        pppppppppp
+    </div>
+</div>
+<div id="ddd">
+<div id="div3">
+    <div id="div4">
+        qqqqqqqqqq
+    </div>
+</div>
+</div>
+<div id="div5">
+    <div id="div6">
+        mmmmmmmmmmm
+    </div>
+</div>
+</body>
+</html>

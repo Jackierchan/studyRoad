@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(arr,b) in arr">
+            {{arr}}
+            {{msg}}
+            num：{{b}}
+        </li>
+        <li v-for="(arr,b) in stylist">
+            名字是：{{arr.name}}年龄是：{{arr.age}}
+            {{b}}
+        </li>
+        <li v-for="(arr,b,c) in obj">
+            {{arr}} {{b}} {{c}}
+
+        </li>
+        <li v-for="(a,b) in sort">
+            {{a.name}}  {{a.age}}  {{b}}
+        </li>
+    </ul>
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            arr:[1,2,3,4,5,6],
+            msg:'hello world',
+            stylist:[
+                {
+                    name:'zs',
+                    age:12
+                },
+                {
+                    name:'ls',
+                    age:13
+                },
+                {
+                    name:'ww',
+                    age:15
+                },
+                {
+                    name:'zl',
+                    age:16
+                },
+                     ],
+            obj:{
+                name:'haha',
+                age:88,
+                sex:'nv'
+            }
+        },
+        computed:{
+            sort(){
+                return this.stylist.sort(
+                    function (a,b) {
+                        return a.age-b.age
+                    }
+                )
+            }
+        }
+        }
+    )
+</script>
+</body>
+</html>

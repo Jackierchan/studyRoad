@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr1=[1,2,3,4,5];
+    var [a,b,c,d,e]=arr1;
+    console.log(a,b,c,d,e);
+    var obj={
+        name:'zss',
+        age:20
+    };
+    var {name,age,sex='nv'}=obj;
+    console.log(name,age,sex);
+
+    var {name:name1,age:age1}=obj;
+    console.log(name1,age1);//解构出来的变量可以更改名称
+
+    var a=10,b=20;
+    [a,b]=[b,a];
+    console.log(a,b);
+
+    var obj1={
+        name:'dgdrh',
+        age:80,
+        classmates:{
+            name1:'xiaoqiang',
+            name2:'xiaoming',
+
+        }
+    };
+    var {classmates:{name1,name2}}=obj1;
+        console.log(name1,name2);
+
+
+        var arr2=[1,2,3,4,5,6];
+        var arr3=[...arr2,1111];
+        console.log(arr3);
+</script>
+</body>
+</html>

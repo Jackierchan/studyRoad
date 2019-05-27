@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    setTimeout(
+        function () {
+            console.log(1)
+        },0
+    );
+    console.log('end')
+    1:js解释器先扫描同步代码和异步代码
+    2：把异步代码抛给事件循环
+    3：当前线程必须空闲，同时满足触发条件
+</script>
+</body>
+</html>

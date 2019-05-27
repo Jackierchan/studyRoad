@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #div1{
+            margin: 0 auto;
+            width: 750px;
+            height: 500px;
+            position: relative;
+        }
+        #div2{
+            position: relative;
+        }
+        #div1 img{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: none;
+        }
+        ul{
+            position: absolute;
+            right: 0px;
+            bottom: 20px;
+        }
+        ul li,span{
+            float: left;
+            list-style: none;
+            background: black;
+            color: white;
+            margin-right: 20px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+        }
+        #div3{
+            position: absolute;
+            left: 40px;
+            bottom: 20px;
+        }
+        #div2 .aa{
+            display: block;
+        }
+        ul .bb{
+            background: #00bfae;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <img class="aa" src="../img/1.jpg" alt="">
+        <img src="../img/5.jpg" alt="">
+        <img src="../img/3.jpg" alt="">
+        <img src="../img/4.jpg" alt="">
+    </div>
+    <ul>
+        <li class="bb">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div id="div3">
+        <span id="span1"><</span>
+        <span id="span2">></span>
+    </div>
+</div>
+<script>
+    var ali=document.getElementsByTagName('LI');
+    var aimg=document.getElementsByTagName('IMG');
+    var osp1=document.getElementById('span1');
+    var osp2=document.getElementById('span2');
+    var odiv1=document.getElementById('div1');
+    var nowindex=0;
+    for(let i=0;i<ali.length;i++) {
+        ali[i].onmousemove = function () {
+            // this.index=i;
+            // console.log(this.index);
+            nowindex = i;
+            f();
+        };
+        osp2.onclick = function () {
+            nowindex++;
+            if (nowindex >= ali.length) {
+                nowindex = 0;
+            }
+            f();
+        };
+        osp1.onclick = function () {
+            nowindex--;
+            if (nowindex < 0) {
+                nowindex = 3;
+            }
+            f();
+        };
+        function f() {
+            for (var j = 0; j < ali.length; j++) {
+                ali[j].className = '';
+                aimg[j].className = ''
+            }
+            ali[nowindex].className = 'bb';
+            aimg[nowindex].className = 'aa';
+        }
+     }
+     function f1() {
+         timer=setInterval(
+             function () {
+                 // nowindex++;
+                 // if (nowindex >= ali.length){
+                 //     nowindex=0;
+                 // } else if(nowindex<0){
+                 //     nowindex=3
+                 // }
+                 // f();
+                 // console.log(1111);
+                 osp2.onclick();
+             },2000);
+     }
+     f1();
+        odiv1.onmouseout=function () {
+            f1();
+        };
+        odiv1.onmousemove=function () {
+            clearInterval(timer);
+        };
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    数据类型
+        基本数据类型
+            string number boolean null undefined symbol
+            null getElementById('') 找不到
+            undefined 定义但没赋值
+                        数组越界
+                        对象中没有的属性
+                        函数无返回值
+
+        引用数据类型
+            array object
+
+            typeof 判断数据类型
+
+            typeof 'abc'=>''string''
+            typeof 123=>''number''
+            typeof true=>''boolean''
+            typeof null=>''object''
+            typeof undefined=>''undefined''
+
+            typeof [1,2,3]=>''object''
+            typeof {name:'lisi'}=>''object''
+
+            var arr=[1,2,3];
+            <!--var arr=new Array();-->
+
+            Array.isArray(arr);
+            arr instanceof Array  判断数组是否是Array的实例化对象
+            arr.constructor == Array; 判断arr的构造函数是否是数组
+            string下的方法
+            Array下的方法
+            数组合并：
+    <script>
+        var arr1=[1,2,30];
+        var arr2=[4,5,6,8];
+        var arr=arr1.concat(arr2,[1,2,3,4],111);
+        console.log(arr);
+        console.log(arr.constructor== Array);
+
+        console.log(Array.isArray(arr));
+        console.log(arr instanceof Object);
+    </script>
+</body>
+</html>

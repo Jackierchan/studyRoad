@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function aa(num1,num2) {
+        console.log(this,num1,num2);
+        console.log(this.name);
+    }
+    aa(1,2);
+    var obj={
+        name:'张三'
+    };
+    //改变this指向的三种方法
+    aa.call(obj,1,2);
+    // aa.apply(obj,[3,4]);
+    // aa.bind(obj,5,6)();
+</script>
+</body>
+</html>

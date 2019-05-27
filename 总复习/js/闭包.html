@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<button id="btn">click</button>
+<script>
+    var obtn=document.getElementById('btn');
+    for(var i=0;i<5;i++) {
+        var a=0;
+        obtn.onclick=function () {
+            console.log(i);
+        }
+      setTimeout(function(){
+
+
+            console.log(i);
+
+
+          },1000)
+    }
+    console.log(i);
+    console.log(a);
+    // var f=function f1(val) {
+    //     var a=20;
+    //     return function f2() {
+    //         a++;
+    //         console.log(a,val);
+    //     }
+    // };
+    // f1('hello')();
+    //     f('hello')();
+    //     f('hello')();
+
+    var f1=(function f1(val) {
+        var a=20;
+        return function f2() {
+            a++;
+            console.log(a,val);
+        }
+    })('hhhhhh');
+    f1();
+</script>
+</body>
+</html>

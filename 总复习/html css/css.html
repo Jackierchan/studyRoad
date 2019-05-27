@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            transition: width 2s linear 1s;
+        }
+    </style>
+</head>
+<body>
+    1.css选择器
+    id选择器，class选择器，标签选择器，
+    后代选择器 div p
+    子代选择器 div>p
+    分组选择器 div,p，
+    伪类选择器 div:hover，
+    伪对象选择器 div::after
+    属性选择器 div[id='']
+    选中下一个兄弟 div+p
+    选择下边所有兄弟 div~p
+
+    2.css中的position
+    static 默认定位
+    absoluted绝对定位 相对于最近的父元素定位，定位后空间释放
+    relative 相对定位 相对于自己定位，定位后空间不释放
+    fixed 固定定位 相对于浏览器定位，定位后空间释放
+    sticky 吸顶定位 空间释放
+    3.display
+    inline block inline-block table table-cell flex
+
+    4.float 清除浮动
+    overflow：hidden 溢出隐藏
+    给父元素加高
+    clear:both
+    .clearfix{
+        content:'';
+        display:block;
+        clear:both;
+    }
+
+
+    5.css盒模型
+     1.标准盒模型
+            width:100px;
+            width=元素的宽
+     2.怪异盒模型
+        ie6及其以下版本浏览器 ，不加doctype ，表现为怪异盒模型
+        width=content.width+padding+border
+        标准盒模型<=>怪异盒模型  box-sizing
+        content-box  border-box
+
+
+    6.外边距合并
+        父子  取外边距大的作为margin
+        1.给父元素加overflow：hidden
+        2.给父元素加border
+        3.给父元素或子元素加float或position
+        兄弟
+        1.子元素外套一个带overflow:hidden的 div
+
+    7.BFC
+    8.权重值
+        ！important最高
+        内联  权值1000
+        id   权值100
+        class :hover  属性选择器  权值10
+        标签 伪元素选择器  权值1
+        100个class没有id大，以下同理
+    9.重排 重绘
+
+
+
+    <div>11111111111</div>
+</body>
+</html>

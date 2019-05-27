@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn1">click</button>
+<script>
+    var obtn=document.getElementById('btn1');
+    obtn.onclick=function () {
+        var oscript=document.createElement('script');
+        oscript.src='./1.js';
+        document.body.appendChild(oscript);
+
+    };
+
+</script>
+</body>
+</html>

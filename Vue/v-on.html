@@ -12,36 +12,38 @@
         #div2{
             width: 100px;
             height: 100px;
-            background: black;
+            background: green;
         }
     </style>
 </head>
 <body>
 <div id="div3">
-    <button @click="click1">click</button>
-    {{msg}}
-<div id="div1" @click="fun(99999)">
-    <div id="div2" @click.stop="f(88888)">
+    <button @click="click1" v-text="'click'"></button>
+    <br>
+        {{msg}}
+    <div id="div1" @click="fun(99999)">
+        <div id="div2" @click.stop="f(88888)" v-html="msg1">
 
+        </div>
     </div>
-</div>
 </div>
 <script src="vue.js"></script>
 <script>
    var re=new Vue({
        el:'#div3',
        data:{
-msg:0
+            msg:1,
+            msg1:'<h2>1111111</h2>'
        },
        methods:{
            fun(a){
               console.log(a) ;
-   },
+           },
            f(b){
                console.log(b)
            },
            click1(){
-              this.msg += 2
+              this.msg += this.msg
            }
        }
 

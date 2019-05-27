@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 100px;
+            background: red;
+        }
+        #div2{
+            width: 100px;
+            height: 50px;
+            background: #00bfae;
+        }
+        #div3{
+            width: 50px;
+            height: 25px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+</div>
+<script>
+    // 事件三要素：事件源，事件处理函数，事件
+    var odiv1=document.getElementById('div1');
+    var odiv2=document.getElementById('div2');
+    var odiv3=document.getElementById('div3');
+
+    odiv1.onclick=function (e) {
+        console.log('我是div1');
+        console.log(e.target);
+
+    };
+    odiv2.onclick=function (e) {
+        console.log('我是div2');
+        e.stopPropagation();//阻止冒泡
+    }
+
+    // odiv1.addEventListener('click',function () {
+    //     console.log('div1捕获');
+    // },true);
+    // odiv2.addEventListener('click',function () {
+    //     console.log('div2捕获');
+    // },true);
+    // odiv3.addEventListener('click',function () {
+    //     console.log('div3捕获');
+    // },true);
+    // odiv1.addEventListener('click',function () {
+    //     console.log('div1冒泡');
+    // },false);
+    // odiv2.addEventListener('click',function () {
+    //     console.log('div2冒泡');
+    // },false);
+    // odiv3.addEventListener('click',function () {
+    //     console.log('div3冒泡');
+    // },false);
+</script>
+</body>
+</html>

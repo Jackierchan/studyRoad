@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li{
+            background: #00bfae;
+
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+<script>
+    var oli=document.getElementsByTagName('LI');
+    for (var i=0;i<oli.length;i++){
+        oli[i].onclick=function () {
+            setTimeout(()=> {
+                console.log(this);
+            },1000)
+        }
+    }
+    function b(x,y,z) {
+        console.log(x,y,z);
+
+        console.log(arguments);
+        console.log(arguments.callee);
+    }
+    b(1,1,1);
+    let a=(x,y,z)=>{
+        console.log(x,y,z);
+        // console.log(arguments);//报错
+    };
+    a(1,2,3);
+    let fff= (a,...rest) => {
+        console.log(a,rest);
+    };
+    fff(2,2,3,4);
+</script>
+
+</body>
+</html>

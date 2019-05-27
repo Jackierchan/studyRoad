@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Person(name,age) {
+        this.name=name;
+        this.age=age;
+    }
+    Person.prototype.say=function () {
+        console.log(this.name+'  is say........')
+    };
+    //在构造函数中通过 父类.call改变this指向继承父类
+    // function Coder(name,age) {
+    //     Person.call(this,name,age);
+    // }
+    //
+    // Coder.prototype=new Person();
+    // //子类.prototype = new 父类实例化  继承方法
+    // Coder.prototype.constructor=Coder;
+    // //prototype.constructor需要改回来  改成子类
+    // console.log(Coder.prototype.constructor);
+    // var coder1=new Coder('zs',20);
+    // console.log(coder1);
+    // coder1.say();
+
+    class Coder1 extends Person{
+        constructor(name,age,sex){
+            super(name,age);
+            this.Sex=sex;
+        }
+
+    }
+    var coder=new Coder1('xiaoming',11,'nv');
+    console.log(coder);
+    coder.say();
+</script>
+</body>
+</html>
