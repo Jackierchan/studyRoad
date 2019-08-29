@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    
 </head>
 <body>
+    <button id='btn1'>click</button>
 <script>
     function throttle(fn,delay){
         var starttime=0;
@@ -23,6 +25,21 @@
             console.log(Math.random());
         console.log(this);
         },1000);
+
+    // var obtn =document.getElementById('btn1');
+    // var fangdou=function(fn,delay){
+    //     var timer=null;
+    //     return function(){
+    //         clearTimeout(timer);
+    //        timer= setTimeout((function(){
+    //             fn.call(this);
+    //         }).bind(this),delay)
+    //     }
+    // }
+    // obtn.onclick=fangdou(function(){
+    //     console.log(1111);
+    //     console.log(this);
+    // },300)
 </script>
 
 </body>

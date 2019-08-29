@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //第一种
+    //   let ary = [2,3,4,8,7,5,4, 2, 2, 1, 2, 32, 1],
+    // let newary=Array.from(new Set(ary));
+    // consolo.log(newary);
+//第二种
+    // var arr=[1,4,4,6,6,7,8,9,9,,2,6,7,2];
+    // function quchong(arr){
+    //   var newarr=[];
+    //   for (var i = 0; i < arr.length; i++) {
+    //      if(newarr.indexOf(arr[i])==-1){
+    //       newarr.push(arr[i]);
+    //      }
+    //   }
+    //   return newarr;
+    // }
+    // quchong(arr);
+//第三种
+    // var arr=[1,4,4,6,6,7,8,9,9,,2,6,7,2];
+    //     function quchong(arr){
+    //       var newarr=[];
+    //       for (var i = 0; i < arr.length; i++) {
+    //          if(arr.indexOf(arr[i])==i){
+    //           newarr.push(arr[i]);
+    //          }
+    //       }
+    //       return newarr;
+    //     }
+    //     quchong(arr);
+//第四种
+// console.log(!true)
+// var arr=[1,4,4,6,6,7,8,9,9,,2,6,7,2];
+//         function quchong(arr){
+//             let obj = {};
+//             let newarr=[];
+//             for(let i=0;i<arr.length;i++){
+//                 if(obj.arr[i]){
+                  
+//                 }else{
+//                     obj.arr[i]==1;
+//                     newarr.push(arr[i])
+//                 }
+//             }
+//             return finalResult;
+//         }
+// quchong(arr);
+//第五种
+let arr=[1,2,3,3,3,4,6,7,1,8,9,3];
+    function quchong(arr){
+    	arr.sort();
+    	let newarr=[];
+    	newarr[0]=arr[0]
+    	for(let i=1;i<arr.length;i++){
+    		if(newarr[newarr.length-1]!=arr[i]){
+    			newarr.push(arr[i]);
+    		}
+    	}
+    	return newarr;
+    }
+   console.log(quchong(arr));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj={
+            name:'zs',
+            aa:{
+                bb:1
+            }
+        }
+        function deepclone(obj){
+            let newobj=Array.isArray(obj)== 'ture' ? []:{};
+            console.log(newobj);
+            for(let key in obj){
+                if(typeof obj[key]=='object'){
+                    newobj[key]=deepclone(obj[key]);
+                }else{
+                    newobj[key]=obj[key];
+                }
+            }
+            return newobj;
+        }
+       let cloneobj= deepclone(obj);
+       console.log(obj);
+       console.log(cloneobj);
+       cloneobj.name='ls';
+       cloneobj.aa.bb=10;
+       console.log(obj);
+       console.log(cloneobj);
+    </script>
+</body>
+</html>

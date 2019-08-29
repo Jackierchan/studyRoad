@@ -22,6 +22,22 @@
             console.log(this);
         },600);
     //this指向问题，
+
+    function jieliu(fn,delay){
+        var start=null;
+        return function(){
+            var now = new Date();
+            // console.log(now -start)
+            if(now -start>delay){
+                fn()
+                start = now
+            }
+        }
+    }
+    document.onmousemove=jieliu(()=>{
+        console.log(1111)
+        console.log(this)
+    },2000)
 </script>
 </body>
 </html>
