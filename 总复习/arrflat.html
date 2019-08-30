@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr=[1,2,3,4,[1,2,3],4,[3,[3,[1,2,3,4]]]];
+        function arrFlat(arr){
+            let newarr=[];
+            for(let i=0;i<arr.length;i++){
+                if(Array.isArray(arr[i])){
+                    // newarr=newarr.concat(arr[i]);
+                    newarr=newarr.concat(arrFlat(arr[i]));
+                }else{
+                    newarr.push(arr[i]);
+                }
+            }
+            return newarr;
+        }
+        arr=arrFlat(arr);
+        console.log(arr)
+    </script>
+</body>
+</html>

@@ -18,7 +18,7 @@
             let newobj=Array.isArray(obj)== 'ture' ? []:{};
             console.log(newobj);
             for(let key in obj){
-                if(typeof obj[key]=='object'){
+                if(obj[key] != null && typeof obj[key]=='object'){
                     newobj[key]=deepclone(obj[key]);
                 }else{
                     newobj[key]=obj[key];
