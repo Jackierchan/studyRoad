@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj={
+            name:'zs'
+        }
+        function fn(){
+            console.log(this.name);
+        }
+        Function.prototype.mybind=function(newthis){
+            var arg=Array.prototype.slice.call(arguments,1);
+            var _this=this;
+            var bind=function(){
+                return _this.apply(newthis,arg.concat(Array.prototype.slice.call(arguments)))
+            }
+            var f=function(){};
+            f.prototype=_this.prototype;
+            bind.prototype=new f();
+            return bind
+        }
+        var result=fn.mybind(obj,[1,2]);
+        result('sssss');
+    </script>
+</body>
+</html>
