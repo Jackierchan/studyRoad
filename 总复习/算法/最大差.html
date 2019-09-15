@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function aa(arr){
+    let arr1=arr.sort((pre,next)=>{
+                  return pre-next
+                  });
+    let result=arr1[arr1.length-1]-arr1[0]
+    console.log(result);
+    return result;
+}
+var arr=[1,100,1991,15,22];
+aa(arr);    
+console.log(null == undefined)
+console.log(null === undefined)
+
+function replaceSpace(str)
+{
+for(let value of str){
+ str=str.replace(' ','%20');
+
+}
+    console.log(str)
+    return str
+}
+replaceSpace('wqqwdq dawdq dfa')
+
+
+
+function FindNumsAppearOnce(array)
+{
+    // write code here
+    // return list, 比如[a,b]，其中ab是出现一次的两个数字
+    let arr=[]
+    for(let i=0;i<array.length;i++){
+        for(let j=i+1;j<array.length;j++){
+            if(array[i]==array[j]){
+                arr.push(array[i])
+            }
+        }
+    }
+    console.log(arr)
+    return arr
+}
+FindNumsAppearOnce([2,2,5,4,6,4,])
+    </script>
+</body>
+</html>

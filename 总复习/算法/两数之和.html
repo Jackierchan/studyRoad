@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // function fn(arr,num){
+    //     for(let i=0;i<arr.length;i++){
+    //         for(let j=i+1;j<arr.length-1;j++){
+    //             if(arr[i]+arr[j]==num){
+    //                 console.log(i,j);
+    //             }else{
+    //                 console.log([])
+    //             }
+    //         }
+    //     }
+    // }
+
+
+    // function fn(arr,num){
+    //     for(let i=0;i<arr.length;i++){
+    //         if(arr.indexOf(num-arr[i])==-1){
+    //             // console.log(arr[i],arr[arr.indexof(num-arr[i])]);
+    //         }else{
+    //             console.log(arr[i],arr[arr.indexOf(num-arr[i])]);
+    //         }
+    //     }
+    // }
+    
+    
+    
+
+    function fn(arr,num){
+        let map=new Map();
+        console.log(arr);
+        arr.forEach((item,index)=>{
+            map.set(item,index)
+        })
+        console.log(map);
+        for(let i=0;i<arr.length;i++){
+            
+            if(map.has(num-arr[i])){
+ 
+                console.log(num-arr[i],arr[i]);
+            }
+        }
+    }
+    function fn1(arr,num){
+        arr=arr.sort((a,b)=>{
+            return a-b
+        })
+        //nlog(n)
+        let i=0;
+        let j=arr.length - 1;
+        for(;i<j;){
+            if(arr[i]+arr[j] == num){
+                console.log(arr[i],arr[j]);
+                // i++;j--;
+                // if(arr[i]==arr[i+1]){
+                //     i++;
+                // }
+            }else if(arr[i]+arr[j] > num){
+                j--;
+            }else{
+                i++;
+            }
+        }
+        //n
+
+    }
+    // fn1([1,2,2,3,8,8,7,9],10);
+    function fn2(arr,num){
+        let m=new Map();
+        for(let i=0;i<arr.length;i++){
+            if(m.has(num-arr[i])){
+                console.log(arr[i],num-arr[i]);
+            }else{
+                m.set(arr[i],i)
+            }
+        }
+        console.log(m)
+    }
+    fn2([1,3,2,9,54,5,7,8],10);
+    </script>
+</body>
+</html>

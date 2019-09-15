@@ -27,11 +27,13 @@
         <div id="div3"></div>
     </div>
 </div>
+<button id='btn1'>   click</button>
 <script>
     // 事件三要素：事件源，事件处理函数，事件
     var odiv1=document.getElementById('div1');
     var odiv2=document.getElementById('div2');
     var odiv3=document.getElementById('div3');
+    var btn=document.getElementById('btn1');
 
     odiv1.onclick=function (e) {
         console.log('我是div1');
@@ -61,6 +63,13 @@
     // odiv3.addEventListener('click',function () {
     //     console.log('div3冒泡');
     // },false);
+
+    btn.addEventListener('click',function(){
+    console.log(1);
+},false);
+btn.addEventListener('click',function(){
+    console.log(2);
+},false);
 </script>
 </body>
 </html>
