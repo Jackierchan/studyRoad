@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function transObj (orignalObj,index=1){
+    // 请在这里写出你的答案,你也可以增加函数的接收的参数，但是不要修改while里的代码
+    let res={};
+    for(let key in orignalObj){
+       
+        if(typeof orignalObj[key]=='object'){
+            index++;
+            res[key]=transObj(orignalObj[key],index);
+        }else{
+            let str='-';
+            res[key]=str.repeat(index)+orignalObj[key]
+        }
+    }
+    return res;
+}
+console.log(transObj({"name":"a","c":{"name":"c","b":{"name":"b"}}}))
+    </script>
+</body>
+</html>

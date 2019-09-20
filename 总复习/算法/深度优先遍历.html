@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+let tree={
+    value:1,
+    left:{
+        value:2,
+        left:{
+            value:3
+        },
+        right:{
+            value:5
+        }
+    },
+    right:{
+        value:4,
+        left:{
+            value:6
+        }
+    }
+}
+//1,2,3,5,4,6前序遍历
+//非递归
+function deepFirstSearch(tree){
+    let stack=[];
+    stack.push(tree);
+    while(stack.length){
+        let node=stack.pop();
+        console.log(node.value);
+        if(node.right){
+            stack.push(node.right);
+        }
+        if(node.left){
+            stack.push(node.left);
+        }
+    }
+}
+deepFirstSearch(tree);
+</script>    
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+let tree={
+    value:1,
+    left:{
+        value:2,
+        left:{
+            value:3
+        },
+        right:{
+            value:5
+        }
+    },
+    right:{
+        value:4,
+        left:{
+            value:6
+        }
+    }
+}
+function widthFirstSearch(tree){
+    let queue=[];
+    queue.push(tree);
+    while(queue.length){
+        let node=queue.shift();
+        console.log(node.value);
+        if(node.left){
+            queue.push(node.left);
+        }
+        if(node.right){
+            queue.push(node.right);
+        }
+    }
+}
+widthFirstSearch(tree);
+
+function widthFirstSearch1(tree){
+    let queue=[];
+    queue.push(tree);
+    let point=0;
+    while(point<queue.length){
+        let node=queue[point];//用指针代替数组方法
+        point++;
+        console.log(node.value);
+        if(node.left){
+            queue.push(node.left);
+        }
+        if(node.right){
+            queue.push(node.right);
+        }
+    }
+}
+widthFirstSearch1(tree);
+</script>    
+</body>
+</html>

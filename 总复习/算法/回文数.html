@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var isPalindrome1 = function(x) {
+            if(x>=0){
+                let left=0;
+               let flag=0;
+
+                let arr=String(x).split('');
+                let right=arr.length-1;
+                for(;left<=right;left++,right--){
+                    if(arr[left]==arr[right]){
+                        flag++;
+                    }else{
+                        flag--;
+                    }
+                }
+                console.log(flag);
+                if(flag==Math.ceil(arr.length/2)){
+                    return true
+                }else{
+                    return false
+                }
+            }else{
+                return false
+            }
+        };
+        console.log(isPalindrome1(142444421));
+
+        var isPalindrome2 = function(x) {
+           return String(x)===String(x).split('').reverse().join('')
+        };
+        console.log(isPalindrome2(11221));
+
+        var isPalindrome3 = function(x) {
+            let y=x;
+            if(x>=0){
+                if(x!=0 && x%10==0){
+                    return false
+                }
+                let result=0,pop;
+                while(x!=0){
+                    pop=x%10;
+                    x=parseInt(x/10);
+                    
+                    result=result*10+pop;
+                }
+                return y===result
+            }else{
+                return false
+            }
+        };
+        console.log(isPalindrome3(121));
+
+        var isPalindrome4 = function(x) {
+            if(x>=0){
+                if(x!=0 && x%10==0){
+                    return false
+                }
+                let result=0;
+                while(x>result){
+                    result=result*10+x%10;
+                    x=parseInt(x/10);
+                }
+                return result==x||parseInt(result/10)==x
+            }else{
+                return false
+            }
+        };
+        console.log(isPalindrome4(1221));
+    </script>
+</body>
+</html>
