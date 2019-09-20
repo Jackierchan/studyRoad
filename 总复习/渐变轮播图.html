@@ -83,8 +83,6 @@
     }
     for(let i=0;i<ali.length;i++) {
         ali[i].onmousemove = function () {
-            // this.index=i;
-            // console.log(this.index);
             nowindex = i;
             f();
         };
@@ -111,19 +109,11 @@
         aimg[nowindex].style.zIndex=++zindex;
         aimg[nowindex].style.opacity=0;
         animate(aimg[nowindex],{opacity:100});
-        // console.log(1111)
+        
     }
     function f1() {
         timer=setInterval(
             function () {
-                // nowindex++;
-                // if (nowindex >= ali.length){
-                //     nowindex=0;
-                // } else if(nowindex<0){
-                //     nowindex=3
-                // }
-                // f();
-                // console.log(1111);
                 osp2.onclick();
             },2000);
     }
