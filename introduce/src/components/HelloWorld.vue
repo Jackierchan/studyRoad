@@ -1,7 +1,7 @@
 <template>
 <div>
-   <div id="main" style="width: 600px;height:400px;" ref="chart"></div>
-   <el-transfer v-model="value" :data="data"></el-transfer>
+   <!-- <div id="main" style="width: 600px;height:400px;" ref="chart"></div> -->
+   <!-- <el-transfer v-model="value" :data="data"></el-transfer>
    <el-carousel height="150px">
       <el-carousel-item v-for="item in 4" :key="item">
         <h3 class="small">{{ item }}</h3>
@@ -13,10 +13,35 @@
     <a-timeline-item>Solve initial network problems 2015-09-01</a-timeline-item>
     <a-timeline-item>Technical testing 2015-09-01</a-timeline-item>
     <a-timeline-item>Network problems being solved 2015-09-01</a-timeline-item>
-  </a-timeline>
+  </a-timeline> -->
+<div>
+  <!-- <input id="foo" type="text" width="500px" value="大家好，我是teamchen"> -->
+  <el-input
+  placeholder="请输入内容"
+  id="foo"
+  v-model="input">
+</el-input>
+  <button class="btn" data-clipboard-action="copy" data-clipboard-target="#foo"><i class="el-icon-sugar"></i></button>
+</div>
+<!-- <input type=‘button‘ value=拷贝 οnclick=document.execCommand(’copy‘)> -->
+<br>
+<div>
+<!-- Target -->
+<!-- <textarea id="bar">Mussum ipsum cacilds...</textarea><br> -->
+<el-input
+  type="textarea"
+  :rows="2"
+  placeholder="请输入内容"
+  id="bar"
+  v-model="textarea">
+</el-input>
+<!-- Trigger -->
+<button class="btn1" data-clipboard-action="cut" data-clipboard-target="#bar">
+    Cut to clipboard
+</button>
+</div>
 
-
-   <div>
+   <!-- <div>
     <a-menu
       style="width: 256px"
       :default-selected-keys="['1']"
@@ -77,7 +102,7 @@
         </a-menu-item>
       </a-sub-menu>
     </a-menu>
-  </div> 
+  </div>  -->
 </div>
 </template>
 
@@ -86,9 +111,10 @@
 import echarts from 'echarts/lib/echarts'
 // 引入柱状图
 import 'echarts/lib/chart/bar'
-
+import ClipboardJS from 'clipboard'
 export default {
   name: 'hello',
+
   data () {
      const generateData = () => {
         const data = [];
@@ -103,11 +129,33 @@ export default {
       };
     return {
       data: generateData(),
+      textarea:'',
+      input:'',
       value: [1, 4],
       msg: 'Welcome to Your Vue.js App',
        current: ['mail'],
       openKeys: ['sub1'],
     }
+  },
+  created(){
+    var clipboard = new ClipboardJS('.btn');
+    var clipboard1 = new ClipboardJS('.btn1');
+
+
+      clipboard.on('success', function(e) {
+        console.log(e);
+      });
+        
+      clipboard.on('error', function(e) {
+        console.log(e);
+      });
+        clipboard1.on('success', function(e) {
+        console.log(e);
+      });
+        
+      clipboard1.on('error', function(e) {
+        console.log(e);
+      });
   },
   mounted(){
     this.drawLine();
