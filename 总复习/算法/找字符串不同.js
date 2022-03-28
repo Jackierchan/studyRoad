@@ -1,0 +1,6 @@
+var findTheDifference = function(s, t) {
+    for(let item of s){
+        t= t.replace(item,'')
+    }
+    return t
+};
