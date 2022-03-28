@@ -17,7 +17,7 @@ var findKthLargest = function(nums, k) {
     right.push(arr[i]) //放在右边
     }
     }
-    return sortArray(left).concat(current,sortArray(right));
+    return sortArray(left).concat(current,sortArray(right));a
 
     };
     return sortArray(nums)[nums.length-k+1] 
