@@ -22,3 +22,7 @@
 // foo2([1,2,3],4)
 
 // const objA={a:1}
+import { a } from './a'
+setTimeout(function(){
+    console.log('aa',a)
+},1000)
