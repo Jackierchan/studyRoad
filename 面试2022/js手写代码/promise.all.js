@@ -27,7 +27,6 @@ function promiseAll(promises) {
     })
   }
   
-a
 
 
 // function PromiseAll(promises) {
