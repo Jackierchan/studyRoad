@@ -15,14 +15,14 @@ var MyStack = function() {
     * @return {number}
     */
     MyStack.prototype.pop = function() {
-    while(this.q1.length>1){
-    this.q2.push(this.q1.shift())
-    }
-    let ans = this.q1.shift()
-    while(this.q2.length){
-    this.q1.push(this.q2.shift())
-    }
-    return ans
+        while(this.q1.length>1){
+             this.q2.push(this.q1.shift())
+        }
+        let ans = this.q1.shift()
+        while(this.q2.length){
+             this.q1.push(this.q2.shift())
+        }
+        return ans
     
     };
     
@@ -30,14 +30,15 @@ var MyStack = function() {
     * @return {number}
     */
     MyStack.prototype.top = function() {
-    return this.q1[this.q1.length-1]
+        return this.q1[this.q1.length-1]
+        // return this.q1.slice(-1)[0]; 从后边数第一个
     };
     
     /**
     * @return {boolean}
     */
     MyStack.prototype.empty = function() {
-    return this.q1.length == 0?true:false
+        return this.q1.length == 0?true:false
     };
     
     /**

@@ -1,14 +1,17 @@
 //俩俩交换，大的放在后面，第一次排序后最大值已在数组末尾
-function bubleSort(arr) {
+function bubbleSort(arr) {
     var len = arr.length;
-    for (let outer = len ; outer >= 2; outer--) {
-    for(let inner = 0; inner <=outer - 1; inner++) {
-    if(arr[inner] > arr[inner + 1]) {
-    let temp = arr[inner];
-    arr[inner] = arr[inner + 1];
-    arr[inner + 1] = temp;
-    }
-    }
+    for (var i = 0; i < len; i++) {
+        for (var j = 0; j < len - 1 - i; j++) {
+            if (arr[j] > arr[j+1]) {        //相邻元素两两对比
+                var temp = arr[j+1];        //元素交换
+                arr[j+1] = arr[j];
+                arr[j] = temp;
+            }
+        }
     }
     return arr;
-    }
+}
+
+// 时间复杂度O(n^2)
+// 空间复杂度也就为 O(1)

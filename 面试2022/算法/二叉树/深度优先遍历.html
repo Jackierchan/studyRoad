@@ -26,8 +26,25 @@ let tree={
         }
     }
 }
+// 1-1方法一：递归方式，多子节点
+function deepFirstSearch(node, nodeList) {
+        if (node) {
+            nodeList.push(node);
+            var children = node.children;
+            for (var i = 0; i < children.length; i++)
+                //每次递归的时候将 需要遍历的节点 和 节点所存储的数组nodeList传下去
+                deepFirstSearch(children[i], nodeList);
+        }
+        return nodeList;
+    }
+    let root = document.getElementById('root')
+    var nodeList = deepFirstSearch(root, [])
+    console.log(nodeList);
+
 //1,2,3,5,4,6前序遍历
-//非递归
+//非递归，深度优先的遍历结果与前序遍历相同
+//深度优先主要是利用栈，先压右子树，再压左子树，主要利用栈的先进后出
+// 1-1方法二：
 function deepFirstSearch(tree){
     let stack=[];
     stack.push(tree);

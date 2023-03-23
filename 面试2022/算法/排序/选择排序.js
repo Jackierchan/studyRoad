@@ -1,12 +1,19 @@
-//找到数组中最大的元素，与数组最后一位元素交换
-function selectSort(arr) {
+//找最小的，放最左边，直接交换
+function selectionSort(arr) {
     var len = arr.length;
-    for(let i = 0 ;i < len - 1; i++) {
-    for(let j = i ; j<len; j++) {
-    if(arr[j] < arr[i]) {
-    [arr[i],arr[j]] = [arr[j],arr[i]];
+    var minIndex, temp;
+    for (var i = 0; i < len - 1; i++) {
+        minIndex = i;
+        for (var j = i + 1; j < len; j++) {
+            if (arr[j] < arr[minIndex]) {     //寻找最小的数
+                minIndex = j;                 //将最小数的索引保存
+            }
+        }
+        temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
     }
-    }
-    }
-    return arr
-    }
+    return arr;
+}
+    // 时间复杂度O(n^2)
+// 空间复杂度也就为 O(1)

@@ -4,7 +4,8 @@ Function.prototype.MyBind = function(context){
     var args = Array.prototype.slice.call(arguments, 1)
      // 类数组转数组
     var temp = function () {}
-    // 直接将 fBound.prototype = this.prototype，我们直接修改 fBound.prototype 的时候，也会直接修改绑定函数的 prototype。这个时候，我们可以通过一个空函数来进行中转
+    // 直接将 fBound.prototype = this.prototype，我们直接修改 fBound.prototype 的时候，
+    // 也会直接修改绑定函数的 prototype。这个时候，我们可以通过一个空函数来进行中转
     var fn = function () {
         var newArgs = Array.prototype.slice.call(arguments)
         // 返回函数的arguments,类数组转数组或者使用es6解构赋值

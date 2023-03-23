@@ -45,3 +45,22 @@ eventBus.on('aaa', fn2)
 eventBus.emit('aaa', false, '布兰', 12)
 // '布兰 12'
 // 'hello, 布兰 12'
+
+
+// 简易版
+var Bus={
+    list:[],
+    subscribe(callback){
+        //上面是一个对象，这里的this 指向Bus
+        this.list.push(callback)
+    },
+    publish(text){
+        this.list.map(k=>{
+            k && k(text)
+        })
+    },
+    unsubscribe(){
+        //这里表示从数组的倒数第二个开始分离，分离后面一个元素
+        this.list.splice(this.list.length-1,1)
+    }
+}
